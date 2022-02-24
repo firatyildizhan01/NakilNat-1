@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/notification"
+        android:icon="@drawable/ic_top_nav_notification"
+        android:title="@string/top_nav_notification"
+        app:showAsAction="ifRoom" />
+<!--    <item
+        android:id="@+id/search"
+        android:icon="@drawable/ic_top_navigation_wallet"
+        android:title="@string/top_nav_wallet"
+        app:showAsAction="ifRoom" />-->
+
+</menu>

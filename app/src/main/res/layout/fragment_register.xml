@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        >
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="100dp"
+            android:src="@drawable/nakilnat_logo"
+            android:layout_gravity="center"
+            />
+
+        <EditText
+            android:id="@+id/register_name_surname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="-25dp"
+            android:inputType="text"
+            android:hint="İsim Soyisim veya Firma Adı"
+            android:textColorHint="#660099"
+            android:layout_gravity="center"
+            android:background="@drawable/edit"
+            android:padding="20dp"
+            />
+        <EditText
+            android:id="@+id/register_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:maxLength="10"
+            android:inputType="number"
+            android:hint="Telefon Numarası"
+            android:textColorHint="#660099"
+            android:layout_gravity="center"
+            android:background="@drawable/edit"
+            android:layout_marginTop="15dp"
+            android:padding="20dp"
+            />
+        <EditText
+            android:id="@+id/register_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:inputType="textEmailAddress"
+            android:hint="E-posta Adresi"
+            android:textColorHint="#660099"
+            android:layout_gravity="center"
+            android:background="@drawable/edit"
+            android:layout_marginTop="15dp"
+            android:padding="20dp"
+            />
+        <EditText
+            android:id="@+id/register_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:inputType="text"
+            android:hint="Şifre"
+            android:textColorHint="#660099"
+            android:layout_gravity="center"
+            android:background="@drawable/edit"
+            android:layout_marginTop="15dp"
+            android:padding="20dp"
+            />
+        <EditText
+            android:id="@+id/register_repassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:inputType="text"
+            android:hint="Şifreyi Onayla"
+            android:textColorHint="#660099"
+            android:layout_gravity="center"
+            android:background="@drawable/edit"
+            android:layout_marginTop="15dp"
+            android:padding="20dp"
+            />
+
+        <CheckBox
+            android:id="@+id/employer_checkbox"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:text="Yük Veren">
+
+        </CheckBox>
+
+        <CheckBox
+            android:id="@+id/worker_checkbox"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="220dp"
+            android:layout_marginTop="-50dp"
+            android:text="Yük Alan">
+        </CheckBox>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:text="Kişisel verileriniz Aydınlatma Metni kapsamında işlenecektir.Üye olduğunuz takdirde Üyelik Sözleşmesi'ni Çerez Politikası'nı okuduğunuzu,anladığınızı ve kabul ettiğinizi onaylamış olacaksınız."
+            android:textColor="@color/black"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textSize="15dp"
+            />
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:text="Giriş Yap"
+            android:textColor="#fff"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hesabınız var mı?"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-medium"
+            android:layout_gravity="center"
+            android:layout_marginTop="80dp"
+            android:textSize="15dp"
+            />
+
+        <TextView
+            android:id="@+id/register_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giriş yap"
+            android:textColor="#660099"
+            android:fontFamily="sans-serif-medium"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textSize="15dp"
+            />
+
+    </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

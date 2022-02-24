@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        >
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/nakilnat_logo"
+            android:layout_gravity="center"
+            />
+
+        <EditText
+            android:id="@+id/login_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="-20dp"
+            android:inputType="textEmailAddress"
+            android:hint="E-mail"
+            android:textColorHint="#660099"
+            android:layout_gravity="center"
+            android:background="@drawable/edit"
+            android:padding="20dp"
+            />
+        <EditText
+            android:id="@+id/login_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:inputType="textPassword"
+            android:hint="Şifre"
+            android:textColorHint="#660099"
+            android:layout_gravity="center"
+            android:background="@drawable/edit"
+            android:layout_marginTop="15dp"
+            android:padding="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Şifremi Unuttum"
+            android:textColor="#660099"
+            android:fontFamily="sans-serif-medium"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textSize="15dp"
+            />
+
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:text="Giriş Yap"
+            android:textColor="#fff"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hesabınız yok mu?"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-medium"
+            android:layout_gravity="center"
+            android:layout_marginTop="80dp"
+            android:textSize="15dp"
+            />
+
+        <TextView
+            android:id="@+id/login_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Üye ol"
+            android:textColor="#660099"
+            android:fontFamily="sans-serif-medium"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:textSize="15dp"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

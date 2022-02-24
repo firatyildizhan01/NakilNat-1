@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android = "http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="500dp"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/agreement_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="Aydınlatma Metni"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        ></TextView>
+
+    <TextView
+        android:id="@+id/agreement_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:text="Ürün ve hizmetlerin sunulması,ücretlendirilmesi ve faturalandırılması;blablablablablablablablablablablablablablablablablabla"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/agreement_title"
+        >
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:layout_below="@+id/agreement_description" >
+    </Button>
+
+    </TextView>
+
+</RelativeLayout>
