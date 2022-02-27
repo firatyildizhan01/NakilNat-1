@@ -4,6 +4,8 @@ import com.nakilnat.nakilnat.models.DefaultResponse;
 import com.nakilnat.nakilnat.models.LoginResponse;
 import com.nakilnat.nakilnat.models.UsersResponse;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
@@ -17,7 +19,7 @@ public interface Api {
 
 
     @FormUrlEncoded
-    @POST("createuser")
+    @POST("mobile_db.php?sayfa=uyeOl")
     Call<LoginResponse> createUser(
             @Field("firma_adi") String name,
             @Field("cep_tel") String phoneNumber,
@@ -31,6 +33,18 @@ public interface Api {
     Call<LoginResponse> userLogin(
             @Field("email") String email,
             @Field("password") String password
+    );
+
+    @FormUrlEncoded
+    @POST("mobile_db.php?sayfa=uyeOnay")
+    Call<LoginResponse> smsVerification(
+            @Field("onayKodu") String verificationCode
+    );
+
+    @FormUrlEncoded
+    @POST("mobile_db.php?sayfa=webmetin")
+    Call<List<DefaultResponse>> agreementText (
+            @Field("id") String id
     );
 
     @GET("allusers")

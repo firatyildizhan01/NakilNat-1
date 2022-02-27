@@ -12,10 +12,11 @@
         android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nakilnat">
-
-        <activity android:name=".ui.home.HomePageFragment"></activity>
         <activity android:name=".ui.profile.ProfilePageFragment"></activity>
+        <activity android:name=".ui.home.HomePageFragment"></activity>
         <activity android:name=".ui.onboarding.LoginFragment"></activity>
+        <activity android:name=".ui.onboarding.RememberPasswordFragment"></activity>
+        <activity android:name=".ui.onboarding.NewPasswordFragment"></activity>
         <activity android:name=".ui.onboarding.RegisterFragment"></activity>
         <activity android:name=".ui.onboarding.SmsVerificationFragment"></activity>
         <activity android:name=".ui.onboarding.OnboardingFragment"
@@ -26,7 +27,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

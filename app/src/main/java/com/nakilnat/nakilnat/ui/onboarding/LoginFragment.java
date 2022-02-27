@@ -23,27 +23,35 @@ import retrofit2.Response;
 public class LoginFragment extends AppCompatActivity {
     Button login;
     EditText email, password;
-    TextView loginSignup;
+    TextView loginSignup, rememberPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_login);
         email = (EditText)findViewById(R.id.login_email);
         password = (EditText)findViewById(R.id.login_password);
+        rememberPassword = (TextView)findViewById(R.id.password_remember);
+
+        rememberPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginFragment.this, RememberPasswordFragment.class);
+                startActivity(intent);
+            }
+        });
+
         login = (Button)findViewById(R.id.login_button);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginFragment.this, HomePageFragment.class);
-                startActivity(intent);
-                /*if (email.length() != 0 && password.length() != 0) {
+                if (email.length() != 0 && password.length() != 0) {
                     loginCallBack(email.getText().toString(), password.getText().toString());
                 } else {
                     Toast.makeText(getApplicationContext(),"Lütfen alanları doldurunuz!!", Toast.LENGTH_LONG).show();
-                }*/
+                }
             }
         });
-        loginSignup = (TextView) findViewById(R.id.login_signup);
+        loginSignup = (TextView) findViewById(R.id.login_register);
         loginSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,13 +84,15 @@ public class LoginFragment extends AppCompatActivity {
 
                 if (!loginResponse.isError()) {
 
-                    SharedPrefManager.getInstance(LoginFragment.this)
-                            .saveUser(loginResponse.getUser());
+                    //SharedPrefManager.getInstance(LoginFragment.this)
+                            //.saveUser(loginResponse.getUser());
 
-                    Intent intent = new Intent(LoginFragment.this, HomePageFragment.class);
+                    /*Intent intent = new Intent(LoginFragment.this, HomePageFragment.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
-
+*/
+                    Intent intent = new Intent(LoginFragment.this, HomePageFragment.class);
+                    startActivity(intent);
 
                 } else {
                     Toast.makeText(LoginFragment.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();

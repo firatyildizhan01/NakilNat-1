@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android = "http://schemas.android.com/apk/res/android"
-    android:layout_width="350dp"
-    android:layout_height="500dp"
-    android:layout_gravity="center">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:maxHeight="400dp"
+    android:background="@android:color/white">
 
-    <TextView
-        android:id="@+id/agreement_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="Aydınlatma Metni"
-        android:textColor="@color/black"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        ></TextView>
+    <WebView
+        android:id="@+id/agreement_popup_textview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Congratulations! you have successfully create a custom dialog.Congratulations! you have successfully create a custom dialog.Congratulations! you have successfully create a custom dialog.Congratulations! you have successfully create a custom dialog.Congratulations! you have successfully create a custom dialog.Congratulations! you have successfully create a custom dialog.Congratulations! you have successfully create a custom dialog.Congratulations! you have successfully create a custom dialog.Congratulations! you have successfully create a custom dialog.Congratulations! you have successfully create a custom dialog.Congratulations! you have successfully create a custom dialog.Congratulations! you have successfully create a custom dialog.Congratulations! you have successfully create a custom dialog.Congratulations! you have successfully create a custom dialog.Congratulations! you have successfully create a custom dialog."
+        android:textAlignment="center"
+       
+        />
 
-    <TextView
-        android:id="@+id/agreement_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:text="Ürün ve hizmetlerin sunulması,ücretlendirilmesi ve faturalandırılması;blablablablablablablablablablablablablablablablablabla"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/agreement_title"
-        >
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/gray_500"
+        app:layout_constraintBottom_toTopOf="@id/btn_okay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/agreement_popup_textview" />
+
     <Button
-        android:layout_width="wrap_content"
+        android:id="@+id/btn_okay"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp"
-        android:layout_below="@+id/agreement_description" >
-    </Button>
-
-    </TextView>
-
-</RelativeLayout>
+        android:layout_marginBottom="0dp"
+        android:background="@color/white"
+        android:text="Kabul ediyorum"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+</androidx.constraintlayout.widget.ConstraintLayout>
