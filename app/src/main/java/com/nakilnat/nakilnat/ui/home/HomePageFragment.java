@@ -22,8 +22,16 @@ public class HomePageFragment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_home_page);
+        bottomBarSetup();
+
+
+
+    }
+
+    private void bottomBarSetup() {
         bottomBar = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        bottomBar.setSelectedItemId(R.id.miHome);
+        bottomBar.setItemIconTintList(null);
+        bottomBar.setSelectedItemId(R.id.bottomHome);
         bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -32,24 +40,22 @@ public class HomePageFragment extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     private void GoBottomMenuIntent(int itemId) {
         Intent intent;
         switch (itemId) {
-            case R.id.miSearch:
+            case R.id.bottomMyShipping:
                 intent = new Intent(HomePageFragment.this, ProfilePageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
-            case R.id.miSettings:
+            case R.id.bottomAddAds:
                 intent = new Intent(HomePageFragment.this, ProfilePageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
-            case R.id.miProfile:
+            case R.id.bottomProfile:
                 intent = new Intent(HomePageFragment.this, ProfilePageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);

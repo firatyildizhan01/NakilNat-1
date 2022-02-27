@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.Group;
+import androidx.core.view.WindowCompat;
 import androidx.transition.AutoTransition;
 import androidx.transition.TransitionManager;
 
@@ -29,6 +31,8 @@ import com.nakilnat.nakilnat.R;
 
 public class ProfilePageFragment extends AppCompatActivity {
     BottomNavigationView bottomBar;
+    CardView accountPage, addressPage, invoicesPage, notificationPage, shippingAdsPage, offersPage,
+            shippingPage, walletPage,messagesPage, settingsPage;
     CardView accountCardView, offersCardView, burdenCardView;
     RelativeLayout accountLayout, offersLayout, burdenLayout;
     ImageView accountArrow, offersArrow, burdenArrow;
@@ -37,18 +41,12 @@ public class ProfilePageFragment extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_profile_page);
-        bottomBar = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        bottomBar.setSelectedItemId(R.id.miProfile);
-        bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                GoBottomMenuIntent(item.getItemId());
-                return true;
 
-            }
-        });
+        bottomBarSetup();
+        InitSubContents();
 
-        accountCardView = findViewById(R.id.profile_settings_group);
+
+       /* accountCardView = findViewById(R.id.profile_settings_group);
         accountLayout = findViewById(R.id.profile_settings);
         accountArrow = findViewById(R.id.iconSettingsArrow);
         accountHiddenGroup = findViewById(R.id.settings_card_group);
@@ -104,23 +102,60 @@ public class ProfilePageFragment extends AppCompatActivity {
                 burdenArrow.setImageResource(R.drawable.ic_profile_arrow_up);
             }
         });
+*/
+    }
 
+    private void InitSubContents() {
+        //region initialize sub menus
+        accountPage = (CardView) findViewById(R.id.profile_my_account);
+        addressPage = (CardView) findViewById(R.id.profile_my_address);
+        invoicesPage = (CardView) findViewById(R.id.profile_my_invoices);
+        notificationPage = (CardView) findViewById(R.id.profile_notifications);
+        shippingAdsPage = (CardView) findViewById(R.id.profile_my_shipping_ads);
+        offersPage = (CardView) findViewById(R.id.profile_Offers);
+        shippingPage = (CardView) findViewById(R.id.profile_my_shippings);
+        walletPage = (CardView) findViewById(R.id.profile_my_wallet);
+        messagesPage = (CardView) findViewById(R.id.profile_messsages);
+        settingsPage = (CardView) findViewById(R.id.profile_my_settings);
+        //endregion
+
+        //region set click actions
+
+
+        //endregion
+
+
+
+    }
+
+    private void bottomBarSetup() {
+        bottomBar = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
+        bottomBar.setItemIconTintList(null);
+        bottomBar.setSelectedItemId(R.id.bottomProfile);
+        bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                GoBottomMenuIntent(item.getItemId());
+                return true;
+
+            }
+        });
     }
 
     private void GoBottomMenuIntent(int itemId) {
         Intent intent;
         switch (itemId) {
-            case R.id.miHome:
+            case R.id.bottomHome:
                 intent = new Intent(ProfilePageFragment.this, HomePageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
-            case R.id.miSearch:
+            case R.id.bottomMyShipping:
                 intent = new Intent(ProfilePageFragment.this, HomePageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
-            case R.id.miSettings:
+            case R.id.bottomAddAds:
                 intent = new Intent(ProfilePageFragment.this, HomePageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);

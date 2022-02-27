@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Nakilnat</string>
-    <string name="top_nav_wallet">Cüzdanım</string>
+    <string name="profilePage">Profil</string>
     <string name="top_nav_notification">Bildirimler</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
 </resources>

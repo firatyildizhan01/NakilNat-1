@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/miHome"
-        android:title="Home"
-        android:icon="@drawable/ic_bottom_navigation_home" />
+    <item android:id="@+id/bottomHome"
+        android:title="Anasayfa"
+        android:enabled="true"
+        android:icon="@drawable/selector_home_ic_status" />
 
-    <item android:id="@+id/miSearch"
-        android:title="Search"
-        android:icon="@drawable/ic_bottom_navigation_search" />
+    <item android:id="@+id/bottomMyShipping"
+        android:title="Taşımalarım"
+        android:enabled="true"
+        android:icon="@drawable/selector_my_shipping_ic_status" />
 
     <item android:id="@+id/placeholder"
-        android:title="" />
+        android:title=""
+        />
 
 
-    <item android:id="@+id/miSettings"
-        android:title="Settings"
-        android:icon="@drawable/ic_bottom_navigation_settings" />
+    <item android:id="@+id/bottomAddAds"
+        android:title="İlan Ekle"
+        android:enabled="true"
+        android:icon="@drawable/selector_add_ads_ic_status" />
 
-    <item android:id="@+id/miProfile"
-        android:title="Profile"
-        android:icon="@drawable/ic_bottom_navigation_person" />
+    <item android:id="@+id/bottomProfile"
+        android:title="Profilim"
+        android:enabled="true"
+        android:icon="@drawable/selector_profile_ic_status"
+        />
 
 
 </menu>

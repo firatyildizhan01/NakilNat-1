@@ -3,6 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/background_transparent.xml" value="0.10648148148148148" />
+        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/ic_profile_score_empty.xml" value="0.2703125" />
+        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/icon_bg_shape.xml" value="0.10648148148148148" />
+        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/icon_change_selector.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/selector_add_ads_ic_status.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/selector_home_ic_status.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/selector_my_shipping_ic_status.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/selector_profile_ic_status.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/shape_application_top.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/font/a.xml" value="0.20555555555555555" />
+        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/font/font.xml" value="0.2574074074074074" />
+        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/font/roboto.xml" value="0.2574074074074074" />
+        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/fragment_application_page.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/fragment_home_page.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/fragment_profile_page.xml" value="0.152" />
+        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/top_bar.xml" value="0.176" />
+        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/menu/top_nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/background_transparent.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/button.xml" value="0.2703125" />
         <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/edit.xml" value="0.2703125" />
