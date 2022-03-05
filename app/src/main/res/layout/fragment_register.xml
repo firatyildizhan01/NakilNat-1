@@ -129,22 +129,21 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp">
 
             <CheckBox
                 android:id="@+id/agreement_checkBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/purple_500"
-                ></CheckBox>
+                android:buttonTint="@color/purple_500"></CheckBox>
 
             <TextView
                 android:id="@+id/agreement_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
+                android:layout_marginStart="-12dp"
+                android:layout_marginTop="12dp"
                 android:layout_toEndOf="@+id/agreement_checkBox"
                 android:text="Kullanım koşullarını"
                 android:textColor="@color/purple_500"
@@ -155,7 +154,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginStart="2dp"
                 android:layout_toEndOf="@+id/agreement_textView"
                 android:text="okudum,onaylıyorum"

@@ -1,9 +1,10 @@
-package com.nakilnat.nakilnat.ui.application;
+package com.nakilnat.nakilnat.ui.profile;
+
+import android.os.Bundle;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,22 +15,27 @@ import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
-import com.nakilnat.nakilnat.ui.profile.ProfilePageFragment;
 
 
-public class ApplicationPageFragment extends AppCompatActivity {
+public class MyAccountFragment extends AppCompatActivity {
     BottomNavigationView bottomBar;
+    TextView navigationBarTitle;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_application_page);
+        setContentView(R.layout.fragment_my_account);
 
-        bottomBarSetup();
+        navigationBarTitle = (TextView)findViewById(R.id.top_bar_title);
+        navigationBarTitle.setText("Hesabım");
+
+        bottomBarSetup(R.id.bottomAddAds);
     }
 
-    private void bottomBarSetup() {
+
+    private void bottomBarSetup(int bottomItemId) {
         bottomBar = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         bottomBar.setItemIconTintList(null);
+        bottomBar.setSelectedItemId(bottomItemId);
         bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -43,28 +49,27 @@ public class ApplicationPageFragment extends AppCompatActivity {
     private void GoBottomMenuIntent(int itemId) {
         Intent intent;
         switch (itemId) {
-            case R.id.bottomHome:
-                intent = new Intent(ApplicationPageFragment.this, HomePageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
             case R.id.bottomMyShipping:
-                intent = new Intent(ApplicationPageFragment.this, MyShipsFragment.class);
+                intent = new Intent(MyAccountFragment.this, MyShipsFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
             case R.id.bottomAddAds:
-                intent = new Intent(ApplicationPageFragment.this, AddAdFragment.class);
+                intent = new Intent(MyAccountFragment.this, AddAdFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
             case R.id.bottomProfile:
-                intent = new Intent(ApplicationPageFragment.this, ProfilePageFragment.class);
+                intent = new Intent(MyAccountFragment.this, ProfilePageFragment.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                break;
+            case R.id.bottomHome:
+                intent = new Intent(MyAccountFragment.this, HomePageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
         }
     }
-
 
 }

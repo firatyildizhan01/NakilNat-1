@@ -1,4 +1,4 @@
-package com.nakilnat.nakilnat.ui.profile;
+package com.nakilnat.nakilnat.ui.myships;
 
 import android.os.Bundle;
 
@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,25 +27,26 @@ import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
 import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
-import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
 import com.nakilnat.nakilnat.ui.onboarding.LoginFragment;
 import com.nakilnat.nakilnat.ui.profile.ProfilePageFragment;
 import com.nakilnat.nakilnat.R;
 
 
-public class ProfilePageFragment extends AppCompatActivity {
+public class MyShipsFragment extends AppCompatActivity {
     BottomNavigationView bottomBar;
     CardView bottomFab;
-    CardView accountPage, addressPage, invoicesPage, notificationPage, shippingAdsPage, offersPage,
-            shippingPage, walletPage,messagesPage, settingsPage;
-    CardView accountCardView, offersCardView, burdenCardView;
+    CardView continuePage, successPage, cancelPage;
     RelativeLayout accountLayout, offersLayout, burdenLayout;
     ImageView accountArrow, offersArrow, burdenArrow;
     Group accountHiddenGroup, offersHiddenGroup, burdenHiddenGroup;
+    TextView navigationBarTitle;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_profile_page);
+        setContentView(R.layout.fragment_my_ships);
+
+        navigationBarTitle = (TextView)findViewById(R.id.top_bar_title);
+        navigationBarTitle.setText("Taşımalarım");
 
         bottomBarSetup();
         InitSubContents();
@@ -111,16 +113,9 @@ public class ProfilePageFragment extends AppCompatActivity {
 
     private void InitSubContents() {
         //region initialize sub menus
-        accountPage = (CardView) findViewById(R.id.profile_my_account);
-        addressPage = (CardView) findViewById(R.id.profile_my_address);
-        invoicesPage = (CardView) findViewById(R.id.profile_my_invoices);
-        notificationPage = (CardView) findViewById(R.id.profile_notifications);
-        shippingAdsPage = (CardView) findViewById(R.id.profile_my_shipping_ads);
-        offersPage = (CardView) findViewById(R.id.profile_Offers);
-        shippingPage = (CardView) findViewById(R.id.profile_my_shippings);
-        walletPage = (CardView) findViewById(R.id.profile_my_wallet);
-        messagesPage = (CardView) findViewById(R.id.profile_messsages);
-        settingsPage = (CardView) findViewById(R.id.profile_my_settings);
+        continuePage = (CardView) findViewById(R.id.my_ships_continue);
+        successPage = (CardView) findViewById(R.id.my_ships_success);
+        cancelPage = (CardView) findViewById(R.id.my_ships_cancel);
         //endregion
 
         //region set click actions
@@ -135,7 +130,7 @@ public class ProfilePageFragment extends AppCompatActivity {
     private void bottomBarSetup() {
         bottomBar = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         bottomBar.setItemIconTintList(null);
-        bottomBar.setSelectedItemId(R.id.bottomProfile);
+        bottomBar.setSelectedItemId(R.id.bottomMyShipping);
         bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -144,7 +139,6 @@ public class ProfilePageFragment extends AppCompatActivity {
 
             }
         });
-
         bottomFab = findViewById(R.id.fab);
         bottomFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,7 +147,7 @@ public class ProfilePageFragment extends AppCompatActivity {
                 bottomBar.getMenu().setGroupCheckable(1, false, true);
                 bottomBar.getMenu().setGroupCheckable(2, false, true);
                 bottomBar.getMenu().setGroupCheckable(3, false, true);
-                Intent intent = new Intent(ProfilePageFragment.this, ApplicationPageFragment.class);
+                Intent intent = new Intent(MyShipsFragment.this, ApplicationPageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
             }
@@ -164,20 +158,21 @@ public class ProfilePageFragment extends AppCompatActivity {
         Intent intent;
         switch (itemId) {
             case R.id.bottomHome:
-                intent = new Intent(ProfilePageFragment.this, HomePageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomMyShipping:
-                intent = new Intent(ProfilePageFragment.this, MyShipsFragment.class);
+                intent = new Intent(MyShipsFragment.this, HomePageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
             case R.id.bottomAddAds:
-                intent = new Intent(ProfilePageFragment.this, AddAdFragment.class);
+                intent = new Intent(MyShipsFragment.this, AddAdFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
+            case R.id.bottomProfile:
+                intent = new Intent(MyShipsFragment.this, ProfilePageFragment.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                break;
+
         }
     }
 

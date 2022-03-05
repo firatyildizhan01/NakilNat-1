@@ -1,4 +1,4 @@
-package com.nakilnat.nakilnat.ui.home;
+package com.nakilnat.nakilnat.ui.addad;
 
 import android.os.Bundle;
 
@@ -24,7 +24,6 @@ import androidx.transition.TransitionManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.nakilnat.nakilnat.R;
-import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
 import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
@@ -33,17 +32,17 @@ import com.nakilnat.nakilnat.ui.profile.ProfilePageFragment;
 import com.nakilnat.nakilnat.R;
 
 
-public class HomePageFragment extends AppCompatActivity {
+public class AddAdFragment extends AppCompatActivity {
     BottomNavigationView bottomBar;
     CardView bottomFab;
     TextView navigationBarTitle;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_home_page);
+        setContentView(R.layout.fragment_add_ad);
 
         navigationBarTitle = (TextView)findViewById(R.id.top_bar_title);
-        navigationBarTitle.setText("Lojistik");
+        navigationBarTitle.setText("Yük İlanı Oluştur");
 
         bottomBarSetup();
     }
@@ -69,7 +68,7 @@ public class HomePageFragment extends AppCompatActivity {
                 bottomBar.getMenu().setGroupCheckable(1, false, true);
                 bottomBar.getMenu().setGroupCheckable(2, false, true);
                 bottomBar.getMenu().setGroupCheckable(3, false, true);
-                Intent intent = new Intent(HomePageFragment.this, ApplicationPageFragment.class);
+                Intent intent = new Intent(AddAdFragment.this, ApplicationPageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
             }
@@ -79,18 +78,18 @@ public class HomePageFragment extends AppCompatActivity {
     private void GoBottomMenuIntent(int itemId) {
         Intent intent;
         switch (itemId) {
-            case R.id.bottomMyShipping:
-                intent = new Intent(HomePageFragment.this, MyShipsFragment.class);
+            case R.id.bottomHome:
+                intent = new Intent(AddAdFragment.this, HomePageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
-            case R.id.bottomAddAds:
-                intent = new Intent(HomePageFragment.this, AddAdFragment.class);
+            case R.id.bottomMyShipping:
+                intent = new Intent(AddAdFragment.this, MyShipsFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
             case R.id.bottomProfile:
-                intent = new Intent(HomePageFragment.this, ProfilePageFragment.class);
+                intent = new Intent(AddAdFragment.this, ProfilePageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;

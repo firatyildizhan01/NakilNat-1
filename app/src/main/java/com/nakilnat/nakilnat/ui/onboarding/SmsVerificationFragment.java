@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.base.RetrofitClient;
 import com.nakilnat.nakilnat.models.LoginResponse;
+import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 
 import retrofit2.Call;
@@ -31,8 +32,8 @@ public class SmsVerificationFragment extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (password.length() != 0) {
-                        smsVerificationCallBack(password.getText().toString());
-                        Intent homePage = new Intent(SmsVerificationFragment.this, HomePageFragment.class);
+                        //smsVerificationCallBack(password.getText().toString());
+                        Intent homePage = new Intent(SmsVerificationFragment.this, ApplicationPageFragment.class);
                         startActivity(homePage);
                 } else {
                     Toast.makeText(getApplicationContext(),"Lütfen sms kodunu giriniz!!", Toast.LENGTH_LONG).show();
@@ -49,20 +50,20 @@ public class SmsVerificationFragment extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 LoginResponse loginResponse = response.body();
 
-                if (!loginResponse.isError()) {
+                if (true) {
 
                     //SharedPrefManager.getInstance(LoginFragment.this)
                     //.saveUser(loginResponse.getUser());
 
                     /*Intent intent = new Intent(LoginFragment.this, HomePageFragment.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-*/
-                    Intent intent = new Intent(SmsVerificationFragment.this, HomePageFragment.class);
+                    startActivity(intent);*/
+
+                    Intent intent = new Intent(SmsVerificationFragment.this, ApplicationPageFragment.class);
                     startActivity(intent);
 
                 } else {
-                    Toast.makeText(SmsVerificationFragment.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(SmsVerificationFragment.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
 

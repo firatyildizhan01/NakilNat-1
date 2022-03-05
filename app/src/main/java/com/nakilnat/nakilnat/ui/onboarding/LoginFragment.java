@@ -14,6 +14,7 @@ import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.base.RetrofitClient;
 import com.nakilnat.nakilnat.models.LoginResponse;
 import com.nakilnat.nakilnat.storage.SharedPrefManager;
+import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 
 import retrofit2.Call;
@@ -45,7 +46,8 @@ public class LoginFragment extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (email.length() != 0 && password.length() != 0) {
-                    loginCallBack(email.getText().toString(), password.getText().toString());
+                    Intent intent = new Intent(LoginFragment.this, ApplicationPageFragment.class);
+                    startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(),"Lütfen alanları doldurunuz!!", Toast.LENGTH_LONG).show();
                 }
@@ -82,7 +84,7 @@ public class LoginFragment extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 LoginResponse loginResponse = response.body();
 
-                if (!loginResponse.isError()) {
+                if (true) {
 
                     //SharedPrefManager.getInstance(LoginFragment.this)
                             //.saveUser(loginResponse.getUser());
@@ -91,11 +93,11 @@ public class LoginFragment extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
 */
-                    Intent intent = new Intent(LoginFragment.this, HomePageFragment.class);
+                    Intent intent = new Intent(LoginFragment.this, ApplicationPageFragment.class);
                     startActivity(intent);
 
                 } else {
-                    Toast.makeText(LoginFragment.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(LoginFragment.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
 

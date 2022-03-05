@@ -29,6 +29,7 @@ import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.base.RetrofitClient;
 import com.nakilnat.nakilnat.models.DefaultResponse;
 import com.nakilnat.nakilnat.models.LoginResponse;
+import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 
 import java.util.List;
@@ -78,7 +79,12 @@ public class RegisterFragment extends AppCompatActivity {
                     if (radioWorker.isChecked() || radioEmployer.isChecked()) {
                         if (password.getText().toString().equals(repassword.getText().toString())) {
                             if (phoneNumber.length() == 10) {
-                                registerCallBack(nameSurname.getText().toString(), phoneNumber.getText().toString(), email.getText().toString(), password.getText().toString(), password.getText().toString());
+                                if (agreementCheckBox.isChecked()) {
+                                    Intent intent = new Intent(RegisterFragment.this, ApplicationPageFragment.class);
+                                    startActivity(intent);
+                                } else {
+                                    Toast.makeText(getApplicationContext(),"Sözleşmeyi kabul ediniz!!", Toast.LENGTH_LONG).show();
+                                }
                             } else {
                                 Toast.makeText(getApplicationContext(),"Telefon numaranız 10 karakter olmalıdır!!", Toast.LENGTH_LONG).show();
                             }
@@ -114,21 +120,22 @@ public class RegisterFragment extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 LoginResponse loginResponse = response.body();
 
-                if (!loginResponse.isError()) {
+                if (true) {
 
-                    //SharedPrefManager.getInstance(LoginFragment.this)
+                  /*  //SharedPrefManager.getInstance(LoginFragment.this)
                     //.saveUser(loginResponse.getUser());
 
                     /*Intent intent = new Intent(LoginFragment.this, HomePageFragment.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-*/
+                    startActivity(intent);*/
+
                     Intent homePage = new Intent(RegisterFragment.this, SmsVerificationFragment.class);
                     startActivity(homePage);
 
                 } else {
-                    Toast.makeText(RegisterFragment.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(RegisterFragment.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
                 }
+
             }
 
             @Override

@@ -1,26 +1,33 @@
 package com.nakilnat.nakilnat.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class LoginResponse {
 
-    private boolean error;
-    private String message;
-    private User user;
+    @SerializedName("UserName")
+    private String userName;
 
-    public LoginResponse(boolean error, String message, User user) {
-        this.error = error;
-        this.message = message;
-        this.user = user;
+    @SerializedName("Password")
+    private String password;
+
+    public String getUserName() {
+        return userName;
     }
 
-    public boolean isError() {
-        return error;
+    public LoginResponse(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
     }
 
-    public String getMessage() {
-        return message;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public User getUser() {
-        return user;
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

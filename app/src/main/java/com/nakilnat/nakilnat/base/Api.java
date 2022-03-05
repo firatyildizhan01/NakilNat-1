@@ -1,7 +1,12 @@
 package com.nakilnat.nakilnat.base;
 
+import com.nakilnat.nakilnat.models.AraclarResponse;
+import com.nakilnat.nakilnat.models.BirimlerResponse;
 import com.nakilnat.nakilnat.models.DefaultResponse;
+import com.nakilnat.nakilnat.models.IlResponse;
+import com.nakilnat.nakilnat.models.IlceResponse;
 import com.nakilnat.nakilnat.models.LoginResponse;
+import com.nakilnat.nakilnat.models.SliderResponse;
 import com.nakilnat.nakilnat.models.UsersResponse;
 
 import java.util.List;
@@ -39,6 +44,40 @@ public interface Api {
     @POST("mobile_db.php?sayfa=uyeOnay")
     Call<LoginResponse> smsVerification(
             @Field("onayKodu") String verificationCode
+    );
+
+    @FormUrlEncoded
+    @POST("mobile_db.php?sayfa=slider")
+    Call<SliderResponse> sliderImage(
+            @Field("onayKodu") String verificationCode
+    );
+
+    @FormUrlEncoded
+    @POST("mobile_db.php?sayfa=il")
+    Call<IlResponse> ilCallBack();
+
+    @FormUrlEncoded
+    @POST("mobile_db.php?sayfa=ilce")
+    Call<IlceResponse> ilceCallBack(
+    @Field("onayKodu") String verificationCode
+    );
+
+    @FormUrlEncoded
+    @POST("mobile_db.php?sayfa=araclar")
+    Call<AraclarResponse> araclarCallBack();
+
+    @FormUrlEncoded
+    @POST("mobile_db.php?sayfa=birimler")
+    Call<BirimlerResponse> birimlerCallBack();
+
+    @FormUrlEncoded
+    @POST("mobile_db.php?sayfa=anasayfa_tema")
+    Call<List<DefaultResponse>> homePageText();
+
+    @FormUrlEncoded
+    @POST("mobile_db.php?sayfa=web_sayfa")
+    Call<List<DefaultResponse>> webPageText(
+            @Field("id") String id
     );
 
     @FormUrlEncoded

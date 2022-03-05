@@ -24,7 +24,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
-import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
 import com.nakilnat.nakilnat.ui.onboarding.LoginFragment;
@@ -32,9 +31,8 @@ import com.nakilnat.nakilnat.ui.profile.ProfilePageFragment;
 import com.nakilnat.nakilnat.R;
 
 
-public class ProfilePageFragment extends AppCompatActivity {
+public class MyWalletFragment extends AppCompatActivity {
     BottomNavigationView bottomBar;
-    CardView bottomFab;
     CardView accountPage, addressPage, invoicesPage, notificationPage, shippingAdsPage, offersPage,
             shippingPage, walletPage,messagesPage, settingsPage;
     CardView accountCardView, offersCardView, burdenCardView;
@@ -44,7 +42,7 @@ public class ProfilePageFragment extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_profile_page);
+        setContentView(R.layout.fragment_my_wallet);
 
         bottomBarSetup();
         InitSubContents();
@@ -144,37 +142,28 @@ public class ProfilePageFragment extends AppCompatActivity {
 
             }
         });
-
-        bottomFab = findViewById(R.id.fab);
-        bottomFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomBar.getMenu().setGroupCheckable(0, false, true);
-                bottomBar.getMenu().setGroupCheckable(1, false, true);
-                bottomBar.getMenu().setGroupCheckable(2, false, true);
-                bottomBar.getMenu().setGroupCheckable(3, false, true);
-                Intent intent = new Intent(ProfilePageFragment.this, ApplicationPageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-            }
-        });
     }
 
     private void GoBottomMenuIntent(int itemId) {
         Intent intent;
         switch (itemId) {
-            case R.id.bottomHome:
-                intent = new Intent(ProfilePageFragment.this, HomePageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
             case R.id.bottomMyShipping:
-                intent = new Intent(ProfilePageFragment.this, MyShipsFragment.class);
+                intent = new Intent(MyWalletFragment.this, MyShipsFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
             case R.id.bottomAddAds:
-                intent = new Intent(ProfilePageFragment.this, AddAdFragment.class);
+                intent = new Intent(MyWalletFragment.this, AddAdFragment.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                break;
+            case R.id.bottomProfile:
+                intent = new Intent(MyWalletFragment.this, ProfilePageFragment.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                break;
+            case R.id.bottomHome:
+                intent = new Intent(MyWalletFragment.this, HomePageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;

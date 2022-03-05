@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.30925925925925923" />
         <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/background_transparent.xml" value="0.10648148148148148" />
         <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/ic_profile_score_empty.xml" value="0.2703125" />
         <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/icon_bg_shape.xml" value="0.10648148148148148" />
@@ -50,15 +51,30 @@
         <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/layout/layout_toolbar.xml" value="0.4" />
         <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/menu/top_nav_menu.xml" value="0.13020833333333334" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.41458333333333336" />
+        <entry key="app/src/main/res/drawable/background_transparent.xml" value="0.2526041666666667" />
         <entry key="app/src/main/res/drawable/button.xml" value="0.4" />
         <entry key="app/src/main/res/drawable/edit.xml" value="0.4" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.41458333333333336" />
         <entry key="app/src/main/res/drawable/ic_logo.xml" value="0.4140625" />
+        <entry key="app/src/main/res/drawable/icon_bg_shape.xml" value="0.41458333333333336" />
+        <entry key="app/src/main/res/drawable/selector_home_ic_status.xml" value="0.41458333333333336" />
+        <entry key="app/src/main/res/drawable/shape_application_top.xml" value="0.41458333333333336" />
         <entry key="app/src/main/res/layout/agreement_popup.xml" value="0.18667679837892603" />
+        <entry key="app/src/main/res/layout/fragment_add_ad.xml" value="0.19376899696048633" />
+        <entry key="app/src/main/res/layout/fragment_application_page.xml" value="0.1286231884057971" />
         <entry key="app/src/main/res/layout/fragment_home_page.xml" value="0.23233695652173914" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_my_account.xml" value="0.19376899696048633" />
+        <entry key="app/src/main/res/layout/fragment_my_settings.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_my_ships.xml" value="0.31023550724637683" />
+        <entry key="app/src/main/res/layout/fragment_my_wallet.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_onboarding.xml" value="0.19351570415400202" />
+        <entry key="app/src/main/res/layout/fragment_profile_page.xml" value="0.19376899696048633" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.19351570415400202" />
         <entry key="app/src/main/res/layout/fragment_sms_verification.xml" value="0.18667679837892603" />
+        <entry key="app/src/main/res/layout/fragment_update_password.xml" value="0.19376899696048633" />
+        <entry key="app/src/main/res/layout/top_bar.xml" value="0.19376899696048633" />
       </map>
     </option>
   </component>
