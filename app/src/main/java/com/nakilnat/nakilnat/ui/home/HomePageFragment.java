@@ -1,11 +1,13 @@
 package com.nakilnat.nakilnat.ui.home;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,23 +38,41 @@ import com.nakilnat.nakilnat.R;
 public class HomePageFragment extends AppCompatActivity {
     BottomNavigationView bottomBar;
     CardView bottomFab;
-    TextView navigationBarTitle;
+    Button add_ads;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_home_page);
 
-        navigationBarTitle = (TextView)findViewById(R.id.top_bar_title);
-        navigationBarTitle.setText("Lojistik");
-
+        setTransparentStatusBar();
         bottomBarSetup();
+        goToIntents();
     }
 
+    private void goToIntents() {
+        add_ads = findViewById(R.id.homepage_add_ads);
+        add_ads.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomePageFragment.this, AddAdFragment.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+            }
+        });
+    }
+
+    private void setTransparentStatusBar(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            Window w = getWindow();
+            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+        }
+    }
 
     private void bottomBarSetup() {
         bottomBar = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         bottomBar.setItemIconTintList(null);
-        bottomBar.setSelectedItemId(R.id.bottomAddAds);
+        bottomBar.setSelectedItemId(R.id.bottomHome);
         bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

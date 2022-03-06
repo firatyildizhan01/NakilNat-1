@@ -19,8 +19,7 @@
         android:background="@color/gray_200">
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -29,8 +28,6 @@
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp"
                 android:paddingBottom="75dp">
-
-
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/settings_permission"
@@ -61,7 +58,7 @@
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:src="@drawable/ic_shipping_truck"
+                                android:src="@drawable/ic_lock_open"
                                 app:tint="@color/purple_500"></ImageView>
                         </LinearLayout>
 
@@ -98,55 +95,55 @@
                     android:layout_marginTop="1dp"
                     >
                     <LinearLayout
+                        android:visibility="visible"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        >
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingVertical="10dp"
-                        android:paddingHorizontal="15dp"
-                        >
-                        <LinearLayout
-                            android:id="@+id/iconEmail"
-                            android:layout_width="30dp"
-                            android:layout_height="30dp"
-                            android:layout_alignParentLeft="true"
-                            android:layout_centerVertical="true"
-                            android:background="@drawable/icon_bg_shape"
-                            android:gravity="center">
+                        android:orientation="vertical">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="10dp"
+                            android:paddingHorizontal="15dp"
+                            >
+                            <LinearLayout
+                                android:id="@+id/iconEmail"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/icon_bg_shape"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:src="@drawable/ic_mail"
+                                    app:tint="@color/purple_500"></ImageView>
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@+id/iconEmail"
+                                android:fontFamily="@font/roboto_medium"
+                                android:paddingLeft="15dp"
+                                android:text="Eposta"
+                                android:textColor="@color/black"
+                                android:textSize="14dp"></TextView>
 
                             <ImageView
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:src="@drawable/ic_shipping_truck"
-                                app:tint="@color/purple_500"></ImageView>
-                        </LinearLayout>
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_toggle_active">
+                            </ImageView>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_toRightOf="@+id/iconEmail"
-                            android:fontFamily="@font/roboto_medium"
-                            android:paddingLeft="15dp"
-                            android:text="Eposta"
-                            android:textColor="@color/black"
-                            android:textSize="14dp"></TextView>
+                        </RelativeLayout>
 
-
-                        <ImageView
-                            android:layout_width="15dp"
-                            android:layout_height="15dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            app:tint="@color/gray_500"
-                            android:src="@drawable/ic_next"></ImageView>
-                    </LinearLayout>
-
-                        <LinearLayout
+                        <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
@@ -165,7 +162,7 @@
                                 <ImageView
                                     android:layout_width="16dp"
                                     android:layout_height="16dp"
-                                    android:src="@drawable/ic_shipping_truck"
+                                    android:src="@drawable/ic_notification_active"
                                     app:tint="@color/purple_500"></ImageView>
                             </LinearLayout>
 
@@ -188,7 +185,112 @@
                                 android:layout_centerVertical="true"
                                 android:src="@drawable/ic_next"
                                 app:tint="@color/gray_500"></ImageView>
-                        </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_toggle_active">
+                            </ImageView>
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="10dp"
+                            android:paddingHorizontal="15dp"
+                            >
+                            <LinearLayout
+                                android:id="@+id/iconSms"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/icon_bg_shape"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:src="@drawable/ic_sms"
+                                    app:tint="@color/purple_500"></ImageView>
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@+id/iconSms"
+                                android:fontFamily="@font/roboto_medium"
+                                android:paddingLeft="15dp"
+                                android:text="Sms"
+                                android:textColor="@color/black"
+                                android:textSize="14dp"></TextView>
+
+
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_toggle_active">
+                            </ImageView>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="10dp"
+                            android:paddingHorizontal="15dp"
+                            >
+                            <LinearLayout
+                                android:id="@+id/iconPhone"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/icon_bg_shape"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:src="@drawable/ic_phone"
+                                    app:tint="@color/purple_500"></ImageView>
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@+id/iconPhone"
+                                android:fontFamily="@font/roboto_medium"
+                                android:paddingLeft="15dp"
+                                android:text="Telefon"
+                                android:textColor="@color/black"
+                                android:textSize="14dp"></TextView>
+
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_next"
+                                app:tint="@color/gray_500"></ImageView>
+
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_toggle_active">
+                            </ImageView>
+                        </RelativeLayout>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -200,7 +302,6 @@
                     android:elevation="2dp"
                     app:cardCornerRadius="5dp"
                     app:cardUseCompatPadding="true"
-                    android:layout_marginTop="10dp"
                     >
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -221,7 +322,7 @@
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:src="@drawable/ic_shipping_truck"
+                                android:src="@drawable/ic_key"
                                 app:tint="@color/purple_500"></ImageView>
                         </LinearLayout>
 
@@ -277,7 +378,7 @@
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:src="@drawable/ic_shipping_truck"
+                                android:src="@drawable/ic_help"
                                 app:tint="@color/purple_500"></ImageView>
                         </LinearLayout>
 
@@ -302,6 +403,204 @@
                             app:tint="@color/gray_500"
                             android:src="@drawable/ic_next"></ImageView>
                     </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/settings_help_subview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:elevation="2dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardUseCompatPadding="true"
+                    android:layout_marginTop="1dp"
+                    >
+                    <LinearLayout
+                        android:visibility="visible"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="10dp"
+                            android:paddingHorizontal="15dp"
+                            >
+                            <LinearLayout
+                                android:id="@+id/iconHelpNakilnat"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/icon_bg_shape"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:src="@drawable/ic_nakilnat_n"
+                                    app:tint="@color/purple_500"></ImageView>
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@+id/iconHelpNakilnat"
+                                android:fontFamily="@font/roboto_medium"
+                                android:paddingLeft="15dp"
+                                android:text="Yardımda Nakilnat"
+                                android:textColor="@color/black"
+                                android:textSize="14dp"></TextView>
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_next"
+                                app:tint="@color/gray_500"></ImageView>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="10dp"
+                            android:paddingHorizontal="15dp"
+                            >
+                            <LinearLayout
+                                android:id="@+id/iconLiveHelp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/icon_bg_shape"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:src="@drawable/ic_live_help"
+                                    app:tint="@color/purple_500"></ImageView>
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@+id/iconLiveHelp"
+                                android:fontFamily="@font/roboto_medium"
+                                android:paddingLeft="15dp"
+                                android:text="Canlı Destek"
+                                android:textColor="@color/black"
+                                android:textSize="14dp"></TextView>
+
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_next"
+                                app:tint="@color/gray_500"></ImageView>
+
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="10dp"
+                            android:paddingHorizontal="15dp"
+                            >
+                            <LinearLayout
+                                android:id="@+id/iconSSS"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/icon_bg_shape"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:src="@drawable/ic_sms"
+                                    app:tint="@color/purple_500"></ImageView>
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@+id/iconSSS"
+                                android:fontFamily="@font/roboto_medium"
+                                android:paddingLeft="15dp"
+                                android:text="Sıkça Sorulan Sorular"
+                                android:textColor="@color/black"
+                                android:textSize="14dp"></TextView>
+
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_next"
+                                app:tint="@color/gray_500"></ImageView>
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="10dp"
+                            android:paddingHorizontal="15dp"
+                            >
+                            <LinearLayout
+                                android:id="@+id/iconContracts"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/icon_bg_shape"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:src="@drawable/ic_article"
+                                    app:tint="@color/purple_500"></ImageView>
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_toRightOf="@+id/iconContracts"
+                                android:fontFamily="@font/roboto_medium"
+                                android:paddingLeft="15dp"
+                                android:text="Sözleşmeler"
+                                android:textColor="@color/black"
+                                android:textSize="14dp"></TextView>
+
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@drawable/ic_next"
+                                app:tint="@color/gray_500"></ImageView>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
@@ -333,7 +632,7 @@
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:src="@drawable/ic_shipping_truck"
+                                android:src="@drawable/ic_delete"
                                 app:tint="@color/purple_500"></ImageView>
                         </LinearLayout>
 
@@ -383,13 +682,13 @@
                             android:layout_height="30dp"
                             android:layout_alignParentLeft="true"
                             android:layout_centerVertical="true"
-                            android:gravity="center"
-                            android:background="@drawable/icon_bg_shape">
+                            android:background="@drawable/icon_bg_shape"
+                            android:gravity="center">
 
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:src="@drawable/ic_shipping_truck"
+                                android:src="@drawable/ic_power"
                                 app:tint="@color/purple_500"></ImageView>
                         </LinearLayout>
 

@@ -112,8 +112,8 @@
                             android:layout_height="15dp"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
-                            app:tint="@color/gray_500"
-                            android:src="@drawable/ic_next"></ImageView>
+                            android:src="@drawable/ic_next"
+                            app:tint="@color/gray_500"></ImageView>
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 

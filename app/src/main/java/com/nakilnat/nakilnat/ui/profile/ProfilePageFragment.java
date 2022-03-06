@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,6 +36,7 @@ import com.nakilnat.nakilnat.R;
 public class ProfilePageFragment extends AppCompatActivity {
     BottomNavigationView bottomBar;
     CardView bottomFab;
+    TextView topBarText;
     CardView accountPage, addressPage, invoicesPage, notificationPage, shippingAdsPage, offersPage,
             shippingPage, walletPage,messagesPage, settingsPage;
     CardView accountCardView, offersCardView, burdenCardView;
@@ -110,6 +112,8 @@ public class ProfilePageFragment extends AppCompatActivity {
     }
 
     private void InitSubContents() {
+        topBarText = findViewById(R.id.top_bar_title);
+        topBarText.setText("Profil");
         //region initialize sub menus
         accountPage = (CardView) findViewById(R.id.profile_my_account);
         addressPage = (CardView) findViewById(R.id.profile_my_address);
@@ -124,7 +128,14 @@ public class ProfilePageFragment extends AppCompatActivity {
         //endregion
 
         //region set click actions
-
+        invoicesPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfilePageFragment.this, MyInvoicesFragment.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+            }
+        });
 
         //endregion
 

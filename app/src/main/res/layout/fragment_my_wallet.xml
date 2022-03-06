@@ -123,7 +123,7 @@
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:src="@drawable/ic_shipping_truck"
+                                android:src="@drawable/ic_currency_tl"
                                 app:tint="@color/purple_500"></ImageView>
                         </LinearLayout>
 
@@ -179,7 +179,7 @@
                             <ImageView
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
-                                android:src="@drawable/ic_shipping_truck"
+                                android:src="@drawable/ic_wallet"
                                 app:tint="@color/purple_500"></ImageView>
                         </LinearLayout>
 
