@@ -11,11 +11,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nakilnat.nakilnat.R;
-import com.nakilnat.nakilnat.base.RetrofitClient;
-import com.nakilnat.nakilnat.models.LoginResponse;
-import com.nakilnat.nakilnat.storage.SharedPrefManager;
+import com.nakilnat.nakilnat.base.ApiClient;
+import com.nakilnat.nakilnat.models.request.LoginRequest;
+import com.nakilnat.nakilnat.models.response.DefaultResponse;
 import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
-import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,40 +24,41 @@ public class LoginFragment extends AppCompatActivity {
     Button login;
     EditText email, password;
     TextView loginSignup, rememberPassword;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_login);
-        email = (EditText)findViewById(R.id.login_email);
-        password = (EditText)findViewById(R.id.login_password);
-        rememberPassword = (TextView)findViewById(R.id.password_remember);
+        email = (EditText) findViewById(R.id.login_email);
+        password = (EditText) findViewById(R.id.login_password);
+        rememberPassword = (TextView) findViewById(R.id.password_remember);
+        login = (Button) findViewById(R.id.login_button);
+        loginSignup = (TextView) findViewById(R.id.login_register);
 
         rememberPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginFragment.this, RememberPasswordFragment.class);
+                Intent intent = new Intent(LoginFragment.this, PhoneNumberFragment.class);
                 startActivity(intent);
             }
         });
 
-        login = (Button)findViewById(R.id.login_button);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (email.length() != 0 && password.length() != 0) {
-                    Intent intent = new Intent(LoginFragment.this, ApplicationPageFragment.class);
-                    startActivity(intent);
+                    loginCallBack(createRequest(email.getText().toString(), password.getText().toString(), ""));
                 } else {
-                    Toast.makeText(getApplicationContext(),"Lütfen alanları doldurunuz!!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Lütfen alanları doldurunuz!!", Toast.LENGTH_LONG).show();
                 }
             }
         });
-        loginSignup = (TextView) findViewById(R.id.login_register);
+
         loginSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent intent = new Intent(LoginFragment.this, RegisterFragment.class);
-                    startActivity(intent);
+                Intent intent = new Intent(LoginFragment.this, RegisterFragment.class);
+                startActivity(intent);
             }
         });
     }
@@ -75,24 +75,23 @@ public class LoginFragment extends AppCompatActivity {
         */
     }
 
-    public void loginCallBack(String email, String password) {
-        Call<LoginResponse> call = RetrofitClient
-                .getInstance().getApi().userLogin(email, password);
+    public LoginRequest createRequest(String email, String password, String token) {
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.setUn(email);
+        loginRequest.setPw(password);
+        loginRequest.setToken("korayaman");
+        return loginRequest;
+    }
 
-        call.enqueue(new Callback<LoginResponse>() {
+    public void loginCallBack(LoginRequest loginRequest) {
+        Call<DefaultResponse> call = ApiClient.getApiClient().userLogin(loginRequest);
+
+        call.enqueue(new Callback<DefaultResponse>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                LoginResponse loginResponse = response.body();
+            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                DefaultResponse defaultResponse = response.body();
+                if (defaultResponse.getResult().toString().equals("OK")) {
 
-                if (true) {
-
-                    //SharedPrefManager.getInstance(LoginFragment.this)
-                            //.saveUser(loginResponse.getUser());
-
-                    /*Intent intent = new Intent(LoginFragment.this, HomePageFragment.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-*/
                     Intent intent = new Intent(LoginFragment.this, ApplicationPageFragment.class);
                     startActivity(intent);
 
@@ -102,9 +101,10 @@ public class LoginFragment extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
-            System.out.println(t);
+            public void onFailure(Call<DefaultResponse> call, Throwable t) {
+                System.out.println(t);
             }
         });
     }
+
 }

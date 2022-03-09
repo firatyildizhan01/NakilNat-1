@@ -39,10 +39,6 @@ public class ProfilePageFragment extends AppCompatActivity {
     TextView topBarText;
     CardView accountPage, addressPage, invoicesPage, notificationPage, shippingAdsPage, offersPage,
             shippingPage, walletPage,messagesPage, settingsPage;
-    CardView accountCardView, offersCardView, burdenCardView;
-    RelativeLayout accountLayout, offersLayout, burdenLayout;
-    ImageView accountArrow, offersArrow, burdenArrow;
-    Group accountHiddenGroup, offersHiddenGroup, burdenHiddenGroup;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,65 +46,8 @@ public class ProfilePageFragment extends AppCompatActivity {
 
         bottomBarSetup();
         InitSubContents();
+        navigationController();
 
-
-       /* accountCardView = findViewById(R.id.profile_settings_group);
-        accountLayout = findViewById(R.id.profile_settings);
-        accountArrow = findViewById(R.id.iconSettingsArrow);
-        accountHiddenGroup = findViewById(R.id.settings_card_group);
-
-        offersCardView = findViewById(R.id.profile_offers_group);
-        offersLayout = findViewById(R.id.profile_offers);
-        offersArrow = findViewById(R.id.iconOffersArrow);
-        offersHiddenGroup = findViewById(R.id.offers_card_group);
-
-        burdenCardView = findViewById(R.id.profile_burdens_group);
-        burdenLayout = findViewById(R.id.profile_burdens);
-        burdenArrow = findViewById(R.id.iconburdensArrow);
-        burdenHiddenGroup = findViewById(R.id.burdens_card_group);
-
-        AutoTransition autoTransition = new AutoTransition();
-        autoTransition.setDuration(0);
-
-        accountLayout.setOnClickListener(view -> {
-            if(accountHiddenGroup.getVisibility() == View.VISIBLE){
-                TransitionManager.beginDelayedTransition(accountCardView, autoTransition);
-                accountHiddenGroup.setVisibility(View.GONE);
-                accountArrow.setImageResource(R.drawable.ic_profile_arrow_down);
-            }
-            else {
-                TransitionManager.beginDelayedTransition(accountCardView, new AutoTransition());
-                accountHiddenGroup.setVisibility(View.VISIBLE);
-                accountArrow.setImageResource(R.drawable.ic_profile_arrow_up);
-            }
-        });
-
-        offersLayout.setOnClickListener(view -> {
-            if(offersHiddenGroup.getVisibility() == View.VISIBLE){
-                TransitionManager.beginDelayedTransition(offersCardView, autoTransition);
-                offersHiddenGroup.setVisibility(View.GONE);
-                offersArrow.setImageResource(R.drawable.ic_profile_arrow_down);
-            }
-            else {
-                TransitionManager.beginDelayedTransition(offersCardView, new AutoTransition());
-                offersHiddenGroup.setVisibility(View.VISIBLE);
-                offersArrow.setImageResource(R.drawable.ic_profile_arrow_up);
-            }
-        });
-
-        burdenLayout.setOnClickListener(view -> {
-            if(burdenHiddenGroup.getVisibility() == View.VISIBLE){
-                TransitionManager.beginDelayedTransition(burdenCardView, autoTransition);
-                burdenHiddenGroup.setVisibility(View.GONE);
-                burdenArrow.setImageResource(R.drawable.ic_profile_arrow_down);
-            }
-            else {
-                TransitionManager.beginDelayedTransition(burdenCardView, new AutoTransition());
-                burdenHiddenGroup.setVisibility(View.VISIBLE);
-                burdenArrow.setImageResource(R.drawable.ic_profile_arrow_up);
-            }
-        });
-*/
     }
 
     private void InitSubContents() {
@@ -138,9 +77,6 @@ public class ProfilePageFragment extends AppCompatActivity {
         });
 
         //endregion
-
-
-
     }
 
     private void bottomBarSetup() {
@@ -152,7 +88,6 @@ public class ProfilePageFragment extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 GoBottomMenuIntent(item.getItemId());
                 return true;
-
             }
         });
 
@@ -168,6 +103,72 @@ public class ProfilePageFragment extends AppCompatActivity {
                 startActivity(intent);
                 overridePendingTransition(0, 0);
             }
+        });
+    }
+
+    private void navigationController() {
+        accountPage = findViewById(R.id.profile_my_account);
+        addressPage = findViewById(R.id.profile_my_address);
+        invoicesPage = findViewById(R.id.profile_my_invoices);
+        notificationPage = findViewById(R.id.profile_notifications);
+        shippingAdsPage = findViewById(R.id.profile_my_shipping_ads);
+        offersPage = findViewById(R.id.profile_Offers);
+        shippingPage = findViewById(R.id.profile_my_shippings);
+        walletPage = findViewById(R.id.profile_my_wallet);
+        messagesPage = findViewById(R.id.profile_messsages);
+        settingsPage = findViewById(R.id.profile_my_settings);
+
+        AutoTransition autoTransition = new AutoTransition();
+        autoTransition.setDuration(0);
+
+        accountPage.setOnClickListener(view -> {
+            Intent intent = new Intent(ProfilePageFragment.this, MyAccountFragment.class);
+            startActivity(intent);
+        });
+
+        addressPage.setOnClickListener(view -> {
+            Intent intent = new Intent(ProfilePageFragment.this, MyAdressFragment.class);
+            startActivity(intent);
+        });
+
+        invoicesPage.setOnClickListener(view -> {
+            Intent intent = new Intent(ProfilePageFragment.this, MyInvoicesFragment.class);
+            startActivity(intent);
+        });
+
+        notificationPage.setOnClickListener(view -> {
+            Intent intent = new Intent(ProfilePageFragment.this, MyInvoicesFragment.class);
+            startActivity(intent);
+        });
+
+        shippingAdsPage.setOnClickListener(view -> {
+            Intent intent = new Intent(ProfilePageFragment.this, MyInvoicesFragment.class);
+            startActivity(intent);
+        });
+
+        offersPage.setOnClickListener(view -> {
+            Intent intent = new Intent(ProfilePageFragment.this, MyInvoicesFragment.class);
+            startActivity(intent);
+        });
+
+        shippingPage.setOnClickListener(view -> {
+            Intent intent = new Intent(ProfilePageFragment.this, MyShipsFragment.class);
+            startActivity(intent);
+        });
+
+        walletPage.setOnClickListener(view -> {
+            Intent intent = new Intent(ProfilePageFragment.this, MyWalletFragment.class);
+            startActivity(intent);
+        });
+
+        messagesPage.setOnClickListener(view -> {
+            Intent intent = new Intent(ProfilePageFragment.this, MyInvoicesFragment.class);
+            startActivity(intent);
+        });
+
+        settingsPage.setOnClickListener(view -> {
+            Intent intent = new Intent(ProfilePageFragment.this, MySettingsFragment.class);
+            startActivity(intent);
         });
     }
 

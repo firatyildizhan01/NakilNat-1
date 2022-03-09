@@ -6,55 +6,46 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.base.ApiClient;
-import com.nakilnat.nakilnat.models.request.NewPasswordRequest;
+import com.nakilnat.nakilnat.models.request.PhoneNumberRequest;
 import com.nakilnat.nakilnat.models.response.DefaultResponse;
-import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class NewPasswordFragment extends AppCompatActivity {
-    Button verificationButton;
-    EditText password, repassword;
+public class PhoneNumberFragment extends AppCompatActivity {
+    Button phoneNumberVerification;
+    EditText phoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_new_password);
-        password = (EditText) findViewById(R.id.new_password);
-        repassword = (EditText) findViewById(R.id.new_repassword);
-        verificationButton = (Button) findViewById(R.id.newpassword_button);
-        verificationButton.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.fragment_remember_password);
+        phoneNumber = (EditText) findViewById(R.id.password_remember_telephone);
+        phoneNumberVerification = (Button) findViewById(R.id.password_phone_number_button);
+        phoneNumberVerification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (password.length() != 0 || repassword.length() != 0) {
-                    if (password.getText().toString().equals(repassword.getText().toString())) {
-                        selectPasswordCallBack(createRequest(password.getText().toString(), repassword.getText().toString()));
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Şifre eşleşmiyor!!", Toast.LENGTH_LONG).show();
-                    }
+                if (phoneNumber.length() != 0) {
+                    phoneNumberCallBack(createRequest(phoneNumber.getText().toString()));
                 } else {
-                    Toast.makeText(getApplicationContext(), "Lütfen alanları doldurunuz!!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Lütfen sms kodunu giriniz!!", Toast.LENGTH_LONG).show();
                 }
             }
         });
     }
 
-    public NewPasswordRequest createRequest(String verificationCode, String password) {
-        NewPasswordRequest newPasswordRequest = new NewPasswordRequest();
-        newPasswordRequest.setDogrulama(verificationCode);
-        newPasswordRequest.setSifre(password);
-        return newPasswordRequest;
+    public PhoneNumberRequest createRequest(String phoneNumber) {
+        PhoneNumberRequest phoneNumberRequest = new PhoneNumberRequest();
+        phoneNumberRequest.setTel(phoneNumber);
+        return phoneNumberRequest;
     }
 
-    public void selectPasswordCallBack(NewPasswordRequest newPasswordRequest) {
-        Call<DefaultResponse> call = ApiClient.getApiClient().selectPassword(newPasswordRequest);
+    public void phoneNumberCallBack(PhoneNumberRequest phoneNumberRequest) {
+        Call<DefaultResponse> call = ApiClient.getApiClient().sendPhoneNumber(phoneNumberRequest);
 
         call.enqueue(new Callback<DefaultResponse>() {
             @Override
@@ -70,7 +61,7 @@ public class NewPasswordFragment extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
 */
-                    Intent intent = new Intent(NewPasswordFragment.this, ApplicationPageFragment.class);
+                    Intent intent = new Intent(PhoneNumberFragment.this, SmsVerificationFragment.class);
                     startActivity(intent);
 
                 } else {
@@ -85,6 +76,5 @@ public class NewPasswordFragment extends AppCompatActivity {
         });
     }
 }
-
 
 

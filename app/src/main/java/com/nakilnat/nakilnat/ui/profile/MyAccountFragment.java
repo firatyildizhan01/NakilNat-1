@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import android.content.Intent;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,8 @@ import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
 public class MyAccountFragment extends AppCompatActivity {
     BottomNavigationView bottomBar;
     TextView navigationBarTitle;
+    EditText nameSurname, phoneNumber, email, adress, city, district, taxAdministration,
+            taxNumber, aboutText;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +32,35 @@ public class MyAccountFragment extends AppCompatActivity {
         navigationBarTitle.setText("Hesabım");
 
         bottomBarSetup(R.id.bottomAddAds);
+        InitSubContents();
+        observeAccount();
     }
 
+
+
+    private void InitSubContents() {
+        nameSurname = (EditText) findViewById(R.id.account_name_surname_edt);
+        phoneNumber = (EditText) findViewById(R.id.account_phone_number_edt);
+        email = (EditText) findViewById(R.id.account_email_edt);
+        adress = (EditText) findViewById(R.id.account_adress_edt);
+        city = (EditText) findViewById(R.id.account_city_edt);
+        district = (EditText) findViewById(R.id.account_district_edt);
+        taxAdministration = (EditText) findViewById(R.id.account_tax_administration_edt);
+        taxNumber = (EditText) findViewById(R.id.account_tax_number_edt);
+        aboutText = (EditText) findViewById(R.id.account_about_edt);
+    }
+
+    private void observeAccount() {
+        nameSurname.setText("Abdullah Kırmızı");
+        phoneNumber.setText("5322103385");
+        email.setText("kirmiziabdullah193@gmail.com");
+        adress.setText("Bağdat Mah. Bağdat Cad. 20/11");
+        city.setText("Adana");
+        district.setText("Afyon");
+        taxAdministration.setText("4333333333");
+        taxNumber.setText("123456789");
+        aboutText.setText("Burcu Kaya Mehmet Aydın Nakilnat");
+    }
 
     private void bottomBarSetup(int bottomItemId) {
         bottomBar = (BottomNavigationView) findViewById(R.id.bottomNavigationView);

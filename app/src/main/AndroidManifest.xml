@@ -15,6 +15,7 @@
         <activity android:name=".ui.profile.ProfilePageFragment"></activity>
         <activity android:name=".ui.profile.MySettingsFragment"></activity>
         <activity android:name=".ui.profile.MyAccountFragment"></activity>
+        <activity android:name=".ui.profile.MyAdressFragment"></activity>
         <activity android:name=".ui.profile.MyWalletFragment"></activity>
         <activity android:name=".ui.profile.UpdatePasswordFragment"></activity>
         <activity android:name=".ui.profile.MyInvoicesFragment"></activity>
@@ -23,10 +24,10 @@
         <activity android:name=".ui.myships.MyShipsFragment"></activity>
         <activity android:name=".ui.home.HomePageFragment"></activity>
         <activity android:name=".ui.onboarding.LoginFragment"></activity>
-        <activity android:name=".ui.onboarding.RememberPasswordFragment"></activity>
+        <activity android:name=".ui.onboarding.PhoneNumberFragment"></activity>
+        <activity android:name=".ui.onboarding.SmsVerificationFragment"></activity>
         <activity android:name=".ui.onboarding.NewPasswordFragment"></activity>
         <activity android:name=".ui.onboarding.RegisterFragment"></activity>
-        <activity android:name=".ui.onboarding.SmsVerificationFragment"></activity>
         <activity android:name=".ui.onboarding.OnboardingFragment"
             android:exported="true">
             <intent-filter>

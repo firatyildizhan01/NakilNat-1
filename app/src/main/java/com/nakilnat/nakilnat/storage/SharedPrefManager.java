@@ -3,7 +3,7 @@ package com.nakilnat.nakilnat.storage;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.nakilnat.nakilnat.models.User;
+import com.nakilnat.nakilnat.models.response.User;
 public class SharedPrefManager {
 
     private static final String SHARED_PREF_NAME = "my_shared_preff";

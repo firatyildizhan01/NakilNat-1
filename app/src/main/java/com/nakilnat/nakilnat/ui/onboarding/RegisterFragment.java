@@ -2,15 +2,8 @@ package com.nakilnat.nakilnat.ui.onboarding;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.TextPaint;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ClickableSpan;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
@@ -21,19 +14,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.ColorInt;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.nakilnat.nakilnat.R;
-import com.nakilnat.nakilnat.base.RetrofitClient;
-import com.nakilnat.nakilnat.models.DefaultResponse;
-import com.nakilnat.nakilnat.models.LoginResponse;
+import com.nakilnat.nakilnat.base.ApiClient;
+import com.nakilnat.nakilnat.models.request.LoginRequest;
+import com.nakilnat.nakilnat.models.response.DefaultResponse;
 import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
-import com.nakilnat.nakilnat.ui.home.HomePageFragment;
-
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -83,20 +69,20 @@ public class RegisterFragment extends AppCompatActivity {
                                     Intent intent = new Intent(RegisterFragment.this, ApplicationPageFragment.class);
                                     startActivity(intent);
                                 } else {
-                                    Toast.makeText(getApplicationContext(),"Sözleşmeyi kabul ediniz!!", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Sözleşmeyi kabul ediniz!!", Toast.LENGTH_LONG).show();
                                 }
                             } else {
-                                Toast.makeText(getApplicationContext(),"Telefon numaranız 10 karakter olmalıdır!!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Telefon numaranız 10 karakter olmalıdır!!", Toast.LENGTH_LONG).show();
                             }
                         } else {
-                            Toast.makeText(getApplicationContext(),"Şifreler aynı olmalıdır!!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Şifreler aynı olmalıdır!!", Toast.LENGTH_LONG).show();
                         }
                     } else {
-                        Toast.makeText(getApplicationContext(),"Yük taşıyan/Yük alan seçimi yapınız!!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Yük taşıyan/Yük alan seçimi yapınız!!", Toast.LENGTH_LONG).show();
                     }
 
                 } else {
-                    Toast.makeText(getApplicationContext(),"Lütfen alanları doldurunuz!!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Lütfen alanları doldurunuz!!", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -111,35 +97,40 @@ public class RegisterFragment extends AppCompatActivity {
         });
     }
 
-    public void registerCallBack(String name, String phoneNumber, String email, String password, String accountType) {
-        Call<LoginResponse> call = RetrofitClient
-                .getInstance().getApi().createUser(name, phoneNumber, email, password, "0");
+    public LoginRequest createRequest(String email, String password, String token) {
+        LoginRequest loginRequest = new LoginRequest();
+        loginRequest.setUn(email);
+        loginRequest.setPw(password);
+        loginRequest.setToken("korayaman");
+        return loginRequest;
+    }
 
-        call.enqueue(new Callback<LoginResponse>() {
+    public void loginCallBack(LoginRequest loginRequest) {
+        Call<DefaultResponse> call = ApiClient.getApiClient().userLogin(loginRequest);
+
+        call.enqueue(new Callback<DefaultResponse>() {
             @Override
-            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                LoginResponse loginResponse = response.body();
+            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                DefaultResponse loginResponse = response.body();
+                if (loginResponse.getResult() == "OK") {
 
-                if (true) {
-
-                  /*  //SharedPrefManager.getInstance(LoginFragment.this)
+                    //SharedPrefManager.getInstance(LoginFragment.this)
                     //.saveUser(loginResponse.getUser());
 
                     /*Intent intent = new Intent(LoginFragment.this, HomePageFragment.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);*/
-
-                    Intent homePage = new Intent(RegisterFragment.this, SmsVerificationFragment.class);
-                    startActivity(homePage);
+                    startActivity(intent);
+*/
+                    Intent intent = new Intent(RegisterFragment.this, ApplicationPageFragment.class);
+                    startActivity(intent);
 
                 } else {
-                    //Toast.makeText(RegisterFragment.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(LoginFragment.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
                 }
-
             }
 
             @Override
-            public void onFailure(Call<LoginResponse> call, Throwable t) {
+            public void onFailure(Call<DefaultResponse> call, Throwable t) {
                 System.out.println(t);
             }
         });

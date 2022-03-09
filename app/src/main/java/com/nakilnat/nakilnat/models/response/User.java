@@ -1,4 +1,4 @@
-package com.nakilnat.nakilnat.models;
+package com.nakilnat.nakilnat.models.response;
 
 public class User {
 

@@ -3,96 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../layout/custom_preview.xml" value="0.30925925925925923" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/background_transparent.xml" value="0.10648148148148148" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/ic_profile_score_empty.xml" value="0.2703125" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/icon_bg_shape.xml" value="0.10648148148148148" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/icon_change_selector.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/selector_add_ads_ic_status.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/selector_home_ic_status.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/selector_my_shipping_ic_status.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/selector_profile_ic_status.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/shape_application_top.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/drawable/shape_home_top.xml" value="0.225" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/font/a.xml" value="0.20555555555555555" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/font/font.xml" value="0.2574074074074074" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/font/roboto.xml" value="0.2574074074074074" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/custom_list_item.xml" value="0.23641304347826086" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/fragment_add_ad.xml" value="0.23641304347826086" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/fragment_application_page.xml" value="0.264" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/fragment_home_page.xml" value="0.176" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/fragment_login.xml" value="0.23641304347826086" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/fragment_my_invoices.xml" value="0.2" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/fragment_my_settings.xml" value="0.2" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/fragment_my_ships.xml" value="0.23641304347826086" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/fragment_my_wallet.xml" value="0.23641304347826086" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/fragment_onboarding.xml" value="0.23641304347826086" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/fragment_profile_page.xml" value="0.152" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/fragment_register.xml" value="0.23641304347826086" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/fragment_remember_password.xml" value="0.23641304347826086" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/fragment_sms_verification.xml" value="0.23641304347826086" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/fragment_update_password.xml" value="0.23641304347826086" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/layout_toolbar.xml" value="0.23641304347826086" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/layout/top_bar.xml" value="0.176" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNat/app/src/main/res/menu/top_nav_menu.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/background_transparent.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/button.xml" value="0.2703125" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/edit.xml" value="0.2703125" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/ic_add.xml" value="0.2703125" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/ic_bottom_navigation_add.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/ic_bottom_navigation_home.xml" value="0.2703125" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/ic_bottom_navigation_search.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/ic_bottom_navigation_settings.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/ic_profile_account.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/ic_profile_burden_offer.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/ic_profile_burdens.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/ic_profile_message.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/ic_profile_offers.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/ic_profile_opportunity.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/ic_profile_score_empty.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/ic_profile_score_filled.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/ic_profile_score_half.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/ic_profile_settings.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/ic_profile_user.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/ic_profile_wallet.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/drawable/nakilnat_logo.xml" value="0.2703125" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/layout/fragment_home_page.xml" value="0.536" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/layout/fragment_login.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/layout/fragment_onboarding.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/layout/fragment_profile_page.xml" value="0.2" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/layout/layout_toolbar.xml" value="0.4" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Moony/Desktop/NakilNatPojects/AndroidStudioProjects/Nakilnat/app/src/main/res/menu/top_nav_menu.xml" value="0.13020833333333334" />
-        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.41458333333333336" />
-        <entry key="app/src/main/res/drawable/background_transparent.xml" value="0.2526041666666667" />
-        <entry key="app/src/main/res/drawable/button.xml" value="0.4" />
-        <entry key="app/src/main/res/drawable/edit.xml" value="0.4" />
-        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.41458333333333336" />
-        <entry key="app/src/main/res/drawable/ic_logo.xml" value="0.4140625" />
-        <entry key="app/src/main/res/drawable/icon_bg_shape.xml" value="0.41458333333333336" />
-        <entry key="app/src/main/res/drawable/selector_home_ic_status.xml" value="0.41458333333333336" />
-        <entry key="app/src/main/res/drawable/shape_application_top.xml" value="0.41458333333333336" />
-        <entry key="app/src/main/res/layout/agreement_popup.xml" value="0.18667679837892603" />
-        <entry key="app/src/main/res/layout/fragment_add_ad.xml" value="0.19376899696048633" />
-        <entry key="app/src/main/res/layout/fragment_application_page.xml" value="0.1286231884057971" />
-        <entry key="app/src/main/res/layout/fragment_home_page.xml" value="0.23233695652173914" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_my_account.xml" value="0.19376899696048633" />
-        <entry key="app/src/main/res/layout/fragment_my_settings.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/fragment_my_ships.xml" value="0.31023550724637683" />
-        <entry key="app/src/main/res/layout/fragment_my_wallet.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_onboarding.xml" value="0.19351570415400202" />
-        <entry key="app/src/main/res/layout/fragment_profile_page.xml" value="0.19376899696048633" />
-        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.19351570415400202" />
-        <entry key="app/src/main/res/layout/fragment_sms_verification.xml" value="0.18667679837892603" />
-        <entry key="app/src/main/res/layout/fragment_update_password.xml" value="0.19376899696048633" />
-        <entry key="app/src/main/res/layout/top_bar.xml" value="0.19376899696048633" />
+        <entry key="app/src/main/res/drawable/ic_profile_arrow_up.xml" value="0.42864583333333334" />
+        <entry key="app/src/main/res/layout/fragment_my_account.xml" value="0.2006079027355623" />
+        <entry key="app/src/main/res/layout/fragment_my_adress.xml" value="0.19376899696048633" />
+        <entry key="app/src/main/res/layout/fragment_my_invoices.xml" value="0.19376899696048633" />
+        <entry key="app/src/main/res/layout/fragment_my_settings.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_new_password.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_onboarding.xml" value="0.2006079027355623" />
+        <entry key="app/src/main/res/layout/fragment_profile_page.xml" value="0.13360507246376813" />
+        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.19376899696048633" />
+        <entry key="app/src/main/res/layout/fragment_remember_password.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_sms_verification.xml" value="0.25" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

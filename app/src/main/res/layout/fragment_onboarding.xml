@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="#6f42c1"
     android:clickable="true"
     android:focusable="true"
     tools:context=".ui.onboarding.OnboardingFragment">
