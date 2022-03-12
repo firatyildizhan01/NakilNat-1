@@ -20,7 +20,8 @@
         <activity android:name=".ui.profile.UpdatePasswordFragment"></activity>
         <activity android:name=".ui.profile.MyInvoicesFragment"></activity>
         <activity android:name=".ui.application.ApplicationPageFragment"></activity>
-        <activity android:name=".ui.addad.AddAdFragment"></activity>
+        <activity android:name=".ui.addad.AddAdFragment"
+                  android:windowSoftInputMode="stateVisible|adjustPan"></activity>
         <activity android:name=".ui.myships.MyShipsFragment"></activity>
         <activity android:name=".ui.home.HomePageFragment"></activity>
         <activity android:name=".ui.onboarding.LoginFragment"></activity>

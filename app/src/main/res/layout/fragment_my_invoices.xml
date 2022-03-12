@@ -34,7 +34,24 @@
                 app:hintTextColor="@color/purple_500"
                 >
 
-                <AutoCompleteTextView
+                <!--<AutoCompleteTextView
+                    android:id="@+id/my_inv_nickname_edt2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:hint="Unvan"
+                    android:text=""
+                    android:layout_marginTop="2dp"
+                    android:textColorHint="@color/black"
+                    android:layout_gravity="center"
+                    android:background="@drawable/edit"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="14dp"
+                    android:padding="15dp"
+                    android:textColor="@color/black"
+                    android:visibility="gone"
+                    />-->
+                <EditText
                     android:id="@+id/my_inv_nickname_edt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -47,7 +64,6 @@
                     android:background="@drawable/edit"
                     android:fontFamily="@font/roboto_medium"
                     android:textSize="14dp"
-                    android:padding="20dp"
                     android:textColor="@color/black"
                     />
 
@@ -166,7 +182,23 @@
 
         </androidx.cardview.widget.CardView>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/button"
+                android:text="Güncelle"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+        </RelativeLayout>
     </LinearLayout>
 
 

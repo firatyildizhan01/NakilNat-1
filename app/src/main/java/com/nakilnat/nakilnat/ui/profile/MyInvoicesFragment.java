@@ -41,6 +41,7 @@ public class MyInvoicesFragment extends AppCompatActivity {
         setContentView(R.layout.fragment_my_invoices);
         topBarInit();
         pageInit();
+        observeMyInvoice();
         bottomBarSetup();
     }
 
@@ -51,7 +52,7 @@ public class MyInvoicesFragment extends AppCompatActivity {
         taxNo = findViewById(R.id.my_inv_tax_no_edt);
 
 
-        String[] COUNTRIES = new String[]{
+        /*String[] COUNTRIES = new String[]{
                 "Afghanistan", "Albania", "Algeria", "Andorra", "Angola"
         };
 
@@ -70,10 +71,18 @@ public class MyInvoicesFragment extends AppCompatActivity {
 
             }
 
-        });
+        });*/
 
 
 
+    }
+
+
+    private void observeMyInvoice() {
+        nickName.setText("xxxxxx");
+        address.setText("xxxxxxxxxxxx");
+        tax.setText("xxxxxx");
+        taxNo.setText("123456789");
     }
 
     private void topBarInit() {

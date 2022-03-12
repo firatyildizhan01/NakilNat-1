@@ -16,7 +16,8 @@
         android:layout_height="match_parent"
         android:layout_marginTop="60dp"
         android:layout_marginBottom="20dp"
-        android:background="@color/gray_200">
+        android:orientation="vertical"
+        android:background="@color/white">
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -25,16 +26,1030 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                android:paddingBottom="75dp">
+                android:paddingBottom="60dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="20dp"
+                    android:background="@color/gray_200"
+                    android:orientation="vertical">
+                    <ImageView
+                        android:paddingHorizontal="70dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:src="@drawable/img_steps_1"
+                        ></ImageView>
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginTop="20dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="4dp">
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/add_ad_date_step1"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:hintTextColor="@color/purple_500"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textSize="14dp"
+                        >
+
+                        <EditText
+                            android:focusable="false"
+                            android:clickable="true"
+                            android:cursorVisible="false"
+                            android:id="@+id/add_ad_date_edt_step1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="datetime"
+                            android:hint="Alım Tarihi"
+                            android:text=""
+                            android:textColorHint="@color/purple_500"
+                            android:layout_gravity="center"
+                            android:background="@drawable/edit"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14sp"
+
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingHorizontal="21dp"
+                    android:orientation="horizontal">
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="4dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="5dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="4dp">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/add_ad_start_province_step1"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hintTextColor="@color/purple_500"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14sp"
+                            >
+
+                            <EditText
+                                android:id="@+id/add_ad_start_province_edt_step1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:hint="Alım Yeri"
+                                android:text=""
+                                android:textColorHint="@color/black"
+                                android:layout_gravity="center"
+                                android:gravity="bottom"
+                                android:background="@drawable/edit"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="14sp"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="4dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="5dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="4dp">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/add_ad_start_district_step1"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hintTextColor="@color/purple_500"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14sp"
+                            >
+
+                            <EditText
+
+                                android:id="@+id/add_ad_start_district_edt_step1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:hint="Alım ilçesi"
+                                android:text=""
+                                android:textColorHint="@color/black"
+                                android:layout_gravity="center"
+                                android:background="@drawable/edit"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="14sp"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="4dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="4dp">
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/add_ad_address_step1"
+                        app:boxStrokeWidth="0dp"
+                        app:errorEnabled="true"
+                        app:boxStrokeWidthFocused="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:hintTextColor="@color/purple_500"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textSize="14sp"
+                        >
+
+                        <EditText
+                            android:id="@+id/add_ad_address_edt_step1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Yükün alınacağı açık adres"
+                            android:text=""
+                            android:scrollbars="none"
+                            android:inputType="textMultiLine"
+                            android:gravity="top|start"
+                            android:maxLines="3"
+                            android:lines="3"
+                            android:textColorHint="@color/black"
+                            android:layout_gravity="top"
+                            android:background="@drawable/edit"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14sp"
+
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:paddingHorizontal="21dp"
+                    android:orientation="horizontal">
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="4dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="5dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="4dp">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/add_ad_authorized_person_step1"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hintTextColor="@color/purple_500"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14sp"
+                            >
+
+                            <EditText
+
+                                android:id="@+id/add_ad_authorized_person_edt_step1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:hint="Yetkili kişi"
+                                android:text=""
+                                android:textColorHint="@color/black"
+                                android:layout_gravity="center"
+                                android:gravity="bottom"
+                                android:background="@drawable/edit"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="14sp"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="4dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="5dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="4dp">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/add_ad_authorized_person_no_step1"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hintTextColor="@color/purple_500"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14sp"
+                            >
+
+                            <EditText
+
+                                android:id="@+id/add_ad_authorized_person_no_edt_step1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:hint="Numarası"
+                                android:text=""
+                                android:textColorHint="@color/black"
+                                android:layout_gravity="center"
+                                android:background="@drawable/edit"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="14sp"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/add_ad_show_second_address_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="25dp"
+                    android:paddingVertical="10dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/add_ad_show_second_address_img"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_rectangle_outline">
+
+                    </ImageView>
+
+                    <TextView
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textSize="12sp"
+                        android:text="Yükün alınacağı ikinci adres eklemek  istiyorum.">
+                    </TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/add_ad_second_address_layout"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:paddingHorizontal="21dp"
+                        android:orientation="horizontal">
+                        <androidx.cardview.widget.CardView
+                            android:layout_margin="4dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            app:cardCornerRadius="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:cardElevation="4dp">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/add_ad_second_start_province_step1"
+                                app:boxStrokeWidth="0dp"
+                                app:boxStrokeWidthFocused="0dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:hintTextColor="@color/purple_500"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="14sp"
+                                >
+
+                                <EditText
+                                    android:id="@+id/add_ad_second_start_province_edt_step1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="text"
+                                    android:hint="Alım Yeri"
+                                    android:text=""
+                                    android:textColorHint="@color/black"
+                                    android:layout_gravity="center"
+                                    android:gravity="bottom"
+                                    android:background="@drawable/edit"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:textSize="14sp"
+
+                                    />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </androidx.cardview.widget.CardView>
+                        <androidx.cardview.widget.CardView
+                            android:layout_margin="4dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            app:cardCornerRadius="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:cardElevation="4dp">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/add_ad_second_start_district_step1"
+                                app:boxStrokeWidth="0dp"
+                                app:boxStrokeWidthFocused="0dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:hintTextColor="@color/purple_500"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="14sp"
+                                >
+
+                                <EditText
+
+                                    android:id="@+id/add_ad_second_start_district_edt_step1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="text"
+                                    android:hint="Alım ilçesi"
+                                    android:text=""
+                                    android:textColorHint="@color/black"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/edit"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:textSize="14sp"
+
+                                    />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginHorizontal="25dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="4dp"
+                        app:cardCornerRadius="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="4dp">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/add_ad_second_address_step1"
+                            app:boxStrokeWidth="0dp"
+                            app:errorEnabled="true"
+                            app:boxStrokeWidthFocused="0dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hintTextColor="@color/purple_500"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14sp"
+                            >
+
+                            <EditText
+                                android:id="@+id/add_ad_second_address_edt_step1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Yükün alınacağı açık adres"
+                                android:text=""
+                                android:scrollbars="none"
+                                android:inputType="textMultiLine"
+                                android:gravity="top|start"
+                                android:maxLines="3"
+                                android:lines="3"
+                                android:textColorHint="@color/black"
+                                android:layout_gravity="top"
+                                android:background="@drawable/edit"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="14sp"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:paddingHorizontal="21dp"
+                        android:orientation="horizontal">
+                        <androidx.cardview.widget.CardView
+                            android:layout_margin="4dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            app:cardCornerRadius="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:cardElevation="4dp">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/add_ad_second_authorized_person_step1"
+                                app:boxStrokeWidth="0dp"
+                                app:boxStrokeWidthFocused="0dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:hintTextColor="@color/purple_500"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="14sp"
+                                >
+
+                                <EditText
+
+                                    android:id="@+id/add_ad_second_authorized_person_edt_step1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="text"
+                                    android:hint="Yetkili kişi"
+                                    android:text=""
+                                    android:textColorHint="@color/black"
+                                    android:layout_gravity="center"
+                                    android:gravity="bottom"
+                                    android:background="@drawable/edit"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:textSize="14sp"
+
+                                    />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </androidx.cardview.widget.CardView>
+                        <androidx.cardview.widget.CardView
+                            android:layout_margin="4dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            app:cardCornerRadius="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:cardElevation="4dp">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/add_ad_second_authorized_person_no_step1"
+                                app:boxStrokeWidth="0dp"
+                                app:boxStrokeWidthFocused="0dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:hintTextColor="@color/purple_500"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="14sp"
+                                >
+
+                                <EditText
+
+                                    android:id="@+id/add_ad_second_authorized_person_no_edt_step1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="text"
+                                    android:hint="Numarası"
+                                    android:text=""
+                                    android:textColorHint="@color/black"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/edit"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:textSize="14sp"
+
+                                    />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <!--alıcı-->
+                <androidx.cardview.widget.CardView
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="4dp">
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/add_ad_date_delivery_step1"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:hintTextColor="@color/purple_500"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textSize="14sp"
+                        >
+
+                        <EditText
+                            android:focusable="false"
+                            android:clickable="true"
+                            android:cursorVisible="false"
+                            android:id="@+id/add_ad_date_edt_delivery_step1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text"
+                            android:hint="Teslim Tarihi"
+                            android:text=""
+                            android:textColorHint="@color/black"
+                            android:layout_gravity="center"
+                            android:background="@drawable/edit"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14sp"
+
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingHorizontal="21dp"
+                    android:orientation="horizontal">
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="4dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="5dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="4dp">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/add_ad_start_province_delivery_step1"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hintTextColor="@color/purple_500"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14sp"
+                            >
+
+                            <EditText
+
+                                android:id="@+id/add_ad_start_province_edt_delivery_step1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:hint="Teslim yeri"
+                                android:text=""
+                                android:textColorHint="@color/black"
+                                android:layout_gravity="center"
+                                android:gravity="bottom"
+                                android:background="@drawable/edit"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="14sp"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="4dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="5dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="4dp">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/add_ad_start_district_delivery_step1"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hintTextColor="@color/purple_500"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14sp"
+                            >
+
+                            <EditText
+
+                                android:id="@+id/add_ad_start_district_edt_delivery_step1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:hint="Teslim ilçesi"
+                                android:text=""
+                                android:textColorHint="@color/black"
+                                android:layout_gravity="center"
+                                android:background="@drawable/edit"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="14sp"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="4dp"
+                    app:cardCornerRadius="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="4dp">
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/add_ad_address_delivery_step1"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:hintTextColor="@color/purple_500"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textSize="14sp"
+                        >
+
+                        <EditText
+
+                            android:id="@+id/add_ad_address_edt_delivery_step1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Yükün teslim edileceği açık adres"
+                            android:text=""
+                            android:scrollbars="vertical"
+                            android:inputType="textMultiLine"
+                            android:gravity="top|start"
+                            android:minLines="3"
+                            android:maxLines="5"
+                            android:lines="3"
+                            android:textColorHint="@color/black"
+                            android:layout_gravity="top"
+                            android:background="@drawable/edit"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14sp"
+
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:paddingHorizontal="21dp"
+                    android:orientation="horizontal">
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="4dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="5dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="4dp">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/add_ad_authorized_person_delivery_step1"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hintTextColor="@color/purple_500"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14sp"
+                            >
+
+                            <EditText
+
+                                android:id="@+id/add_ad_authorized_person_edt_delivery_step1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:hint="Yetkili kişi"
+                                android:text=""
+                                android:textColorHint="@color/black"
+                                android:layout_gravity="center"
+                                android:gravity="bottom"
+                                android:background="@drawable/edit"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="14sp"
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:layout_margin="4dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="5dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="4dp">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/add_ad_authorized_person_no_delivery_step1"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hintTextColor="@color/purple_500"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14sp"
+                            >
+
+                            <EditText
+
+                                android:id="@+id/add_ad_authorized_person_no_edt_delivery_step1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:hint="Numarası"
+                                android:text=""
+                                android:textColorHint="@color/black"
+                                android:layout_gravity="center"
+                                android:background="@drawable/edit"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="14sp"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/add_ad_show_second_delivery_address_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="25dp"
+                    android:paddingVertical="10dp"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:id="@+id/add_ad_show_second_delivery_address_layout_img"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/ic_rectangle_outline">
+
+                    </ImageView>
+
+                    <TextView
+                        android:gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textSize="12sp"
+                        android:text="Yükün teslim edileceği ikinci adres eklemek  istiyorum.">
+                    </TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/add_ad_second_delivery_address_layout"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:paddingHorizontal="21dp"
+                        android:orientation="horizontal">
+                        <androidx.cardview.widget.CardView
+                            android:layout_margin="4dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            app:cardCornerRadius="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:cardElevation="4dp">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/add_ad_second_delivery_province_step1"
+                                app:boxStrokeWidth="0dp"
+                                app:boxStrokeWidthFocused="0dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:hintTextColor="@color/purple_500"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="14sp"
+                                >
+
+                                <EditText
+                                    android:id="@+id/add_ad_second_delivery_province_edt_step1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="text"
+                                    android:hint="Alım Yeri"
+                                    android:text=""
+                                    android:textColorHint="@color/black"
+                                    android:layout_gravity="center"
+                                    android:gravity="bottom"
+                                    android:background="@drawable/edit"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:textSize="14sp"
+
+                                    />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </androidx.cardview.widget.CardView>
+                        <androidx.cardview.widget.CardView
+                            android:layout_margin="4dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            app:cardCornerRadius="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:cardElevation="4dp">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/add_ad_second_delivery_district_step1"
+                                app:boxStrokeWidth="0dp"
+                                app:boxStrokeWidthFocused="0dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:hintTextColor="@color/purple_500"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="14sp"
+                                >
+
+                                <EditText
+
+                                    android:id="@+id/add_ad_second_delivery_district_edt_step1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="text"
+                                    android:hint="Alım ilçesi"
+                                    android:text=""
+                                    android:textColorHint="@color/black"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/edit"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:textSize="14sp"
+
+                                    />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_marginHorizontal="25dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="4dp"
+                        app:cardCornerRadius="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardElevation="4dp">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/add_ad_second_delivery_address_step1"
+                            app:boxStrokeWidth="0dp"
+                            app:errorEnabled="true"
+                            app:boxStrokeWidthFocused="0dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:hintTextColor="@color/purple_500"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14sp"
+                            >
+
+                            <EditText
+                                android:id="@+id/add_ad_second_delivery_address_edt_step1"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Yükün alınacağı açık adres"
+                                android:text=""
+                                android:scrollbars="none"
+                                android:inputType="textMultiLine"
+                                android:gravity="top|start"
+                                android:maxLines="3"
+                                android:lines="3"
+                                android:textColorHint="@color/black"
+                                android:layout_gravity="top"
+                                android:background="@drawable/edit"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="14sp"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:paddingHorizontal="21dp"
+                        android:orientation="horizontal">
+                        <androidx.cardview.widget.CardView
+                            android:layout_margin="4dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            app:cardCornerRadius="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:cardElevation="4dp">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/add_ad_second_delivery_authorized_person_step1"
+                                app:boxStrokeWidth="0dp"
+                                app:boxStrokeWidthFocused="0dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:hintTextColor="@color/purple_500"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="14sp"
+                                >
+
+                                <EditText
+
+                                    android:id="@+id/add_ad_second_delivery_authorized_person_edt_step1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="text"
+                                    android:hint="Yetkili kişi"
+                                    android:text=""
+                                    android:textColorHint="@color/black"
+                                    android:layout_gravity="center"
+                                    android:gravity="bottom"
+                                    android:background="@drawable/edit"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:textSize="14sp"
+
+                                    />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </androidx.cardview.widget.CardView>
+                        <androidx.cardview.widget.CardView
+                            android:layout_margin="4dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            app:cardCornerRadius="5dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:cardElevation="4dp">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/add_ad_second_delivery_authorized_person_no_step1"
+                                app:boxStrokeWidth="0dp"
+                                app:boxStrokeWidthFocused="0dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:hintTextColor="@color/purple_500"
+                                android:fontFamily="@font/roboto_medium"
+                                android:textSize="14sp"
+                                >
+
+                                <EditText
+                                    android:id="@+id/add_ad_second_delivery_authorized_person_no_edt_step1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="text"
+                                    android:hint="Numarası"
+                                    android:text=""
+                                    android:textColorHint="@color/black"
+                                    android:layout_gravity="center"
+                                    android:background="@drawable/edit"
+                                    android:fontFamily="@font/roboto_medium"
+                                    android:textSize="14sp"/>
+
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_marginRight="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/next_step1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="0dp"
+                        android:background="@drawable/button"
+                        android:text="Devam et"
+                        android:textAllCaps="false"
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </RelativeLayout>
 
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
-
-
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
@@ -73,7 +1088,5 @@
             android:layout_gravity="center">
         </ImageView>
     </androidx.cardview.widget.CardView>
-
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
