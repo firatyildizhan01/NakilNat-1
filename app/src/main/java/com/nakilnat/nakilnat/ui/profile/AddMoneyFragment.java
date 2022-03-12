@@ -27,7 +27,7 @@ import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
 import java.util.List;
 
 
-public class MyInvoicesFragment extends AppCompatActivity {
+public class AddMoneyFragment extends AppCompatActivity {
 
     BottomNavigationView bottomBar;
     CardView bottomFab;
@@ -38,7 +38,7 @@ public class MyInvoicesFragment extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_my_invoices);
+        setContentView(R.layout.fragment_add_money);
         topBarInit();
         pageInit();
         bottomBarSetup();
@@ -50,35 +50,11 @@ public class MyInvoicesFragment extends AppCompatActivity {
         tax = findViewById(R.id.my_inv_tax_edt);
         taxNo = findViewById(R.id.my_inv_tax_no_edt);
 
-
-        String[] COUNTRIES = new String[]{
-                "Afghanistan", "Albania", "Algeria", "Andorra", "Angola"
-        };
-
-
-        AutoCompleteTextView editText = findViewById(R.id.my_inv_nickname_edt);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                R.layout.custom_list_item, R.id.text_view_list_item, COUNTRIES);
-        editText.setAdapter(adapter);
-        editText.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-
-                editText.showDropDown();
-
-            }
-
-        });
-
-
-
     }
 
     private void topBarInit() {
         topBarText = findViewById(R.id.top_bar_title);
-        topBarText.setText("Fatura Bilgilerim");
+        topBarText.setText("Para Yükle");
 
         topBarBack = findViewById(R.id.top_bar_back);
         topBarBack.setVisibility(View.VISIBLE);
@@ -88,8 +64,6 @@ public class MyInvoicesFragment extends AppCompatActivity {
                 finish();
             }
         });
-
-
 
     }
 
@@ -114,7 +88,7 @@ public class MyInvoicesFragment extends AppCompatActivity {
                 bottomBar.getMenu().setGroupCheckable(1, false, true);
                 bottomBar.getMenu().setGroupCheckable(2, false, true);
                 bottomBar.getMenu().setGroupCheckable(3, false, true);
-                Intent intent = new Intent(MyInvoicesFragment.this, ApplicationPageFragment.class);
+                Intent intent = new Intent(AddMoneyFragment.this, ApplicationPageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
             }
@@ -125,17 +99,17 @@ public class MyInvoicesFragment extends AppCompatActivity {
         Intent intent;
         switch (itemId) {
             case R.id.bottomHome:
-                intent = new Intent(MyInvoicesFragment.this, HomePageFragment.class);
+                intent = new Intent(AddMoneyFragment.this, HomePageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
             case R.id.bottomMyShipping:
-                intent = new Intent(MyInvoicesFragment.this, MyShipsFragment.class);
+                intent = new Intent(AddMoneyFragment.this, MyShipsFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
             case R.id.bottomAddAds:
-                intent = new Intent(MyInvoicesFragment.this, AddAdFragment.class);
+                intent = new Intent(AddMoneyFragment.this, AddAdFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;

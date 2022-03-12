@@ -96,7 +96,7 @@ public class LoginFragment extends AppCompatActivity {
                     startActivity(intent);
 
                 } else {
-                    //Toast.makeText(LoginFragment.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginFragment.this, defaultResponse.getResult(), Toast.LENGTH_LONG).show();
                 }
             }
 

@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="60dp"
+        android:layout_marginTop="60dp"
         android:background="@color/gray_200">
         <ScrollView
             android:layout_width="match_parent"
@@ -23,7 +24,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="60dp"
                 android:orientation="vertical"
                 android:paddingHorizontal="25dp"
                 android:paddingVertical="20dp">
@@ -40,6 +40,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
                         app:cardCornerRadius="5dp"
                         app:cardElevation="2dp">
 
@@ -78,6 +79,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginTop="20dp"
+                        android:layout_marginStart="10dp"
                         app:cardCornerRadius="5dp"
                         app:cardElevation="2dp">
 
@@ -195,6 +197,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
                         app:cardCornerRadius="5dp"
                         app:cardElevation="2dp">
 
@@ -233,6 +236,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginTop="20dp"
+                        android:layout_marginStart="10dp"
                         app:cardCornerRadius="5dp"
                         app:cardElevation="2dp">
 
@@ -278,6 +282,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
                         app:cardCornerRadius="5dp"
                         app:cardElevation="2dp">
 
@@ -316,6 +321,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginTop="20dp"
+                        android:layout_marginStart="10dp"
                         app:cardCornerRadius="5dp"
                         app:cardElevation="2dp">
 
@@ -361,6 +367,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
                         app:cardCornerRadius="5dp"
                         app:cardElevation="2dp">
 
@@ -383,7 +390,7 @@
                                 android:background="@drawable/edit"
                                 android:fontFamily="@font/roboto_medium"
                                 android:hint="Bina no"
-                                android:inputType="text"
+                                android:inputType="number"
                                 android:text=""
                                 android:textColorHint="@color/black"
                                 android:textSize="14dp"
@@ -399,6 +406,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:layout_marginTop="20dp"
+                        android:layout_marginStart="10dp"
                         app:cardCornerRadius="5dp"
                         app:cardElevation="2dp">
 
@@ -420,7 +428,7 @@
                                 android:background="@drawable/edit"
                                 android:fontFamily="@font/roboto_medium"
                                 android:hint="Daire no"
-                                android:inputType="text"
+                                android:inputType="number"
                                 android:text=""
                                 android:textColorHint="@color/black"
                                 android:textSize="14dp"
@@ -457,7 +465,7 @@
                             android:background="@drawable/edit"
                             android:fontFamily="@font/roboto_medium"
                             android:hint="Açık adres"
-                            android:inputType="number"
+                            android:inputType="text"
                             android:text=""
                             android:textColorHint="@color/black"
                             android:textSize="14dp"
@@ -467,6 +475,21 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/add_adress_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="16dp"
+                    android:text="Ekle"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textAlignment="center"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/button"
+                    />
 
             </LinearLayout>
         </ScrollView>

@@ -30,8 +30,6 @@
                 android:paddingRight="25dp"
                 android:paddingBottom="75dp">
 
-
-
                 <androidx.cardview.widget.CardView
                     android:id="@+id/my_ships_continue"
                     android:layout_width="match_parent"

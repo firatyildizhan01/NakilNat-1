@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -22,6 +24,8 @@ import com.nakilnat.nakilnat.ui.onboarding.OnboardingFragment;
 
 public class MySettingsFragment extends AppCompatActivity {
     BottomNavigationView bottomBar;
+    TextView topBarText;
+    ImageView topBarBack;
     CardView permissionsCardView, permissionSubCardView, passwordTransactionsCardView, helpCardView, helpSubCardView, deleteAccountCardView, signOutCardView;
     ImageView permissionsArrow, helpArrow;
     @Override
@@ -34,6 +38,16 @@ public class MySettingsFragment extends AppCompatActivity {
     }
 
     private void InitSubContents() {
+        topBarText = findViewById(R.id.top_bar_title);
+        topBarText.setText("Ayarlar");
+        topBarBack = findViewById(R.id.top_bar_back);
+        topBarBack.setVisibility(View.VISIBLE);
+        topBarBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         permissionsCardView = (CardView) findViewById(R.id.settings_permission);
         permissionSubCardView = (CardView) findViewById(R.id.settings_permission_subview);
         passwordTransactionsCardView = (CardView) findViewById(R.id.settings_password);
