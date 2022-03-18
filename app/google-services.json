@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "415855082450",
+    "project_id": "push-notification-86b33",
+    "storage_bucket": "push-notification-86b33.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415855082450:android:3493a6d218d6397207e60b",
+        "android_client_info": {
+          "package_name": "com.nakilnat.nakilnat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415855082450-0hasidq18ja2keo64uuhvnqkit0ll6pb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6HaJhTGTQO6bNM86XC1p7jdCBjcRPAHc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415855082450-0hasidq18ja2keo64uuhvnqkit0ll6pb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
