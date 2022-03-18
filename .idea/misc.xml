@@ -4,16 +4,35 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/ic_profile_arrow_up.xml" value="0.42864583333333334" />
+        <entry key="app/src/main/res/layout/fragment_add_ad.xml" value="0.19376899696048633" />
+        <entry key="app/src/main/res/layout/fragment_add_adress.xml" value="0.29891304347826086" />
+        <entry key="app/src/main/res/layout/fragment_add_money.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_application_page.xml" value="0.29891304347826086" />
+        <entry key="app/src/main/res/layout/fragment_home_page.xml" value="0.29891304347826086" />
+        <entry key="app/src/main/res/layout/fragment_location.xml" value="0.29891304347826086" />
         <entry key="app/src/main/res/layout/fragment_my_account.xml" value="0.2006079027355623" />
         <entry key="app/src/main/res/layout/fragment_my_adress.xml" value="0.19376899696048633" />
+        <entry key="app/src/main/res/layout/fragment_my_ads.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_my_invoices.xml" value="0.19376899696048633" />
+        <entry key="app/src/main/res/layout/fragment_my_notifications.xml" value="0.17889492753623187" />
+        <entry key="app/src/main/res/layout/fragment_my_offers.xml" value="0.17889492753623187" />
+        <entry key="app/src/main/res/layout/fragment_my_reviews.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/fragment_my_settings.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_my_ships.xml" value="0.17889492753623187" />
+        <entry key="app/src/main/res/layout/fragment_my_wallet.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment_my_wallet_transactions.xml" value="0.175" />
         <entry key="app/src/main/res/layout/fragment_new_password.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_onboarding.xml" value="0.2006079027355623" />
-        <entry key="app/src/main/res/layout/fragment_profile_page.xml" value="0.13360507246376813" />
+        <entry key="app/src/main/res/layout/fragment_profile_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.19376899696048633" />
         <entry key="app/src/main/res/layout/fragment_remember_password.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_sms_verification.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_update_password.xml" value="0.30570652173913043" />
+        <entry key="app/src/main/res/layout/item_address_list.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/item_notifications_list.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/item_reviews_list.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_wallet_transactions_list.xml" value="0.625" />
+        <entry key="app/src/main/res/layout/top_bar.xml" value="0.30570652173913043" />
       </map>
     </option>
   </component>

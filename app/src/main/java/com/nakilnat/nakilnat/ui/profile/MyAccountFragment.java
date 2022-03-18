@@ -18,6 +18,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.base.ApiClient;
 import com.nakilnat.nakilnat.models.request.DefaultRequest;
+import com.nakilnat.nakilnat.models.request.UpdateAccountRequest;
 import com.nakilnat.nakilnat.models.response.DefaultResponse;
 import com.nakilnat.nakilnat.models.response.MyAccountResponse;
 import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
@@ -36,6 +37,7 @@ public class MyAccountFragment extends AppCompatActivity {
     TextView navigationBarTitle;
     EditText nameSurname, phoneNumber, email, adress, city, district, taxAdministration,
             taxNumber, aboutText;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,9 +68,6 @@ public class MyAccountFragment extends AppCompatActivity {
         adress = (EditText) findViewById(R.id.account_adress_edt);
         city = (EditText) findViewById(R.id.account_city_edt);
         district = (EditText) findViewById(R.id.account_district_edt);
-        taxAdministration = (EditText) findViewById(R.id.account_tax_administration_edt);
-        taxNumber = (EditText) findViewById(R.id.account_tax_number_edt);
-        aboutText = (EditText) findViewById(R.id.account_about_edt);
     }
 
     private void observeAccount() {
@@ -78,9 +77,6 @@ public class MyAccountFragment extends AppCompatActivity {
         adress.setText("Bağdat Mah. Bağdat Cad. 20/11");
         city.setText("Adana");
         district.setText("Afyon");
-        taxAdministration.setText("4333333333");
-        taxNumber.setText("123456789");
-        aboutText.setText("Hakkımda");
     }
 
     public DefaultRequest createRequest() {
@@ -106,6 +102,45 @@ public class MyAccountFragment extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<MyAccountResponse> call, Throwable t) {
+                System.out.println(t);
+            }
+        });
+    }
+
+    public UpdateAccountRequest updateAccountRequest(String email, String password, String companyName, String phoneNumber, String adress, String city, String district, String companyVn, String company_vd, String web, String about, String accountType) {
+        UpdateAccountRequest updateAccountRequest = new UpdateAccountRequest();
+        updateAccountRequest.setEmail(email);
+        updateAccountRequest.setSifre(password);
+        updateAccountRequest.setFirma_adi(companyName);
+        updateAccountRequest.setSabit_tel(phoneNumber);
+        updateAccountRequest.setAcik_adres(adress);
+        updateAccountRequest.setIl(city);
+        updateAccountRequest.setIlce(district);
+        updateAccountRequest.setFirma_vn(companyVn);
+        updateAccountRequest.setFirma_vd(company_vd);
+        updateAccountRequest.setWeb(web);
+        updateAccountRequest.setHakkimda(about);
+        updateAccountRequest.setHesap_turu(about);
+        return updateAccountRequest;
+    }
+
+    public void updateAccountCallBack(UpdateAccountRequest updateAccountRequest) {
+        Call<DefaultResponse> call = ApiClient.getApiClient().updateAccount(updateAccountRequest);
+
+        call.enqueue(new Callback<DefaultResponse>() {
+            @Override
+            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                DefaultResponse defaultResponse = response.body();
+                if (defaultResponse.getResult().toString().equals("OK")) {
+                    Toast.makeText(MyAccountFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
+
+                } else {
+                    Toast.makeText(MyAccountFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DefaultResponse> call, Throwable t) {
                 System.out.println(t);
             }
         });

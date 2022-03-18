@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.nakilnat.nakilnat.R;
+import com.nakilnat.nakilnat.ui.profile.adress.MyAdressListFragment;
 
 public class OnboardingFragment extends AppCompatActivity {
 
@@ -27,7 +28,7 @@ public class OnboardingFragment extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent dsp = new Intent(OnboardingFragment.this,LoginFragment.class);
+                Intent dsp = new Intent(OnboardingFragment.this, MyAdressListFragment.class);
                 startActivity(dsp);
                 finish();
             }

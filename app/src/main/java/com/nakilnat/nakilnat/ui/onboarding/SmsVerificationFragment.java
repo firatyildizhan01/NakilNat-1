@@ -11,7 +11,9 @@ import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.base.ApiClient;
 import com.nakilnat.nakilnat.models.request.NewPasswordRequest;
 import com.nakilnat.nakilnat.models.request.PhoneNumberRequest;
+import com.nakilnat.nakilnat.models.request.SmsRequest;
 import com.nakilnat.nakilnat.models.response.DefaultResponse;
+import com.nakilnat.nakilnat.models.response.SmsResponse;
 import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
 
 import retrofit2.Call;
@@ -32,9 +34,7 @@ public class SmsVerificationFragment extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (password.length() != 0) {
-                    //smsVerificationCallBack(password.getText().toString());
-                    Intent homePage = new Intent(SmsVerificationFragment.this, NewPasswordFragment.class);
-                    startActivity(homePage);
+                    smsVerificationCallBack(createRequest(password.getText().toString()));
                 } else {
                     Toast.makeText(getApplicationContext(), "Lütfen sms kodunu giriniz!!", Toast.LENGTH_LONG).show();
                 }
@@ -42,22 +42,21 @@ public class SmsVerificationFragment extends AppCompatActivity {
         });
     }
 
-    public NewPasswordRequest createRequest(String verificationCode, String password) {
-        NewPasswordRequest newPasswordRequest = new NewPasswordRequest();
-        newPasswordRequest.setDogrulama(verificationCode);
-        newPasswordRequest.setSifre(password);
-        return newPasswordRequest;
+    public SmsRequest createRequest(String verificationCode) {
+        SmsRequest smsRequest = new SmsRequest();
+        smsRequest.setSmsKodu(verificationCode);
+        return smsRequest;
     }
 
-    public void loginCallBack(NewPasswordRequest newPasswordRequest) {
-        Call<DefaultResponse> call = ApiClient.getApiClient().selectPassword(newPasswordRequest);
+    public void smsVerificationCallBack(SmsRequest smsRequest) {
+        Call<SmsResponse> call = ApiClient.getApiClient().smsVerification(smsRequest);
 
-        call.enqueue(new Callback<DefaultResponse>() {
+        call.enqueue(new Callback<SmsResponse>() {
             @Override
-            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
-                DefaultResponse defaultResponse = response.body();
+            public void onResponse(Call<SmsResponse> call, Response<SmsResponse> response) {
+                SmsResponse smsResponse = response.body();
 
-                if (defaultResponse.getResult().toString().equals("OK")) {
+                if (smsResponse.getResult().toString().equals("onaylandi")) {
 
                     //SharedPrefManager.getInstance(LoginFragment.this)
                     //.saveUser(loginResponse.getUser());
@@ -66,16 +65,17 @@ public class SmsVerificationFragment extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
 */
+                    Toast.makeText(SmsVerificationFragment.this, "User Id: " + smsResponse.getUserId().toString(), Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(SmsVerificationFragment.this, ApplicationPageFragment.class);
                     startActivity(intent);
 
                 } else {
-                    //Toast.makeText(LoginFragment.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(SmsVerificationFragment.this, smsResponse.getResult().toString(), Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<DefaultResponse> call, Throwable t) {
+            public void onFailure(Call<SmsResponse> call, Throwable t) {
                 System.out.println(t);
             }
         });

@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,10 +17,18 @@ import androidx.transition.TransitionManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.nakilnat.nakilnat.R;
+import com.nakilnat.nakilnat.base.ApiClient;
+import com.nakilnat.nakilnat.models.request.DeleteAccountRequest;
+import com.nakilnat.nakilnat.models.request.UpdatePermissionRequest;
+import com.nakilnat.nakilnat.models.response.DefaultResponse;
 import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
 import com.nakilnat.nakilnat.ui.onboarding.OnboardingFragment;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class MySettingsFragment extends AppCompatActivity {
@@ -102,6 +111,68 @@ public class MySettingsFragment extends AppCompatActivity {
             startActivity(intent);
         });
 
+    }
+
+    public DeleteAccountRequest deleteAccountRequest(String id) {
+        DeleteAccountRequest deleteAccountRequest = new DeleteAccountRequest();
+        deleteAccountRequest.setToken("korayamana");
+        deleteAccountRequest.setSil(id);
+        return deleteAccountRequest;
+    }
+
+    public void deleteAccountCallBack(DeleteAccountRequest deleteAccountRequest) {
+        Call<DefaultResponse> call = ApiClient.getApiClient().deleteAccount(deleteAccountRequest);
+
+        call.enqueue(new Callback<DefaultResponse>() {
+            @Override
+            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                DefaultResponse defaultResponse = response.body();
+                if (defaultResponse.getResult().toString().equals("istekok")) {
+                    Toast.makeText(MySettingsFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
+
+                } else {
+                    Toast.makeText(MySettingsFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DefaultResponse> call, Throwable t) {
+                System.out.println(t);
+            }
+        });
+    }
+
+    public UpdatePermissionRequest updatePermissionRequest(String mailOffer, String mailNotification, String mailBulletin, String smsOffer, String smsNotification) {
+        UpdatePermissionRequest updatePermissionRequest = new UpdatePermissionRequest();
+        updatePermissionRequest.setToken("korayamana");
+        updatePermissionRequest.setIzin_mail_kampanya(mailOffer);
+        updatePermissionRequest.setIzin_mail_bildirim(mailNotification);
+        updatePermissionRequest.setIzin_mail_bulten(mailBulletin);
+        updatePermissionRequest.setIzin_sms_kampanya(smsOffer);
+        updatePermissionRequest.setIzin_sms_kampanya(smsOffer);
+        return updatePermissionRequest;
+    }
+
+    public void updatePermissionCallBack(UpdatePermissionRequest updatePermissionRequest) {
+        Call<DefaultResponse> call = ApiClient.getApiClient().updatePermission(updatePermissionRequest);
+
+        call.enqueue(new Callback<DefaultResponse>() {
+            @Override
+            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                DefaultResponse defaultResponse = response.body();
+                if (defaultResponse.getResult().toString().equals("ok")) {
+                    Toast.makeText(MySettingsFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
+
+                } else {
+                    Toast.makeText(MySettingsFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DefaultResponse> call, Throwable t) {
+                System.out.println(t);
+            }
+        });
     }
 
     private void bottomBarSetup() {

@@ -3,6 +3,8 @@
     package="com.nakilnat.nakilnat">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -12,12 +14,21 @@
         android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.Nakilnat">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value= "@string/map_key"/>
         <activity android:name=".ui.profile.ProfilePageFragment"></activity>
+        <activity android:name=".ui.profile.MapFragment"></activity>
+        <activity android:name=".ui.profile.ReviewFragment"></activity>
+        <activity android:name=".ui.profile.MyAdsFragment"></activity>
+        <activity android:name=".ui.profile.MyOffersFragment"></activity>
+        <activity android:name=".ui.profile.adress.AddAdressFragment"></activity>
+        <activity android:name=".ui.profile.adress.MyAdressListFragment"></activity>
+        <activity android:name=".ui.profile.MyNotificationsFragment"></activity>
+        <activity android:name=".ui.profile.mywallet.MyWalletTransactionsFragment"></activity>
         <activity android:name=".ui.profile.MySettingsFragment"></activity>
         <activity android:name=".ui.profile.MyAccountFragment"></activity>
-        <activity android:name=".ui.profile.MyAdressFragment"></activity>
-        <activity android:name=".ui.profile.MyWalletFragment"></activity>
-        <activity android:name=".ui.profile.AddMoneyFragment"></activity>
+        <activity android:name=".ui.profile.mywallet.MyWalletFragment"></activity>
+        <activity android:name=".ui.profile.mywallet.AddMoneyFragment"></activity>
         <activity android:name=".ui.profile.UpdatePasswordFragment"></activity>
         <activity android:name=".ui.profile.MyInvoicesFragment"></activity>
         <activity android:name=".ui.application.ApplicationPageFragment"></activity>

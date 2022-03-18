@@ -10,6 +10,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,12 +20,21 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.textfield.TextInputLayout;
 import com.nakilnat.nakilnat.R;
+import com.nakilnat.nakilnat.base.ApiClient;
+import com.nakilnat.nakilnat.models.request.DefaultRequest;
+import com.nakilnat.nakilnat.models.request.UpdateInvoiceRequest;
+import com.nakilnat.nakilnat.models.response.DefaultResponse;
+import com.nakilnat.nakilnat.models.response.MyInvoiceResponse;
 import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
 import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
 
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class MyInvoicesFragment extends AppCompatActivity {
@@ -42,6 +52,66 @@ public class MyInvoicesFragment extends AppCompatActivity {
         topBarInit();
         pageInit();
         bottomBarSetup();
+        invoiceCallback(createRequest());
+    }
+
+    public DefaultRequest createRequest() {
+        DefaultRequest defaultRequest = new DefaultRequest();
+        defaultRequest.setToken("akorayaman");
+        return defaultRequest;
+    }
+
+    public void invoiceCallback(DefaultRequest defaultRequest) {
+        Call<MyInvoiceResponse> call = ApiClient.getApiClient().myInvoice(defaultRequest);
+
+        call.enqueue(new Callback<MyInvoiceResponse>() {
+            @Override
+            public void onResponse(Call<MyInvoiceResponse> call, Response<MyInvoiceResponse> response) {
+                MyInvoiceResponse myInvoiceResponse = response.body();
+                if (myInvoiceResponse.getId() != null) {
+                    Toast.makeText(MyInvoicesFragment.this, myInvoiceResponse.getId().toString(), Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(MyInvoicesFragment.this, "response null", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MyInvoiceResponse> call, Throwable t) {
+                System.out.println(t);
+            }
+        });
+    }
+
+    public UpdateInvoiceRequest updateRequest(String unvan, String adres, String vergiDaire, String vergiNo) {
+        UpdateInvoiceRequest updateRequest = new UpdateInvoiceRequest();
+        updateRequest.setToken("akorayaman");
+        updateRequest.setUnvan(unvan);
+        updateRequest.setAdres(adres);
+        updateRequest.setVergidaire(vergiDaire);
+        updateRequest.setVergino(vergiNo);
+        return updateRequest;
+    }
+
+    public void updateInvoiceCallback(UpdateInvoiceRequest updateRequest) {
+        Call<DefaultResponse> call = ApiClient.getApiClient().updateInvoice(updateRequest);
+
+        call.enqueue(new Callback<DefaultResponse>() {
+            @Override
+            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
+                DefaultResponse defaultResponse = response.body();
+                if (defaultResponse.getResult().toString().equals("adresGuncellendi")) {
+                    Toast.makeText(MyInvoicesFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
+
+                } else {
+                    Toast.makeText(MyInvoicesFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DefaultResponse> call, Throwable t) {
+                System.out.println(t);
+            }
+        });
     }
 
     private void pageInit() {

@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_200"
+    android:fitsSystemWindows="false"
+    tools:context=".ui.profile.adress.MyAdressListFragment">
+
+    <include layout="@layout/top_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="60dp"
+        android:background="@color/gray_200">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingHorizontal="30dp"
+                android:paddingVertical="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    >
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="2dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/my_inv_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14dp"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:hintTextColor="@color/purple_500">
+
+                            <EditText
+
+                                android:id="@+id/my_inv_address_edt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/edit"
+                                android:fontFamily="@font/roboto_medium"
+                                android:hint="İsim"
+                                android:inputType="text"
+                                android:text=""
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/black"
+                                android:textSize="14dp"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="10dp"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="2dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/my_inv_tax"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14dp"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:hintTextColor="@color/purple_500">
+
+                            <EditText
+                                android:id="@+id/my_inv_tax_edt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/edit"
+                                android:fontFamily="@font/roboto_medium"
+                                android:hint="Soyisim"
+                                android:inputType="text"
+                                android:text=""
+                                android:textColorHint="@color/black"
+                                android:textSize="14dp"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="2dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/adress_phone_number"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textSize="14dp"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp"
+                        app:hintTextColor="@color/purple_500">
+
+                        <EditText
+                            android:id="@+id/adress_phone_number_edt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/edit"
+                            android:fontFamily="@font/roboto_medium"
+                            android:hint="Telefon"
+                            android:inputType="number"
+                            android:text=""
+                            android:textColorHint="@color/black"
+                            android:textSize="14dp"
+
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="2dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/adress_adress_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textSize="14dp"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp"
+                        app:hintTextColor="@color/purple_500">
+
+                        <EditText
+                            android:id="@+id/adress_adress_header_edt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/edit"
+                            android:fontFamily="@font/roboto_medium"
+                            android:hint="Adres başlığı"
+                            android:inputType="text"
+                            android:text=""
+                            android:textColorHint="@color/black"
+                            android:textSize="14dp"
+
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="14dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="20dp"
+                    android:text="Haritalardan seç"
+                    android:textColor="@color/black"></TextView>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    >
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="2dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/adress_city"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14dp"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:hintTextColor="@color/purple_500">
+
+                            <EditText
+
+                                android:id="@+id/adress_city_edt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/edit"
+                                android:fontFamily="@font/roboto_medium"
+                                android:hint="İl"
+                                android:inputType="text"
+                                android:text=""
+                                android:textColorHint="@color/black"
+                                android:textSize="14dp"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="10dp"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="2dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/adress_district"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14dp"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:hintTextColor="@color/purple_500">
+
+                            <EditText
+                                android:id="@+id/adress_district_edt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/edit"
+                                android:fontFamily="@font/roboto_medium"
+                                android:hint="İlçe"
+                                android:inputType="text"
+                                android:text=""
+                                android:textColorHint="@color/black"
+                                android:textSize="14dp"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    >
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="2dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/adress_neighborhood"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14dp"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:hintTextColor="@color/purple_500">
+
+                            <EditText
+
+                                android:id="@+id/adress_neighborhood_edt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/edit"
+                                android:fontFamily="@font/roboto_medium"
+                                android:hint="Mahalle"
+                                android:inputType="text"
+                                android:text=""
+                                android:textColorHint="@color/black"
+                                android:textSize="14dp"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="10dp"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="2dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/adress_street"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14dp"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:hintTextColor="@color/purple_500">
+
+                            <EditText
+                                android:id="@+id/adress_street_edt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/edit"
+                                android:fontFamily="@font/roboto_medium"
+                                android:hint="Sokak"
+                                android:inputType="text"
+                                android:text=""
+                                android:textColorHint="@color/black"
+                                android:textSize="14dp"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    >
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="2dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/adress_apartment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14dp"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:hintTextColor="@color/purple_500">
+
+                            <EditText
+
+                                android:id="@+id/adress_apartment_edt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/edit"
+                                android:fontFamily="@font/roboto_medium"
+                                android:hint="Bina no"
+                                android:inputType="number"
+                                android:text=""
+                                android:textColorHint="@color/black"
+                                android:textSize="14dp"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginStart="10dp"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="2dp">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/adress_home"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="14dp"
+                            app:boxStrokeWidth="0dp"
+                            app:boxStrokeWidthFocused="0dp"
+                            app:hintTextColor="@color/purple_500">
+
+                            <EditText
+                                android:id="@+id/adress_home_edt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/edit"
+                                android:fontFamily="@font/roboto_medium"
+                                android:hint="Daire no"
+                                android:inputType="number"
+                                android:text=""
+                                android:textColorHint="@color/black"
+                                android:textSize="14dp"
+
+                                />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.cardview.widget.CardView>
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="2dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/adress_open_adress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textSize="14dp"
+                        app:boxStrokeWidth="0dp"
+                        app:boxStrokeWidthFocused="0dp"
+                        app:hintTextColor="@color/purple_500">
+
+                        <EditText
+                            android:id="@+id/adress_open_adress_edt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/edit"
+                            android:fontFamily="@font/roboto_medium"
+                            android:hint="Açık adres"
+                            android:inputType="text"
+                            android:text=""
+                            android:textColorHint="@color/black"
+                            android:textSize="14dp"
+
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <RelativeLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/add_address_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="0dp"
+                        android:background="@drawable/button"
+                        android:text="Ekle"
+                        android:textAlignment="center"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        app:fabCradleMargin="20dp"
+        app:fabCradleRoundedCornerRadius="20dp"
+        app:fabCradleVerticalOffset="10dp">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/background_transparent"
+            app:itemIconTint="@color/purple_500"
+            app:itemTextColor="@color/purple_500"
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/bottom_nav_menu" />
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/fab"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:elevation="2dp"
+        app:cardCornerRadius="180dp">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_applications_group"></ImageView>
+    </androidx.cardview.widget.CardView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

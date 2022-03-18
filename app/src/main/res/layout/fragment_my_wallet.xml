@@ -25,19 +25,20 @@
             android:text="Nakilnat Cüzdanım"
             android:textColor="@color/black"
             android:layout_marginStart="25dp"
-            android:textStyle="bold"
+            android:fontFamily="@font/roboto_medium"
             android:layout_marginTop="25dp"
-            android:textSize="15dp"
+            android:textSize="16dp"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nakilnat cüzdan hareketlerine ve yaptığın tüm"
+            android:text="Nakilnat cüzdan hareketlerine ve yaptığın tüm ödemelere bu ekrandan ulaşabilirsin."
             android:textColor="@color/black"
             android:layout_marginStart="25dp"
+            android:fontFamily="@font/roboto"
             android:layout_marginTop="8dp"
-            android:textSize="13dp"
+            android:textSize="14dp"
             />
 
         <ScrollView
@@ -75,22 +76,23 @@
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:layout_centerHorizontal="true"
-                            android:textAlignment="center"
                             android:fontFamily="@font/roboto_medium"
                             android:text="0,00 TL"
-                            android:textSize="18dp"
-                            android:textColor="@color/black"> </TextView>
-                            <TextView
-                                android:layout_width="fill_parent"
-                                android:layout_height="fill_parent"
-                                android:layout_centerHorizontal="true"
-                                android:textAlignment="center"
-                                android:paddingLeft="10dp"
-                                android:fontFamily="@font/roboto_medium"
-                                android:text="Güncel Bakiyen"
-                                android:textSize="14dp"
-                                android:textColor="@color/black">
-                        </TextView>
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="20sp"></TextView>
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="3dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:paddingLeft="10dp"
+                            android:text="Güncel Bakiyen"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"></TextView>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -188,12 +190,121 @@
                             android:layout_height="wrap_content"
                             android:layout_centerVertical="true"
                             android:layout_toRightOf="@+id/iconWalletTransactions"
-                            android:paddingLeft="15dp"
                             android:fontFamily="@font/roboto_medium"
-                            android:text="Cüzdan Hareketlerim"
-                            android:textSize="14dp"
-                            android:textColor="@color/black">
-                        </TextView>
+                            android:paddingLeft="15dp"
+                            android:text="Cüzdan hareketlerim"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"></TextView>
+
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            app:tint="@color/gray_500"
+                            android:src="@drawable/ic_next"></ImageView>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/my_wallet_expense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:elevation="2dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardUseCompatPadding="true"
+                    android:layout_marginTop="10dp"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="15dp"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/iconWalletExpense"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:background="@drawable/icon_bg_shape">
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_wallet"
+                                app:tint="@color/purple_500"></ImageView>
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/iconWalletExpense"
+                            android:fontFamily="@font/roboto_medium"
+                            android:paddingLeft="15dp"
+                            android:text="Taşıma giderleri"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"></TextView>
+
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            app:tint="@color/gray_500"
+                            android:src="@drawable/ic_next"></ImageView>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/my_wallet_earnings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:elevation="2dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardUseCompatPadding="true"
+                    android:layout_marginTop="10dp"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="15dp"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/iconWalletEarnings"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:background="@drawable/icon_bg_shape">
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_wallet"
+                                app:tint="@color/purple_500"></ImageView>
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/iconWalletEarnings"
+                            android:fontFamily="@font/roboto_medium"
+                            android:paddingLeft="15dp"
+                            android:text="Kazançlarım"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"></TextView>
 
 
                         <ImageView
@@ -209,8 +320,6 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
-
-
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"

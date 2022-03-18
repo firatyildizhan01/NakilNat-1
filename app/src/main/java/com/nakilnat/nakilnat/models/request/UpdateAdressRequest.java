@@ -1,8 +1,8 @@
-package com.nakilnat.nakilnat.models.response;
+package com.nakilnat.nakilnat.models.request;
 
-public class MyAdressListResponse {
+public class UpdateAdressRequest {
+    private String token;
     private String id;
-    private String uyeId;
     private String baslik;
     private String il;
     private String ilce;
@@ -14,19 +14,12 @@ public class MyAdressListResponse {
     private String adresTarif;
     private String adres;
 
-    public MyAdressListResponse(String id, String uyeId, String baslik, String il, String ilce, String sokak, String mahalle, String bina, String kat, String daire, String adresTarif, String adres) {
-        this.id = id;
-        this.uyeId = uyeId;
-        this.baslik = baslik;
-        this.il = il;
-        this.ilce = ilce;
-        this.sokak = sokak;
-        this.mahalle = mahalle;
-        this.bina = bina;
-        this.kat = kat;
-        this.daire = daire;
-        this.adresTarif = adresTarif;
-        this.adres = adres;
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getId() {
@@ -35,14 +28,6 @@ public class MyAdressListResponse {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getUyeId() {
-        return uyeId;
-    }
-
-    public void setUyeId(String uyeId) {
-        this.uyeId = uyeId;
     }
 
     public String getBaslik() {

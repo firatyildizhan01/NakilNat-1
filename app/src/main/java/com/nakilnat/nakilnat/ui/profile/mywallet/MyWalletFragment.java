@@ -1,25 +1,17 @@
-package com.nakilnat.nakilnat.ui.profile;
+package com.nakilnat.nakilnat.ui.profile.mywallet;
 
 import android.os.Bundle;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.Group;
-import androidx.core.view.WindowCompat;
 import androidx.transition.AutoTransition;
-import androidx.transition.TransitionManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -27,15 +19,12 @@ import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
-import com.nakilnat.nakilnat.ui.onboarding.LoginFragment;
 import com.nakilnat.nakilnat.ui.profile.ProfilePageFragment;
-import com.nakilnat.nakilnat.R;
 
 
 public class MyWalletFragment extends AppCompatActivity {
     BottomNavigationView bottomBar;
-    CardView addMoneyCardView, offersCardView, burdenCardView;
-    ImageView accountArrow, offersArrow, burdenArrow;
+    CardView addMoneyCardView, transactionsCardView;
     TextView topBarText;
     ImageView topBarBack;
     @Override
@@ -47,11 +36,17 @@ public class MyWalletFragment extends AppCompatActivity {
         InitSubContents();
 
         addMoneyCardView = findViewById(R.id.my_wallet_add_money);
+        transactionsCardView = findViewById(R.id.my_wallet_transactions);
         AutoTransition autoTransition = new AutoTransition();
         autoTransition.setDuration(0);
 
         addMoneyCardView.setOnClickListener(view -> {
             Intent intent = new Intent(MyWalletFragment.this, AddMoneyFragment.class);
+            startActivity(intent);
+        });
+
+        transactionsCardView.setOnClickListener(view -> {
+            Intent intent = new Intent(MyWalletFragment.this, MyWalletTransactionsFragment.class);
             startActivity(intent);
         });
 

@@ -53,7 +53,7 @@ public class UpdatePasswordFragment extends AppCompatActivity {
             public void onClick(View v) {
                 if (currentPassword.length() != 0 && newPassword.length() != 0 && reNewPassword.length() != 0) {
                     if (newPassword.getText().toString().equals(reNewPassword.getText().toString())) {
-                        updatePasswordCallBac(createRequest(currentPassword.getText().toString(), newPassword.getText().toString(), ""));
+                        updatePasswordCallBack(createRequest(currentPassword.getText().toString(), newPassword.getText().toString(), ""));
                     } else {
                         Toast.makeText(getApplicationContext(), "Şifreler eşleşmiyor!!", Toast.LENGTH_LONG).show();
                     }
@@ -72,7 +72,7 @@ public class UpdatePasswordFragment extends AppCompatActivity {
         return updatePasswordRequest;
     }
 
-    public void updatePasswordCallBac(UpdatePasswordRequest updatePasswordRequest) {
+    public void updatePasswordCallBack(UpdatePasswordRequest updatePasswordRequest) {
         Call<DefaultResponse> call = ApiClient.getApiClient().updatePassword(updatePasswordRequest);
 
         call.enqueue(new Callback<DefaultResponse>() {

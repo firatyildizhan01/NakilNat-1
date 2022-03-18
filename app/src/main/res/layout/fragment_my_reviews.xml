@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray_200"
+    android:background="@color/white"
     android:fitsSystemWindows="false"
     tools:context=".ui.profile.mywallet.AddMoneyFragment">
 
@@ -19,6 +19,17 @@
         android:layout_marginBottom="20dp"
         >
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Değerlendirmeler"
+            android:textColor="@color/purple_500"
+            android:layout_marginStart="25dp"
+            android:textStyle="bold"
+            android:layout_marginTop="25dp"
+            android:textSize="15dp"
+            />
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -28,13 +39,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="20dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="30dp">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/adress_list"
+                    android:id="@+id/review_list"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     >
@@ -42,6 +52,8 @@
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
+
+
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"

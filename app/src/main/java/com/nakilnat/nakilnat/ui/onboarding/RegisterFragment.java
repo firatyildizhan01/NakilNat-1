@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.base.ApiClient;
 import com.nakilnat.nakilnat.models.request.LoginRequest;
+import com.nakilnat.nakilnat.models.request.RegisterRequest;
 import com.nakilnat.nakilnat.models.response.DefaultResponse;
 import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
 import retrofit2.Call;
@@ -66,8 +67,7 @@ public class RegisterFragment extends AppCompatActivity {
                         if (password.getText().toString().equals(repassword.getText().toString())) {
                             if (phoneNumber.length() == 10) {
                                 if (agreementCheckBox.isChecked()) {
-                                    Intent intent = new Intent(RegisterFragment.this, ApplicationPageFragment.class);
-                                    startActivity(intent);
+                                    registerCallBack(createRequest(nameSurname.getText().toString(), phoneNumber.getText().toString(), email.getText().toString(), password.getText().toString()));
                                 } else {
                                     Toast.makeText(getApplicationContext(), "Sözleşmeyi kabul ediniz!!", Toast.LENGTH_LONG).show();
                                 }
@@ -97,22 +97,23 @@ public class RegisterFragment extends AppCompatActivity {
         });
     }
 
-    public LoginRequest createRequest(String email, String password, String token) {
-        LoginRequest loginRequest = new LoginRequest();
-        loginRequest.setUn(email);
-        loginRequest.setPw(password);
-        loginRequest.setToken("korayaman");
-        return loginRequest;
+    public RegisterRequest createRequest(String firma, String phoneNumber, String email, String password) {
+        RegisterRequest registerRequest = new RegisterRequest();
+        registerRequest.setFirma(firma);
+        registerRequest.setCep_tel(phoneNumber);
+        registerRequest.setEposta(email);
+        registerRequest.setSifre(password);
+        return registerRequest;
     }
 
-    public void loginCallBack(LoginRequest loginRequest) {
-        Call<DefaultResponse> call = ApiClient.getApiClient().userLogin(loginRequest);
+    public void registerCallBack(RegisterRequest registerRequest) {
+        Call<DefaultResponse> call = ApiClient.getApiClient().register(registerRequest);
 
         call.enqueue(new Callback<DefaultResponse>() {
             @Override
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
-                DefaultResponse loginResponse = response.body();
-                if (loginResponse.getResult() == "OK") {
+                DefaultResponse defaultResponse = response.body();
+                if (defaultResponse.getResult().toString().equals("yeniKayit")) {
 
                     //SharedPrefManager.getInstance(LoginFragment.this)
                     //.saveUser(loginResponse.getUser());
@@ -121,11 +122,12 @@ public class RegisterFragment extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
 */
-                    Intent intent = new Intent(RegisterFragment.this, ApplicationPageFragment.class);
+                    Toast.makeText(RegisterFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(RegisterFragment.this, SmsVerificationFragment.class);
                     startActivity(intent);
 
                 } else {
-                    //Toast.makeText(LoginFragment.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
                 }
             }
 
