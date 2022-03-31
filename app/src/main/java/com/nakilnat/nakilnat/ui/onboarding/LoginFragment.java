@@ -91,12 +91,12 @@ public class LoginFragment extends AppCompatActivity {
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
                 DefaultResponse defaultResponse = response.body();
                 if (defaultResponse.getResult().toString().equals("OK")) {
-
+                    Toast.makeText(LoginFragment.this, "Giriş başarılı", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(LoginFragment.this, ApplicationPageFragment.class);
                     startActivity(intent);
 
                 } else {
-                    Toast.makeText(LoginFragment.this, defaultResponse.getResult(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginFragment.this, "Giriş başarısız!!", Toast.LENGTH_LONG).show();
                 }
             }
 

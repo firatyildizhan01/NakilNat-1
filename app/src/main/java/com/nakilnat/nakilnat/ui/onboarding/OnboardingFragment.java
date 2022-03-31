@@ -8,7 +8,10 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.nakilnat.nakilnat.R;
+import com.nakilnat.nakilnat.ui.profile.MyInvoicesFragment;
 import com.nakilnat.nakilnat.ui.profile.adress.MyAdressListFragment;
+import com.nakilnat.nakilnat.ui.profile.map.MapFragment;
+import com.nakilnat.nakilnat.ui.profile.mywallet.MyWalletFragment;
 
 public class OnboardingFragment extends AppCompatActivity {
 
@@ -28,7 +31,7 @@ public class OnboardingFragment extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent dsp = new Intent(OnboardingFragment.this, MyAdressListFragment.class);
+                Intent dsp = new Intent(OnboardingFragment.this, LoginFragment.class);
                 startActivity(dsp);
                 finish();
             }

@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,24 +17,33 @@ import androidx.transition.AutoTransition;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.nakilnat.nakilnat.R;
+import com.nakilnat.nakilnat.base.ApiClient;
+import com.nakilnat.nakilnat.models.request.DefaultRequest;
+import com.nakilnat.nakilnat.models.response.TotalAmountResponse;
 import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
 import com.nakilnat.nakilnat.ui.profile.ProfilePageFragment;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class MyWalletFragment extends AppCompatActivity {
     BottomNavigationView bottomBar;
     CardView addMoneyCardView, transactionsCardView;
-    TextView topBarText;
+    TextView topBarText, totalAmount;
     ImageView topBarBack;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_my_wallet);
+        totalAmount = findViewById(R.id.my_wallet_total_money);
 
         bottomBarSetup();
         InitSubContents();
+        myTotalAmount(createRequest());
 
         addMoneyCardView = findViewById(R.id.my_wallet_add_money);
         transactionsCardView = findViewById(R.id.my_wallet_transactions);
@@ -76,6 +86,34 @@ public class MyWalletFragment extends AppCompatActivity {
                 GoBottomMenuIntent(item.getItemId());
                 return true;
 
+            }
+        });
+    }
+
+    public DefaultRequest createRequest() {
+        DefaultRequest defaultRequest = new DefaultRequest();
+        defaultRequest.setToken("korayaman");
+        return defaultRequest;
+    }
+
+    public void myTotalAmount(DefaultRequest defaultRequest) {
+        Call<TotalAmountResponse> call = ApiClient.getApiClient().totalAmount(defaultRequest);
+
+        call.enqueue(new Callback<TotalAmountResponse>() {
+            @Override
+            public void onResponse(Call<TotalAmountResponse> call, Response<TotalAmountResponse> response) {
+                TotalAmountResponse totalAmountResponse = response.body();
+                if (totalAmountResponse != null && !totalAmountResponse.getAmount().isEmpty()) {
+                    Toast.makeText(MyWalletFragment.this, "Tutar bilgisi sağlandı", Toast.LENGTH_LONG).show();
+                    totalAmount.setText(totalAmountResponse.getAmount() + " TL");
+                } else {
+                    Toast.makeText(MyWalletFragment.this, "Hesap bilgileri sağlanamadı!", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TotalAmountResponse> call, Throwable t) {
+                System.out.println(t);
             }
         });
     }

@@ -9,6 +9,9 @@ public class MyAccountResponse {
     @SerializedName("un")
     private String un;
 
+    @SerializedName("tc")
+    private String tc;
+
     @SerializedName("kayit_tarihi")
     private String kayitTarihi;
 
@@ -48,19 +51,210 @@ public class MyAccountResponse {
     @SerializedName("uye_durum")
     private String uyeDurum;
 
-    @SerializedName("izin_mail_kampanya")
-    private String izinMailKampanya;
+    @SerializedName("eposta")
+    private String permissionEmail;
 
-    @SerializedName("izin_mail_bildirim")
-    private String izinMailBildirim;
+    @SerializedName("bildirim")
+    private String permissionNotification;
 
-    @SerializedName("izin_mail_bulten")
-    private String izinMailBulten;
+    @SerializedName("sms")
+    private String permissionSms;
 
-    @SerializedName("izin_sms_kampanya")
-    private String izinSmsKampanya;
+    @SerializedName("telefon")
+    private String permissionPhone;
 
-    @SerializedName("izin_sms_bildirim")
-    private String izinSmsBildirim;
+    @SerializedName("yildiz")
+    private String accountPoint;
 
+    public MyAccountResponse(String id, String un, String tc, String kayitTarihi, String hesapTuru, String firmaAdi, String sabitTel, String cepTel, String acikAdres, String il, String ilce, String firma_vd, String firma_vn, String web, String hakkimda, String uyeDurum, String permissionEmail, String permissionNotification, String permissionSms, String permissionPhone, String accountPoint) {
+        this.id = id;
+        this.un = un;
+        this.tc = tc;
+        this.kayitTarihi = kayitTarihi;
+        this.hesapTuru = hesapTuru;
+        this.firmaAdi = firmaAdi;
+        this.sabitTel = sabitTel;
+        this.cepTel = cepTel;
+        this.acikAdres = acikAdres;
+        this.il = il;
+        this.ilce = ilce;
+        this.firma_vd = firma_vd;
+        this.firma_vn = firma_vn;
+        this.web = web;
+        this.hakkimda = hakkimda;
+        this.uyeDurum = uyeDurum;
+        this.permissionEmail = permissionEmail;
+        this.permissionNotification = permissionNotification;
+        this.permissionSms = permissionSms;
+        this.permissionPhone = permissionPhone;
+        this.accountPoint = accountPoint;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUn() {
+        return un;
+    }
+
+    public void setUn(String un) {
+        this.un = un;
+    }
+
+    public String getTc() {
+        return tc;
+    }
+
+    public void setTc(String tc) {
+        this.tc = tc;
+    }
+
+    public String getKayitTarihi() {
+        return kayitTarihi;
+    }
+
+    public void setKayitTarihi(String kayitTarihi) {
+        this.kayitTarihi = kayitTarihi;
+    }
+
+    public String getHesapTuru() {
+        return hesapTuru;
+    }
+
+    public void setHesapTuru(String hesapTuru) {
+        this.hesapTuru = hesapTuru;
+    }
+
+    public String getFirmaAdi() {
+        return firmaAdi;
+    }
+
+    public void setFirmaAdi(String firmaAdi) {
+        this.firmaAdi = firmaAdi;
+    }
+
+    public String getSabitTel() {
+        return sabitTel;
+    }
+
+    public void setSabitTel(String sabitTel) {
+        this.sabitTel = sabitTel;
+    }
+
+    public String getCepTel() {
+        return cepTel;
+    }
+
+    public void setCepTel(String cepTel) {
+        this.cepTel = cepTel;
+    }
+
+    public String getAcikAdres() {
+        return acikAdres;
+    }
+
+    public void setAcikAdres(String acikAdres) {
+        this.acikAdres = acikAdres;
+    }
+
+    public String getIl() {
+        return il;
+    }
+
+    public void setIl(String il) {
+        this.il = il;
+    }
+
+    public String getIlce() {
+        return ilce;
+    }
+
+    public void setIlce(String ilce) {
+        this.ilce = ilce;
+    }
+
+    public String getFirma_vd() {
+        return firma_vd;
+    }
+
+    public void setFirma_vd(String firma_vd) {
+        this.firma_vd = firma_vd;
+    }
+
+    public String getFirma_vn() {
+        return firma_vn;
+    }
+
+    public void setFirma_vn(String firma_vn) {
+        this.firma_vn = firma_vn;
+    }
+
+    public String getWeb() {
+        return web;
+    }
+
+    public void setWeb(String web) {
+        this.web = web;
+    }
+
+    public String getHakkimda() {
+        return hakkimda;
+    }
+
+    public void setHakkimda(String hakkimda) {
+        this.hakkimda = hakkimda;
+    }
+
+    public String getUyeDurum() {
+        return uyeDurum;
+    }
+
+    public void setUyeDurum(String uyeDurum) {
+        this.uyeDurum = uyeDurum;
+    }
+
+    public String getPermissionEmail() {
+        return permissionEmail;
+    }
+
+    public void setPermissionEmail(String permissionEmail) {
+        this.permissionEmail = permissionEmail;
+    }
+
+    public String getPermissionNotification() {
+        return permissionNotification;
+    }
+
+    public void setPermissionNotification(String permissionNotification) {
+        this.permissionNotification = permissionNotification;
+    }
+
+    public String getPermissionSms() {
+        return permissionSms;
+    }
+
+    public void setPermissionSms(String permissionSms) {
+        this.permissionSms = permissionSms;
+    }
+
+    public String getPermissionPhone() {
+        return permissionPhone;
+    }
+
+    public void setPermissionPhone(String permissionPhone) {
+        this.permissionPhone = permissionPhone;
+    }
+
+    public String getAccountPoint() {
+        return accountPoint;
+    }
+
+    public void setAccountPoint(String accountPoint) {
+        this.accountPoint = accountPoint;
+    }
 }

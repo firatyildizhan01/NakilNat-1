@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/vehicleItemLayout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    
+    <LinearLayout
+        android:id="@+id/insuranceLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="10dp"
+        android:background="@drawable/vehicle_item_bg">
+        
+        <ImageView
+            android:layout_marginLeft="15dp"
+            android:layout_width="83dp"
+            android:layout_height="22dp"
+            android:id="@+id/imageInsurance">
+        </ImageView>
+
+        <TextView
+            android:layout_marginLeft="50dp"
+            android:id="@+id/insurancePrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/gray_700"
+            android:textSize="16sp"
+            android:text="asdsadsad">
+
+        </TextView>
+
+    </LinearLayout>
+
+</LinearLayout>

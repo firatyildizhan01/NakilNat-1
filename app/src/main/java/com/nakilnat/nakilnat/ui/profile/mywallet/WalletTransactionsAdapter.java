@@ -4,29 +4,20 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.nakilnat.nakilnat.R;
-import com.nakilnat.nakilnat.models.response.Notification;
-import com.nakilnat.nakilnat.models.response.Reviews;
-import com.nakilnat.nakilnat.models.response.WalletTransactions;
-
-import java.util.ArrayList;
+import com.nakilnat.nakilnat.models.response.MyWalletTransactionsResponse;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class WalletTransactionsAdapter extends RecyclerView.Adapter<WalletTransactionsAdapter.ViewHolder> {
-    private ArrayList<WalletTransactions> list;
+    private List<MyWalletTransactionsResponse> list;
     private Context context;
 
-    public WalletTransactionsAdapter(ArrayList<WalletTransactions> list, Context context) {
+    public WalletTransactionsAdapter(List<MyWalletTransactionsResponse> list, Context context) {
         this.list = list;
         this.context = context;
         //this.onItemClickListener = onItemClickListener;
@@ -43,11 +34,11 @@ public class WalletTransactionsAdapter extends RecyclerView.Adapter<WalletTransa
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        WalletTransactions walletTransactions = list.get(position);
+        MyWalletTransactionsResponse walletTransactions = list.get(position);
 
-        holder.tvWalletTransactionDescription.setText(walletTransactions.getTransactionDescription());
-        holder.tvWalletTransactionAmount.setText(walletTransactions.getTransactionAmount());
-        holder.tvWalletTransactionTime.setText(walletTransactions.getTransactionTime());
+        holder.tvWalletTransactionDescription.setText(walletTransactions.getMyTransactionsState());
+        holder.tvWalletTransactionAmount.setText(walletTransactions.getMyTransactionsEarn());
+        holder.tvWalletTransactionTime.setText(walletTransactions.getMyTransactionsTime());
     }
 
     @Override

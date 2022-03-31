@@ -52,6 +52,7 @@
                             android:textSize="14dp"
                             app:boxStrokeWidth="0dp"
                             app:boxStrokeWidthFocused="0dp"
+                            android:textColorHint="@color/purple_500"
                             app:hintTextColor="@color/purple_500">
 
                             <EditText
@@ -92,6 +93,7 @@
                             android:textSize="14dp"
                             app:boxStrokeWidth="0dp"
                             app:boxStrokeWidthFocused="0dp"
+                            android:textColorHint="@color/purple_500"
                             app:hintTextColor="@color/purple_500">
 
                             <EditText
@@ -129,6 +131,7 @@
                         android:textSize="14dp"
                         app:boxStrokeWidth="0dp"
                         app:boxStrokeWidthFocused="0dp"
+                        android:textColorHint="@color/purple_500"
                         app:hintTextColor="@color/purple_500">
 
                         <EditText
@@ -165,6 +168,7 @@
                         android:textSize="14dp"
                         app:boxStrokeWidth="0dp"
                         app:boxStrokeWidthFocused="0dp"
+                        android:textColorHint="@color/purple_500"
                         app:hintTextColor="@color/purple_500">
 
                         <EditText
@@ -186,102 +190,78 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <TextView
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_medium"
-                    android:textSize="14dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginStart="20dp"
-                    android:text="Haritalardan seç"
-                    android:textColor="@color/black"></TextView>
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="20dp">
 
+                    <ImageView
+                        android:id="@+id/add_adress_with_map"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/add_adress_map">
+
+                    </ImageView>
+
+                    <TextView
+                        android:id="@+id/add_adress_with_map_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@+id/add_adress_with_map"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="Haritalardan seç"
+                        android:textColor="@color/black"
+                        android:textSize="14dp"></TextView>
+
+                </RelativeLayout>
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:weightSum="2"
-                    >
-
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
                     <androidx.cardview.widget.CardView
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="5dp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="10dp"
-                        app:cardCornerRadius="5dp"
-                        app:cardElevation="2dp">
+                        >
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/adress_city"
+                        <Spinner
+                            android:id="@+id/add_address_city"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_medium"
-                            android:textSize="14dp"
-                            app:boxStrokeWidth="0dp"
-                            app:boxStrokeWidthFocused="0dp"
-                            app:hintTextColor="@color/purple_500">
-
-                            <EditText
-
-                                android:id="@+id/adress_city_edt"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:background="@drawable/edit"
-                                android:fontFamily="@font/roboto_medium"
-                                android:hint="İl"
-                                android:inputType="text"
-                                android:text=""
-                                android:textColorHint="@color/black"
-                                android:textSize="14dp"
-
-                                />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
+                            android:layout_height="56dp"
+                            android:spinnerMode="dropdown"
+                            android:overlapAnchor="false"
+                            android:dropDownWidth="match_parent"
+                            android:padding="0dp"
+                            />
                     </androidx.cardview.widget.CardView>
-
                     <androidx.cardview.widget.CardView
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight="1"
+                        app:cardCornerRadius="5dp"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginStart="10dp"
-                        app:cardCornerRadius="5dp"
-                        app:cardElevation="2dp">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/adress_district"
+                        >
+                        <Spinner
+                            android:id="@+id/add_address_district"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/roboto_medium"
-                            android:textSize="14dp"
-                            app:boxStrokeWidth="0dp"
-                            app:boxStrokeWidthFocused="0dp"
-                            app:hintTextColor="@color/purple_500">
-
-                            <EditText
-                                android:id="@+id/adress_district_edt"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:background="@drawable/edit"
-                                android:fontFamily="@font/roboto_medium"
-                                android:hint="İlçe"
-                                android:inputType="text"
-                                android:text=""
-                                android:textColorHint="@color/black"
-                                android:textSize="14dp"
-
-                                />
-
-                        </com.google.android.material.textfield.TextInputLayout>
+                            android:layout_height="56dp"
+                            android:spinnerMode="dropdown"
+                            android:overlapAnchor="false"
+                            android:dropDownWidth="match_parent"
+                            android:padding="0dp"
+                            />
 
                     </androidx.cardview.widget.CardView>
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -307,6 +287,7 @@
                             android:textSize="14dp"
                             app:boxStrokeWidth="0dp"
                             app:boxStrokeWidthFocused="0dp"
+                            android:textColorHint="@color/purple_500"
                             app:hintTextColor="@color/purple_500">
 
                             <EditText
@@ -346,6 +327,7 @@
                             android:textSize="14dp"
                             app:boxStrokeWidth="0dp"
                             app:boxStrokeWidthFocused="0dp"
+                            android:textColorHint="@color/purple_500"
                             app:hintTextColor="@color/purple_500">
 
                             <EditText
@@ -392,6 +374,7 @@
                             android:textSize="14dp"
                             app:boxStrokeWidth="0dp"
                             app:boxStrokeWidthFocused="0dp"
+                            android:textColorHint="@color/purple_500"
                             app:hintTextColor="@color/purple_500">
 
                             <EditText
@@ -431,6 +414,7 @@
                             android:textSize="14dp"
                             app:boxStrokeWidth="0dp"
                             app:boxStrokeWidthFocused="0dp"
+                            android:textColorHint="@color/purple_500"
                             app:hintTextColor="@color/purple_500">
 
                             <EditText
@@ -468,6 +452,7 @@
                         android:textSize="14dp"
                         app:boxStrokeWidth="0dp"
                         app:boxStrokeWidthFocused="0dp"
+                        android:textColorHint="@color/purple_500"
                         app:hintTextColor="@color/purple_500">
 
                         <EditText
@@ -493,6 +478,7 @@
                     android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <Button
                         android:id="@+id/add_address_button"
                         android:layout_width="wrap_content"

@@ -61,11 +61,12 @@ public class PhoneNumberFragment extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
 */
-                    Intent intent = new Intent(PhoneNumberFragment.this, SmsVerificationFragment.class);
+                    Toast.makeText(PhoneNumberFragment.this, "Sms gönderildi", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(PhoneNumberFragment.this, RememberPasswordSmsVerification.class);
                     startActivity(intent);
 
                 } else {
-                    //Toast.makeText(LoginFragment.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(PhoneNumberFragment.this, "Sms gönderilemedi!!", Toast.LENGTH_LONG).show();
                 }
             }
 

@@ -20,7 +20,9 @@ import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
 import com.nakilnat.nakilnat.ui.profile.adress.MyAdressListFragment;
+import com.nakilnat.nakilnat.ui.profile.myads.MyAdsFragment;
 import com.nakilnat.nakilnat.ui.profile.mywallet.MyWalletFragment;
+import com.nakilnat.nakilnat.ui.profile.offers.MyOffersFragment;
 
 
 public class ProfilePageFragment extends AppCompatActivity {

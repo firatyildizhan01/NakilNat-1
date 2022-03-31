@@ -4,33 +4,45 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/ic_profile_arrow_up.xml" value="0.42864583333333334" />
+        <entry key="app/src/main/res/drawable/shape_home_top.xml" value="0.34270833333333334" />
+        <entry key="app/src/main/res/layout/agreement_popup.xml" value="0.2223731884057971" />
         <entry key="app/src/main/res/layout/fragment_add_ad.xml" value="0.19376899696048633" />
+        <entry key="app/src/main/res/layout/fragment_add_ad_step_cargo_detail.xml" value="0.24320652173913043" />
         <entry key="app/src/main/res/layout/fragment_add_adress.xml" value="0.29891304347826086" />
         <entry key="app/src/main/res/layout/fragment_add_money.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_application_page.xml" value="0.29891304347826086" />
+        <entry key="app/src/main/res/layout/fragment_continue_ads.xml" value="0.24320652173913043" />
         <entry key="app/src/main/res/layout/fragment_home_page.xml" value="0.29891304347826086" />
         <entry key="app/src/main/res/layout/fragment_location.xml" value="0.29891304347826086" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.2921195652173913" />
         <entry key="app/src/main/res/layout/fragment_my_account.xml" value="0.2006079027355623" />
         <entry key="app/src/main/res/layout/fragment_my_adress.xml" value="0.19376899696048633" />
         <entry key="app/src/main/res/layout/fragment_my_ads.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_my_continue_ships.xml" value="0.13451086956521738" />
         <entry key="app/src/main/res/layout/fragment_my_invoices.xml" value="0.19376899696048633" />
         <entry key="app/src/main/res/layout/fragment_my_notifications.xml" value="0.17889492753623187" />
         <entry key="app/src/main/res/layout/fragment_my_offers.xml" value="0.17889492753623187" />
         <entry key="app/src/main/res/layout/fragment_my_reviews.xml" value="0.16770833333333332" />
         <entry key="app/src/main/res/layout/fragment_my_settings.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_my_ships.xml" value="0.17889492753623187" />
+        <entry key="app/src/main/res/layout/fragment_my_ships_steps.xml" value="0.2807971014492754" />
         <entry key="app/src/main/res/layout/fragment_my_wallet.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_my_wallet_transactions.xml" value="0.175" />
         <entry key="app/src/main/res/layout/fragment_new_password.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_offers_incoming.xml" value="0.175" />
         <entry key="app/src/main/res/layout/fragment_onboarding.xml" value="0.2006079027355623" />
         <entry key="app/src/main/res/layout/fragment_profile_page.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.19376899696048633" />
         <entry key="app/src/main/res/layout/fragment_remember_password.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_remember_password_sms.xml" value="0.2921195652173913" />
         <entry key="app/src/main/res/layout/fragment_sms_verification.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_update_password.xml" value="0.30570652173913043" />
         <entry key="app/src/main/res/layout/item_address_list.xml" value="0.45" />
         <entry key="app/src/main/res/layout/item_notifications_list.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/item_offers_list.xml" value="0.375" />
         <entry key="app/src/main/res/layout/item_reviews_list.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/item_ships_list.xml" value="0.45" />
+        <entry key="app/src/main/res/layout/item_transports_list.xml" value="0.335" />
         <entry key="app/src/main/res/layout/item_wallet_transactions_list.xml" value="0.625" />
         <entry key="app/src/main/res/layout/top_bar.xml" value="0.30570652173913043" />
       </map>

@@ -15,6 +15,7 @@ import com.nakilnat.nakilnat.models.request.SmsRequest;
 import com.nakilnat.nakilnat.models.response.DefaultResponse;
 import com.nakilnat.nakilnat.models.response.SmsResponse;
 import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
+import com.nakilnat.nakilnat.ui.profile.MyAccountFragment;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,8 +29,8 @@ public class SmsVerificationFragment extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_sms_verification);
-        password = (EditText) findViewById(R.id.password_remember_code);
-        smsVerificationButton = (Button) findViewById(R.id.password_remember_button);
+        password = (EditText) findViewById(R.id.password_register_code);
+        smsVerificationButton = (Button) findViewById(R.id.password_register_button);
         smsVerificationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,7 +67,7 @@ public class SmsVerificationFragment extends AppCompatActivity {
                     startActivity(intent);
 */
                     Toast.makeText(SmsVerificationFragment.this, "User Id: " + smsResponse.getUserId().toString(), Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(SmsVerificationFragment.this, ApplicationPageFragment.class);
+                    Intent intent = new Intent(SmsVerificationFragment.this, MyAccountFragment.class);
                     startActivity(intent);
 
                 } else {

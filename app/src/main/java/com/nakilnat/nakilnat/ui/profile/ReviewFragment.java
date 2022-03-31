@@ -1,16 +1,12 @@
 package com.nakilnat.nakilnat.ui.profile;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,16 +16,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.textfield.TextInputLayout;
 import com.nakilnat.nakilnat.R;
-import com.nakilnat.nakilnat.models.response.Reviews;
-import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
+import com.nakilnat.nakilnat.base.ApiClient;
+import com.nakilnat.nakilnat.models.request.DefaultRequest;
+import com.nakilnat.nakilnat.models.response.MyReviewsResponse;
 import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
+import com.nakilnat.nakilnat.ui.profile.map.MapFragment;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class ReviewFragment extends AppCompatActivity {
@@ -38,28 +39,48 @@ public class ReviewFragment extends AppCompatActivity {
     CardView bottomFab;
     TextView topBarText;
     ImageView topBarBack;
-    private ArrayList<Reviews> reviewList;
+    private List<MyReviewsResponse> reviewList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_my_reviews);
         topBarInit();
-        pageInit();
+        myReviewsCallBack(createRequest());
         bottomBarSetup();
     }
 
-    private void pageInit() {
-        reviewList = new ArrayList<>();
-        reviewList.add(new Reviews("Çok keyifli bir hizmet aldım.Tekrar çalışmak isterim", "15.02.2022", "A****** K******"));
-        reviewList.add(new Reviews("Hiç memnun kalmadım.Kimseye de tavsiye etmiyorum", "08.05.2021", "N***** R*****"));
-        reviewList.add(new Reviews("Çok kibar bir beyefendi.İletişim tarzını sevdim", "10.02.2020", "S**** T****"));
-        //setting adapter and listview
-        ReviewsAdapter adapter = new ReviewsAdapter(reviewList, this);
-        RecyclerView listview = findViewById(R.id.review_list);
-        adapter.getItemCount();
-        listview.setAdapter(adapter);
-        listview.setLayoutManager(new LinearLayoutManager(this));
+
+    public DefaultRequest createRequest() {
+        DefaultRequest defaultRequest = new DefaultRequest();
+        defaultRequest.setToken("korayaman");
+        return defaultRequest;
+    }
+
+    public void myReviewsCallBack(DefaultRequest defaultRequest) {
+        Call<List<MyReviewsResponse>> call = ApiClient.getApiClient().myReviews(defaultRequest);
+
+        call.enqueue(new Callback<List<MyReviewsResponse>>() {
+            @Override
+            public void onResponse(Call<List<MyReviewsResponse>> call, Response<List<MyReviewsResponse>> response) {
+                reviewList = response.body();
+                if (response != null && !reviewList.isEmpty()) {
+                    Toast.makeText(ReviewFragment.this, "Değerlendirmelerim bilgisi sağlandı", Toast.LENGTH_LONG).show();
+                    ReviewsAdapter adapter = new ReviewsAdapter(reviewList, ReviewFragment.this);
+                    RecyclerView listview = findViewById(R.id.review_list);
+                    adapter.getItemCount();
+                    listview.setAdapter(adapter);
+                    listview.setLayoutManager(new LinearLayoutManager(ReviewFragment.this));
+                } else {
+                    Toast.makeText(ReviewFragment.this, "Değerlendirmelerim bilgisi sağlanamadı!", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<MyReviewsResponse>> call, Throwable t) {
+                System.out.println(t);
+            }
+        });
     }
 
     private void topBarInit() {

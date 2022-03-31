@@ -30,6 +30,7 @@ import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
 import com.nakilnat.nakilnat.ui.profile.ProfilePageFragment;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,29 +42,15 @@ public class MyAdressListFragment extends AppCompatActivity {
     CardView bottomFab;
     TextView topBarText, topBarRightText;
     ImageView topBarBack, topBarNotification;
-    private ArrayList<MyAdressListResponse> adressList;
+    private List<MyAdressListResponse> adressList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_my_adress);
         topBarInit();
-        pageInit();
         bottomBarSetup();
-    }
-
-    private void pageInit() {
-        adressList = new ArrayList<>();
-        adressList.add(new MyAdressListResponse("46", "46", "Ev", "Kahramanmaraş", "Onikişubat", "3003", "Akif İnan Mahallesi", "Burak apart", "1", "1", "Burak apartmanı"," 46000 posta kodu"));
-        adressList.add(new MyAdressListResponse("46", "46", "Ev", "Kahramanmaraş", "Onikişubat", "3003", "Akif İnan Mahallesi", "Burak apart", "1", "1", "Burak apartmanı"," 46000 posta kodu"));
-        adressList.add(new MyAdressListResponse("46", "46", "Ev", "Kahramanmaraş", "Onikişubat", "3003", "Akif İnan Mahallesi", "Burak apart", "1", "1", "Burak apartmanı"," 46000 posta kodu"));
-
-        //setting adapter and listview
-        AdressAdapter adapter = new AdressAdapter(adressList, this);
-        RecyclerView listview = findViewById(R.id.adress_list);
-        adapter.getItemCount();
-        listview.setAdapter(adapter);
-        listview.setLayoutManager(new LinearLayoutManager(this));
+        myAdressListCallBack(createRequest() );
     }
 
     public DefaultRequest createRequest() {
@@ -72,23 +59,29 @@ public class MyAdressListFragment extends AppCompatActivity {
         return defaultRequest;
     }
 
-    public void adressListCallBack(DefaultRequest defaultRequest) {
-        Call<DefaultResponse> call = ApiClient.getApiClient().myAdressList(defaultRequest);
+    public void myAdressListCallBack(DefaultRequest defaultRequest) {
+        Call<List<MyAdressListResponse>> call = ApiClient.getApiClient().myAdressList(defaultRequest);
 
-        call.enqueue(new Callback<DefaultResponse>() {
+        call.enqueue(new Callback<List<MyAdressListResponse>>() {
             @Override
-            public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
-                DefaultResponse defaultResponse = response.body();
-                if (defaultResponse.getResult().toString().equals("OK")) {
-                    Toast.makeText(MyAdressListFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
+            public void onResponse(Call<List<MyAdressListResponse>> call, Response<List<MyAdressListResponse>> response) {
+                adressList = response.body();
+                if (response != null && !adressList.isEmpty()) {
+                    Toast.makeText(MyAdressListFragment.this, "Adres bilgilerim sağlandı", Toast.LENGTH_LONG).show();
+                    //setting adapter and listview
+                    AdressAdapter adapter = new AdressAdapter(adressList, MyAdressListFragment.this);
+                    RecyclerView listview = findViewById(R.id.adress_list);
+                    adapter.getItemCount();
+                    listview.setAdapter(adapter);
+                    listview.setLayoutManager(new LinearLayoutManager(MyAdressListFragment.this));
                 } else {
-                    Toast.makeText(MyAdressListFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(MyAdressListFragment.this, "Adres bilgilerim sağlanamadı!", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<DefaultResponse> call, Throwable t) {
-                System.out.println(t);
+            public void onFailure(Call<List<MyAdressListResponse>> call, Throwable t) {
+                Toast.makeText(MyAdressListFragment.this, "Servis hatası!!", Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="10dp"
+    app:cardBackgroundColor="@color/gray_500"
+    tools:parentTag="androidx.cardview.widget.CardView">
+
+    <LinearLayout
+        android:id="@+id/rootConstraint"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="99dp">
+
+        <LinearLayout
+            android:id="@+id/item_transports_city_layout"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                app:cardCornerRadius="5dp"
+               >
+
+                <TextView
+                    android:id="@+id/item_transports_source_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ankara"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="14sp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/arrow_right_alt"
+                ></ImageView>
+            <LinearLayout
+                android:id="@+id/item_transports_money_layout"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginTop="17dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                >
+
+                <TextView
+                    android:id="@+id/item_transports_thing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Beyaz eşya"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    />
+
+                <TextView
+                    android:id="@+id/item_transports_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="500 ₺"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="12sp"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/arrow_right_alt"
+                ></ImageView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/item_ships_destination_city"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_weight="1"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                app:cardCornerRadius="5dp"
+                >
+
+            <TextView
+                android:id="@+id/item_transports_destination_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ankara"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
+                />
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_ships_city_layout">
+
+            <TextView
+                android:id="@+id/item_transport_status_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="15dp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="Taşıma sürüyor"
+                android:textColor="@color/purple_500"
+                android:textSize="12sp"
+
+                app:layout_constraintEnd_toEndOf="parent"></TextView>
+
+
+        </RelativeLayout>
+
+
+
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+

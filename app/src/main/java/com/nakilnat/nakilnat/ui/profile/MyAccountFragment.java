@@ -1,30 +1,48 @@
 package com.nakilnat.nakilnat.ui.profile;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import android.content.Intent;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.base.ApiClient;
 import com.nakilnat.nakilnat.models.request.DefaultRequest;
+import com.nakilnat.nakilnat.models.request.GetDistrictRequest;
 import com.nakilnat.nakilnat.models.request.UpdateAccountRequest;
 import com.nakilnat.nakilnat.models.response.DefaultResponse;
+import com.nakilnat.nakilnat.models.response.GetDistrictResponse;
+import com.nakilnat.nakilnat.models.response.GetProvinceResponse;
 import com.nakilnat.nakilnat.models.response.MyAccountResponse;
+import com.nakilnat.nakilnat.models.response.TransportList;
 import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,9 +52,17 @@ public class MyAccountFragment extends AppCompatActivity {
     BottomNavigationView bottomBar;
     TextView topBarText;
     ImageView topBarBack;
-    TextView navigationBarTitle;
-    EditText nameSurname, phoneNumber, email, adress, city, district, taxAdministration,
-            taxNumber, aboutText;
+    EditText nameSurname, phoneNumber, email, adress, city, district, tckn;
+
+    Button updateAccountButton;
+    private String[] provincesStartFirst = {"İl"};
+    private String[] districtsStartFirst = {"İlçe"};
+    private String[] districtsEndFirst = {"İlçe"};
+
+    private List<GetProvinceResponse> provincesRes;
+    private List<GetDistrictResponse> firstGetDistrictsRes;
+
+    private Spinner firstGetProvince, firstGetDistrict;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,11 +71,124 @@ public class MyAccountFragment extends AppCompatActivity {
 
         bottomBarSetup(R.id.bottomAddAds);
         InitSubContents();
-        observeAccount();
         myAccountCallBack(createRequest());
+
+        updateAccountButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (nameSurname.length() != 0 && phoneNumber.length() != 0 && email.length() != 0 &&
+                        adress.length() != 0 && city.length() != 0 && district.length() != 0 && tckn.length() != 0) {
+                    updateAccountCallBack(updateAccountRequest(email.getText().toString(), "parola", nameSurname.getText().toString(), phoneNumber.getText().toString(),
+                            adress.getText().toString(), city.getText().toString(), district.getText().toString(), "companyVn",
+                            "companyVd", "web", "about", "1"));
+                } else {
+                    Toast.makeText(getApplicationContext(), "Lütfen alanları doldurunuz!!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        initProvince();
+        initProvincesAndDistricts();
+        initDistrictsComboboxFirst(true);
+        initDistrictsComboboxEndFirst(true);
     }
 
+    public void initProvince() {
+        provincesStartFirst = new String[1];
+        provincesStartFirst[0] = "İl";
 
+        Call<List<GetProvinceResponse>> call = ApiClient.getApiClient().getProvince();
+
+        call.enqueue(new Callback<List<GetProvinceResponse>>() {
+            @Override
+            public void onResponse(Call<List<GetProvinceResponse>> call, Response<List<GetProvinceResponse>> response) {
+                provincesRes = response.body();
+                provincesStartFirst = new String[provincesRes.size()+1];
+                provincesStartFirst[0] = "İl";
+                if (provincesRes != null && provincesRes.size() > 0) {
+                    for (int i = 0; i< provincesRes.size(); i++){
+                        provincesStartFirst[i+1] = provincesRes.get(i).getAd();
+                    }
+                }
+                initProvinceCombobox();
+            }
+
+            @Override
+            public void onFailure(Call<List<GetProvinceResponse>> call, Throwable t) {
+                System.out.println(t);
+            }
+        });
+    }
+
+    private void initProvinceCombobox(){
+        ArrayAdapter firstGetProvinceAdpt = new ArrayAdapter(this, R.layout.custom_spinner_item, provincesStartFirst);
+        firstGetProvinceAdpt.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+
+        firstGetProvince.setAdapter(firstGetProvinceAdpt);
+    }
+
+    private void initProvincesAndDistricts() {
+        firstGetDistrict = findViewById(R.id.account_district);
+        firstGetProvince = findViewById(R.id.account_city);
+        firstGetProvince.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                //0 seçiniz
+                if(i != 0 ){
+                    Call<List<GetDistrictResponse>> call = ApiClient.getApiClient().getDistrict(new GetDistrictRequest(provincesRes.get(i-1).getId()));
+
+                    call.enqueue(new Callback<List<GetDistrictResponse>>() {
+                        @Override
+                        public void onResponse(Call<List<GetDistrictResponse>> call, Response<List<GetDistrictResponse>> response) {
+                            firstGetDistrictsRes = response.body();
+                            districtsStartFirst = new String[firstGetDistrictsRes.size()+1];
+                            districtsStartFirst[0] = "İlçe";
+                            if (firstGetDistrictsRes != null && firstGetDistrictsRes.size() > 0) {
+                                for (int i = 0; i< firstGetDistrictsRes.size(); i++){
+                                    districtsStartFirst[i+1] = firstGetDistrictsRes.get(i).getAd();
+                                }
+                            }
+                            initDistrictsComboboxFirst(false);
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<GetDistrictResponse>> call, Throwable t) {
+                            initDistrictsComboboxFirst(true);
+                        }
+                    });
+                }
+                else{
+                    initDistrictsComboboxFirst(true);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+    }
+
+    private void initDistrictsComboboxFirst(Boolean setDefault) {
+        if(setDefault){
+            districtsStartFirst = new String[1];
+            districtsStartFirst[0] = "İlçe";
+        }
+        ArrayAdapter districtAdpt = new ArrayAdapter(this, R.layout.custom_spinner_item, districtsStartFirst);
+        districtAdpt.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        firstGetDistrict.setAdapter(districtAdpt);
+    }
+
+    private void initDistrictsComboboxEndFirst(Boolean setDefault) {
+        if(setDefault){
+            districtsEndFirst = new String[1];
+            districtsEndFirst[0] = "İlçe";
+        }
+        ArrayAdapter districtAdpt = new ArrayAdapter(this, R.layout.custom_spinner_item, districtsEndFirst);
+        districtAdpt.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+
+    }
 
     private void InitSubContents() {
         topBarText = findViewById(R.id.top_bar_title);
@@ -66,17 +205,9 @@ public class MyAccountFragment extends AppCompatActivity {
         phoneNumber = (EditText) findViewById(R.id.account_phone_number_edt);
         email = (EditText) findViewById(R.id.account_email_edt);
         adress = (EditText) findViewById(R.id.account_adress_edt);
-        city = (EditText) findViewById(R.id.account_city_edt);
-        district = (EditText) findViewById(R.id.account_district_edt);
-    }
 
-    private void observeAccount() {
-        nameSurname.setText("Abdullah Kırmızı");
-        phoneNumber.setText("5322103385");
-        email.setText("kirmiziabdullah193@gmail.com");
-        adress.setText("Bağdat Mah. Bağdat Cad. 20/11");
-        city.setText("Adana");
-        district.setText("Afyon");
+        tckn = (EditText) findViewById(R.id.account_tckn_edt);
+        updateAccountButton = (Button) findViewById(R.id.update_account_button);
     }
 
     public DefaultRequest createRequest() {
@@ -91,12 +222,18 @@ public class MyAccountFragment extends AppCompatActivity {
         call.enqueue(new Callback<MyAccountResponse>() {
             @Override
             public void onResponse(Call<MyAccountResponse> call, Response<MyAccountResponse> response) {
-                MyAccountResponse defaultResponse = response.body();
-                if (defaultResponse != null) {
-                    Toast.makeText(MyAccountFragment.this, "Success", Toast.LENGTH_LONG).show();
-
+                MyAccountResponse myAccountResponse = response.body();
+                if (myAccountResponse != null && !myAccountResponse.getCepTel().isEmpty()) {
+                    Toast.makeText(MyAccountFragment.this, "Hesap bilgileri sağlandı", Toast.LENGTH_LONG).show();
+                    nameSurname.setText(myAccountResponse.getFirmaAdi());
+                    phoneNumber.setText(myAccountResponse.getCepTel());
+                    email.setText(myAccountResponse.getUn());
+                    adress.setText(myAccountResponse.getAcikAdres());
+                    //city.setText(myAccountResponse.getIl());
+                    //district.setText(myAccountResponse.getIlce());
+                    tckn.setText(myAccountResponse.getTc());
                 } else {
-                    //Toast.makeText(MyAccountFragment.this, defaultResponse.getResult(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(MyAccountFragment.this, "Hesap bilgileri sağlanamadı!", Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -107,7 +244,8 @@ public class MyAccountFragment extends AppCompatActivity {
         });
     }
 
-    public UpdateAccountRequest updateAccountRequest(String email, String password, String companyName, String phoneNumber, String adress, String city, String district, String companyVn, String company_vd, String web, String about, String accountType) {
+    public UpdateAccountRequest updateAccountRequest(String email, String password, String companyName, String phoneNumber, String adress, String city,
+                                                     String district, String companyVn, String company_vd, String web, String about, String accountType) {
         UpdateAccountRequest updateAccountRequest = new UpdateAccountRequest();
         updateAccountRequest.setEmail(email);
         updateAccountRequest.setSifre(password);

@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:inputType="text"
+            android:inputType="numberPassword"
             android:hint="Şifre"
             android:textColorHint="@color/black"
             android:layout_gravity="center"
@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:inputType="text"
+            android:inputType="numberPassword"
             android:hint="Şifreyi Onayla"
             android:textColorHint="@color/black"
             android:layout_gravity="center"
@@ -95,39 +95,11 @@
             android:padding="20dp"
             />
 
-
-        <RadioGroup
-        android:id="@+id/radioSex"
-        android:orientation="horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
-
-        <RadioButton
-        android:id="@+id/radioEmployer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_toStartOf="@+id/radioWorker"
-        android:text="Yük Veren"
-        android:buttonTint="@color/purple_500"
-        android:textColor="@color/black"
-        android:checked="true" ></RadioButton>
-
-        <RadioButton
-        android:id="@+id/radioWorker"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:textColor="@color/black"
-        android:buttonTint="@color/purple_500"
-        android:text="Yük Alan" ></RadioButton>
-
-        </RadioGroup>
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            android:layout_marginStart="16dp"
             android:gravity="center"
             android:layout_marginTop="16dp">
 
@@ -143,24 +115,15 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="-12dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="9dp"
                 android:layout_toEndOf="@+id/agreement_checkBox"
-                android:text="Kullanım koşullarını"
+                android:lineSpacingExtra="3sp"
+                android:text="Kullanım koşullarını, Çerez politikasını ve Aydınlatma Metni'ni okudum,onaylıyorum"
                 android:textColor="@color/purple_500"
                 android:textSize="15dp" />
 
-            <TextView
-                android:id="@+id/agreement_textView2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="2dp"
-                android:layout_toEndOf="@+id/agreement_textView"
-                android:text="okudum,onaylıyorum"
-                android:textColor="@color/black"
-                android:textSize="15dp" />
         </RelativeLayout>
+
         <Button
             android:id="@+id/register_button"
             android:layout_width="match_parent"

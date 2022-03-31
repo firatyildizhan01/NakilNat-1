@@ -18,32 +18,38 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.base.ApiClient;
+import com.nakilnat.nakilnat.models.request.DefaultRequest;
 import com.nakilnat.nakilnat.models.request.DeleteAccountRequest;
 import com.nakilnat.nakilnat.models.request.UpdatePermissionRequest;
 import com.nakilnat.nakilnat.models.response.DefaultResponse;
+import com.nakilnat.nakilnat.models.response.MyAccountResponse;
 import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
 import com.nakilnat.nakilnat.ui.onboarding.OnboardingFragment;
 
+import butterknife.BindView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
 public class MySettingsFragment extends AppCompatActivity {
+
     BottomNavigationView bottomBar;
     TextView topBarText;
     ImageView topBarBack;
     CardView permissionsCardView, permissionSubCardView, passwordTransactionsCardView, helpCardView, helpSubCardView, deleteAccountCardView, signOutCardView;
-    ImageView permissionsArrow, helpArrow;
+    ImageView permissionsArrow, helpArrow, permissionEmailToggle, permissionNotificationToggle, permissionPhoneToggle, permissionSmsToggle;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_my_settings);
         bottomBarSetup();
         InitSubContents();
+        getPermissions();
         navigationController();
+        myAccountCallBack(createRequest());
     }
 
     private void InitSubContents() {
@@ -66,6 +72,21 @@ public class MySettingsFragment extends AppCompatActivity {
         signOutCardView = (CardView) findViewById(R.id.settings_signout);
         permissionsArrow = (ImageView) findViewById(R.id.settings_permission_arrow);
         helpArrow = (ImageView) findViewById(R.id.settings_help_arrow);
+        permissionEmailToggle = (ImageView) findViewById(R.id.permission_email_toggle);
+        permissionNotificationToggle = (ImageView) findViewById(R.id.permission_notification_toggle);
+        permissionPhoneToggle = (ImageView) findViewById(R.id.permission_phone_toggle);
+        permissionSmsToggle = (ImageView) findViewById(R.id.permission_sms_toggle);
+    }
+
+    private void getPermissions() {
+        permissionEmailToggle.setImageResource(R.drawable.ic_toggle_active);
+        permissionEmailToggle.setTag(R.drawable.ic_toggle_active);
+        permissionNotificationToggle.setImageResource(R.drawable.ic_toggle_active);
+        permissionNotificationToggle.setTag(R.drawable.ic_toggle_active);
+        permissionPhoneToggle.setImageResource(R.drawable.ic_toggle_active);
+        permissionPhoneToggle.setTag(R.drawable.ic_toggle_active);
+        permissionSmsToggle.setImageResource(R.drawable.ic_toggle_active);
+        permissionSmsToggle.setTag(R.drawable.ic_toggle_active);
     }
 
     private void navigationController() {
@@ -111,11 +132,150 @@ public class MySettingsFragment extends AppCompatActivity {
             startActivity(intent);
         });
 
+        permissionEmailToggle.setOnClickListener(view -> {
+            int drawable = (Integer) permissionEmailToggle.getTag();
+            switch(drawable) {
+                case R.drawable.ic_toggle_active:
+                    permissionEmailToggle.setImageResource(R.drawable.ic_toggle_passive);
+                    permissionEmailToggle.setTag(R.drawable.ic_toggle_passive);
+                    break;
+
+                case R.drawable.ic_toggle_passive:
+                    permissionEmailToggle.setImageResource(R.drawable.ic_toggle_active);
+                    permissionEmailToggle.setTag(R.drawable.ic_toggle_active);
+                    break;
+            }
+            updatePermissionCallBack(updatePermissionRequest());
+        });
+
+        permissionPhoneToggle.setOnClickListener(view -> {
+            int drawable = (Integer) permissionPhoneToggle.getTag();
+            switch(drawable) {
+                case R.drawable.ic_toggle_active:
+                    permissionPhoneToggle.setImageResource(R.drawable.ic_toggle_passive);
+                    permissionPhoneToggle.setTag(R.drawable.ic_toggle_passive);
+                    break;
+
+                case R.drawable.ic_toggle_passive:
+                    permissionPhoneToggle.setImageResource(R.drawable.ic_toggle_active);
+                    permissionPhoneToggle.setTag(R.drawable.ic_toggle_active);
+                    break;
+            }
+            updatePermissionCallBack(updatePermissionRequest());
+        });
+
+        permissionNotificationToggle.setOnClickListener(view -> {
+            int drawable = (Integer) permissionNotificationToggle.getTag();
+            switch(drawable) {
+                case R.drawable.ic_toggle_active:
+                    permissionNotificationToggle.setImageResource(R.drawable.ic_toggle_passive);
+                    permissionNotificationToggle.setTag(R.drawable.ic_toggle_passive);
+                    break;
+
+                case R.drawable.ic_toggle_passive:
+                    permissionNotificationToggle.setImageResource(R.drawable.ic_toggle_active);
+                    permissionNotificationToggle.setTag(R.drawable.ic_toggle_active);
+                    break;
+            }
+            updatePermissionCallBack(updatePermissionRequest());
+        });
+
+        permissionSmsToggle.setOnClickListener(view -> {
+            int drawable = (Integer) permissionSmsToggle.getTag();
+            switch(drawable) {
+                case R.drawable.ic_toggle_active:
+                    permissionSmsToggle.setImageResource(R.drawable.ic_toggle_passive);
+                    permissionSmsToggle.setTag(R.drawable.ic_toggle_passive);
+                    break;
+
+                case R.drawable.ic_toggle_passive:
+                    permissionSmsToggle.setImageResource(R.drawable.ic_toggle_active);
+                    permissionSmsToggle.setTag(R.drawable.ic_toggle_active);
+                    break;
+            }
+            updatePermissionCallBack(updatePermissionRequest());
+        });
+    }
+
+    public DefaultRequest createRequest() {
+        DefaultRequest defaultRequest = new DefaultRequest();
+        defaultRequest.setToken("korayaman");
+        return defaultRequest;
+    }
+
+    public void myAccountCallBack(DefaultRequest defaultRequest) {
+        Call<MyAccountResponse> call = ApiClient.getApiClient().myAccount(defaultRequest);
+
+        call.enqueue(new Callback<MyAccountResponse>() {
+            @Override
+            public void onResponse(Call<MyAccountResponse> call, Response<MyAccountResponse> response) {
+                MyAccountResponse myAccountResponse = response.body();
+                if (myAccountResponse != null && !myAccountResponse.getCepTel().isEmpty()) {
+                    Toast.makeText(MySettingsFragment.this, "Hesap bilgileri sağlandı", Toast.LENGTH_LONG).show();
+                    switch(myAccountResponse.getPermissionEmail()) {
+                        case "0":
+                            permissionEmailToggle.setImageResource(R.drawable.ic_toggle_passive);
+                            permissionEmailToggle.setTag(R.drawable.ic_toggle_passive);
+                            break;
+
+                        case "1":
+                            permissionEmailToggle.setImageResource(R.drawable.ic_toggle_active);
+                            permissionEmailToggle.setTag(R.drawable.ic_toggle_active);
+                            break;
+                    }
+
+                    switch(myAccountResponse.getPermissionPhone()) {
+                        case "0":
+                            permissionPhoneToggle.setImageResource(R.drawable.ic_toggle_passive);
+                            permissionPhoneToggle.setTag(R.drawable.ic_toggle_passive);
+                            break;
+
+                        case "1":
+                            permissionPhoneToggle.setImageResource(R.drawable.ic_toggle_active);
+                            permissionPhoneToggle.setTag(R.drawable.ic_toggle_active);
+                            break;
+                    }
+
+                    switch(myAccountResponse.getPermissionNotification()) {
+                        case "0":
+                            permissionNotificationToggle.setImageResource(R.drawable.ic_toggle_passive);
+                            permissionNotificationToggle.setTag(R.drawable.ic_toggle_passive);
+                            break;
+
+                        case "1":
+                            permissionNotificationToggle.setImageResource(R.drawable.ic_toggle_active);
+                            permissionNotificationToggle.setTag(R.drawable.ic_toggle_active);
+                            break;
+                    }
+
+                    switch(myAccountResponse.getPermissionSms()) {
+                        case "0":
+                            permissionSmsToggle.setImageResource(R.drawable.ic_toggle_passive);
+                            permissionSmsToggle.setTag(R.drawable.ic_toggle_passive);
+                            break;
+
+                        case "1":
+                            permissionSmsToggle.setImageResource(R.drawable.ic_toggle_active);
+                            permissionSmsToggle.setTag(R.drawable.ic_toggle_active);
+                            break;
+                    }
+
+
+                } else {
+                    Toast.makeText(MySettingsFragment.this, "Hesap bilgileri sağlanamadı!", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MyAccountResponse> call, Throwable t) {
+                System.out.println(t);
+            }
+        });
     }
 
     public DeleteAccountRequest deleteAccountRequest(String id) {
         DeleteAccountRequest deleteAccountRequest = new DeleteAccountRequest();
-        deleteAccountRequest.setToken("korayamana");
+        deleteAccountRequest.setToken("korayaman");
         deleteAccountRequest.setSil(id);
         return deleteAccountRequest;
     }
@@ -142,15 +302,41 @@ public class MySettingsFragment extends AppCompatActivity {
         });
     }
 
-    public UpdatePermissionRequest updatePermissionRequest(String mailOffer, String mailNotification, String mailBulletin, String smsOffer, String smsNotification) {
+    public UpdatePermissionRequest updatePermissionRequest() {
+        String permissionMail, permissionNotification, permissionSms, permissionPhone;
+
+        int drawableSms = (Integer) permissionSmsToggle.getTag();
+        int drawableNotification = (Integer) permissionNotificationToggle.getTag();
+        int drawableEmail = (Integer) permissionEmailToggle.getTag();
+        int drawablePhone = (Integer) permissionPhoneToggle.getTag();
+
+        permissionNotification = drawableCheck(drawableNotification);
+        permissionMail = drawableCheck(drawableEmail);
+        permissionPhone = drawableCheck(drawablePhone);
+        permissionSms = drawableCheck(drawableSms);
         UpdatePermissionRequest updatePermissionRequest = new UpdatePermissionRequest();
-        updatePermissionRequest.setToken("korayamana");
-        updatePermissionRequest.setIzin_mail_kampanya(mailOffer);
-        updatePermissionRequest.setIzin_mail_bildirim(mailNotification);
-        updatePermissionRequest.setIzin_mail_bulten(mailBulletin);
-        updatePermissionRequest.setIzin_sms_kampanya(smsOffer);
-        updatePermissionRequest.setIzin_sms_kampanya(smsOffer);
+        updatePermissionRequest.setToken("korayaman");
+        updatePermissionRequest.setEposta(permissionMail);
+        updatePermissionRequest.setTelefon(permissionPhone);
+        updatePermissionRequest.setSms(permissionSms);
+        updatePermissionRequest.setBildirim(permissionNotification);
+
         return updatePermissionRequest;
+    }
+
+    private String drawableCheck (int drawable) {
+        String permission = "0";
+        switch(drawable) {
+            case R.drawable.ic_toggle_active:
+                permission = "1";
+                break;
+
+            case R.drawable.ic_toggle_passive:
+                permission = "0";
+                break;
+        }
+
+        return permission;
     }
 
     public void updatePermissionCallBack(UpdatePermissionRequest updatePermissionRequest) {
@@ -160,9 +346,8 @@ public class MySettingsFragment extends AppCompatActivity {
             @Override
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
                 DefaultResponse defaultResponse = response.body();
-                if (defaultResponse.getResult().toString().equals("ok")) {
-                    Toast.makeText(MySettingsFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
-
+                if (defaultResponse.getResult().toString().equals("OK")) {
+                    Toast.makeText(MySettingsFragment.this, "İzinleriniz güncellendi", Toast.LENGTH_LONG).show();
                 } else {
                     Toast.makeText(MySettingsFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
                 }

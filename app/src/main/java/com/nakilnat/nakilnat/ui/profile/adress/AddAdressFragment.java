@@ -1,10 +1,17 @@
 package com.nakilnat.nakilnat.ui.profile.adress;
 
+import android.Manifest;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,17 +20,29 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.karumi.dexter.Dexter;
+import com.karumi.dexter.PermissionToken;
+import com.karumi.dexter.listener.PermissionDeniedResponse;
+import com.karumi.dexter.listener.PermissionGrantedResponse;
+import com.karumi.dexter.listener.PermissionRequest;
+import com.karumi.dexter.listener.single.PermissionListener;
 import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.base.ApiClient;
 import com.nakilnat.nakilnat.models.request.AddAdressRequest;
 import com.nakilnat.nakilnat.models.request.DefaultRequest;
+import com.nakilnat.nakilnat.models.request.GetDistrictRequest;
 import com.nakilnat.nakilnat.models.request.UpdateAdressRequest;
 import com.nakilnat.nakilnat.models.response.DefaultResponse;
+import com.nakilnat.nakilnat.models.response.GetDistrictResponse;
+import com.nakilnat.nakilnat.models.response.GetProvinceResponse;
 import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
 import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
 import com.nakilnat.nakilnat.ui.profile.ProfilePageFragment;
+import com.nakilnat.nakilnat.ui.profile.map.MapFragment;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,39 +52,180 @@ public class AddAdressFragment extends AppCompatActivity {
 
     BottomNavigationView bottomBar;
     CardView bottomFab;
-    TextView topBarText, topBarRightText;
-    ImageView topBarBack, topBarNotification;
+    TextView topBarText, addAdressText;
+    ImageView topBarBack, addAdressIcon;
+    Button addAddressButton;
+    boolean isPermissionGranter;
+
+    private String[] provincesStartFirst = {"İl"};
+    private String[] districtsStartFirst = {"İlçe"};
+    private String[] districtsEndFirst = {"İlçe"};
+
+    private List<GetProvinceResponse> provincesRes;
+    private List<GetDistrictResponse> firstGetDistrictsRes;
+
+    private Spinner firstGetProvince, firstGetDistrict;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_add_adress);
         topBarInit();
-        pageInit();
         bottomBarSetup();
-    }
 
-    private void pageInit() {
+        addAdressIcon = (ImageView) findViewById(R.id.add_adress_with_map);
+        addAdressText = (TextView) findViewById(R.id.add_adress_with_map_text);
 
-        //addAdressCallBack(createRequest());
-
-        String[] COUNTRIES = new String[]{
-                "Afghanistan", "Albania", "Algeria", "Andorra", "Angola"
-        };
-
-        /*AutoCompleteTextView editText = findViewById(R.id.my_inv_nickname_edt);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                R.layout.custom_list_item, R.id.text_view_list_item, COUNTRIES);
-        editText.setAdapter(adapter);
-        editText.setOnClickListener(new View.OnClickListener() {
-
+        addAdressIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editText.showDropDown();
+                getLocation();
             }
         });
-         */
+
+        addAdressText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getLocation();
+            }
+        });
+
+        addAddressButton = (Button) findViewById(R.id.add_address_button);
+
+        addAddressButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        initProvince();
+        initProvincesAndDistricts();
+        initDistrictsComboboxFirst(true);
+        initDistrictsComboboxEndFirst(true);
+
+    }
+
+    public void initProvince() {
+        provincesStartFirst = new String[1];
+        provincesStartFirst[0] = "İl";
+
+        Call<List<GetProvinceResponse>> call = ApiClient.getApiClient().getProvince();
+
+        call.enqueue(new Callback<List<GetProvinceResponse>>() {
+            @Override
+            public void onResponse(Call<List<GetProvinceResponse>> call, Response<List<GetProvinceResponse>> response) {
+                provincesRes = response.body();
+                provincesStartFirst = new String[provincesRes.size()+1];
+                provincesStartFirst[0] = "İl";
+                if (provincesRes != null && provincesRes.size() > 0) {
+                    for (int i = 0; i< provincesRes.size(); i++){
+                        provincesStartFirst[i+1] = provincesRes.get(i).getAd();
+                    }
+                }
+                initProvinceCombobox();
+            }
+
+            @Override
+            public void onFailure(Call<List<GetProvinceResponse>> call, Throwable t) {
+                System.out.println(t);
+            }
+        });
+    }
+
+    private void initProvinceCombobox(){
+        ArrayAdapter firstGetProvinceAdpt = new ArrayAdapter(this, R.layout.custom_spinner_item, provincesStartFirst);
+        firstGetProvinceAdpt.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+
+        firstGetProvince.setAdapter(firstGetProvinceAdpt);
+    }
+
+    private void initProvincesAndDistricts() {
+        firstGetDistrict = findViewById(R.id.add_address_district);
+        firstGetProvince = findViewById(R.id.add_address_city);
+        firstGetProvince.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                //0 seçiniz
+                if(i != 0 ){
+                    Call<List<GetDistrictResponse>> call = ApiClient.getApiClient().getDistrict(new GetDistrictRequest(provincesRes.get(i-1).getId()));
+
+                    call.enqueue(new Callback<List<GetDistrictResponse>>() {
+                        @Override
+                        public void onResponse(Call<List<GetDistrictResponse>> call, Response<List<GetDistrictResponse>> response) {
+                            firstGetDistrictsRes = response.body();
+                            districtsStartFirst = new String[firstGetDistrictsRes.size()+1];
+                            districtsStartFirst[0] = "İlçe";
+                            if (firstGetDistrictsRes != null && firstGetDistrictsRes.size() > 0) {
+                                for (int i = 0; i< firstGetDistrictsRes.size(); i++){
+                                    districtsStartFirst[i+1] = firstGetDistrictsRes.get(i).getAd();
+                                }
+                            }
+                            initDistrictsComboboxFirst(false);
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<GetDistrictResponse>> call, Throwable t) {
+                            initDistrictsComboboxFirst(true);
+                        }
+                    });
+                }
+                else{
+                    initDistrictsComboboxFirst(true);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+    }
+
+    private void initDistrictsComboboxFirst(Boolean setDefault) {
+        if(setDefault){
+            districtsStartFirst = new String[1];
+            districtsStartFirst[0] = "İlçe";
+        }
+        ArrayAdapter districtAdpt = new ArrayAdapter(this, R.layout.custom_spinner_item, districtsStartFirst);
+        districtAdpt.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+        firstGetDistrict.setAdapter(districtAdpt);
+    }
+
+    private void initDistrictsComboboxEndFirst(Boolean setDefault) {
+        if(setDefault){
+            districtsEndFirst = new String[1];
+            districtsEndFirst[0] = "İlçe";
+        }
+        ArrayAdapter districtAdpt = new ArrayAdapter(this, R.layout.custom_spinner_item, districtsEndFirst);
+        districtAdpt.setDropDownViewResource(R.layout.custom_spinner_dropdown_item);
+
+    }
+
+    private void getLocation() {
+        Dexter.withContext(this).withPermission(Manifest.permission.ACCESS_FINE_LOCATION).withListener(new PermissionListener() {
+            @Override
+            public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                isPermissionGranter = true;
+                Toast.makeText(AddAdressFragment.this, "Lokasyon izni alındı", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AddAdressFragment.this, MapFragment.class);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+                Toast.makeText(AddAdressFragment.this, "Lokasyon izni reddedildi", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                permissionToken.continuePermissionRequest();
+            }
+        }).check();
+
+
     }
 
     public AddAdressRequest createRequest(String baslik, String il, String ilce, String sokak, String mahalle, String bina, String kat, String daire, String adresTarif, String adres) {
@@ -84,7 +244,7 @@ public class AddAdressFragment extends AppCompatActivity {
         return addAdressRequest;
     }
 
-    public void addAdressCallBack(DefaultRequest defaultRequest) {
+   /* public void addAdressCallBack(DefaultRequest defaultRequest) {
         Call<DefaultResponse> call = ApiClient.getApiClient().myAdressList(defaultRequest);
 
         call.enqueue(new Callback<DefaultResponse>() {
@@ -107,6 +267,8 @@ public class AddAdressFragment extends AppCompatActivity {
             }
         });
     }
+
+    */
 
     public UpdateAdressRequest updateAdressRequest(String id, String baslik, String il, String ilce, String sokak, String mahalle, String bina, String kat, String daire, String adresTarif, String adres) {
         UpdateAdressRequest updateAdressRequest = new UpdateAdressRequest();

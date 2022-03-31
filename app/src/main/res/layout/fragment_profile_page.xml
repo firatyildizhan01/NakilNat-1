@@ -50,6 +50,14 @@
                             android:id="@+id/profile_user_image">
                         </ImageView>
                     </androidx.cardview.widget.CardView>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/star3"
+                        android:id="@+id/profile_star">
+                    </ImageView>
                     <TextView
                         android:paddingTop="5dp"
                         android:layout_width="wrap_content"

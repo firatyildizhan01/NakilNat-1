@@ -1,8 +1,7 @@
-package com.nakilnat.nakilnat.ui.profile;
-
-import android.os.Bundle;
+package com.nakilnat.nakilnat.ui.profile.myads;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,39 +10,55 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.nakilnat.nakilnat.R;
-import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
+import com.nakilnat.nakilnat.models.response.TransportList;
 import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
+import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
+import com.nakilnat.nakilnat.ui.profile.myads.MyAdsFragment;
+
+import java.util.ArrayList;
 
 
-public class MyOffersFragment extends AppCompatActivity {
+public class ContinueAdsFragment extends AppCompatActivity {
+
     BottomNavigationView bottomBar;
     CardView bottomFab;
-    CardView sendOffers, incomingOffers;
     TextView topBarText;
     ImageView topBarBack;
+    private ArrayList<TransportList> transportList;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_my_ads);
-        bottomBarSetup();
-        InitSubContents();
+        setContentView(R.layout.fragment_continue_ads);
         topBarInit();
+        pageInit();
+        bottomBarSetup();
     }
 
-    private void InitSubContents() {
-        //region initialize sub menus
-        sendOffers = (CardView) findViewById(R.id.my_offers_send);
-        incomingOffers = (CardView) findViewById(R.id.my_offers_incoming);
+    private void pageInit() {
+        transportList = new ArrayList<>();
+        transportList.add(new TransportList("Kayseri", "Manisa", "500 ₺", "Demir", "Taşıma devam ediyor"));
+        transportList.add(new TransportList("Adana", "Rize", "1500 ₺", "Pamuk", "Taşıma tamamlandı"));
+        transportList.add(new TransportList("Giresun", "İzmir", "6500 ₺", "Ceviz", "Taşıma başlamadı"));
+
+        //setting adapter and listview
+        AdsAdapter adapter = new AdsAdapter(transportList, this);
+        RecyclerView listview = findViewById(R.id.my_continue_ads_list);
+        adapter.getItemCount();
+        listview.setAdapter(adapter);
+        listview.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void topBarInit() {
         topBarText = findViewById(R.id.top_bar_title);
-        topBarText.setText("Teklifler");
+        topBarText.setText("Onaylanan ilanlarım");
 
         topBarBack = findViewById(R.id.top_bar_back);
         topBarBack.setVisibility(View.VISIBLE);
@@ -59,7 +74,7 @@ public class MyOffersFragment extends AppCompatActivity {
     private void bottomBarSetup() {
         bottomBar = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         bottomBar.setItemIconTintList(null);
-        bottomBar.setSelectedItemId(R.id.bottomMyShipping);
+        bottomBar.setSelectedItemId(R.id.bottomProfile);
         bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -68,6 +83,7 @@ public class MyOffersFragment extends AppCompatActivity {
 
             }
         });
+
         bottomFab = findViewById(R.id.fab);
         bottomFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +92,7 @@ public class MyOffersFragment extends AppCompatActivity {
                 bottomBar.getMenu().setGroupCheckable(1, false, true);
                 bottomBar.getMenu().setGroupCheckable(2, false, true);
                 bottomBar.getMenu().setGroupCheckable(3, false, true);
-                Intent intent = new Intent(MyOffersFragment.this, ApplicationPageFragment.class);
+                Intent intent = new Intent(ContinueAdsFragment.this, ApplicationPageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
             }
@@ -87,21 +103,23 @@ public class MyOffersFragment extends AppCompatActivity {
         Intent intent;
         switch (itemId) {
             case R.id.bottomHome:
-                intent = new Intent(MyOffersFragment.this, HomePageFragment.class);
+                intent = new Intent(ContinueAdsFragment.this, HomePageFragment.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                break;
+            case R.id.bottomMyShipping:
+                intent = new Intent(ContinueAdsFragment.this, MyShipsFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
             case R.id.bottomAddAds:
-                intent = new Intent(MyOffersFragment.this, AddAdFragment.class);
+                intent = new Intent(ContinueAdsFragment.this, MyAdsFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
             case R.id.bottomProfile:
-                intent = new Intent(MyOffersFragment.this, ProfilePageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
+                finish();
                 break;
-
         }
     }
 

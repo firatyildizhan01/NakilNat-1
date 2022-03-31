@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.nakilnat.nakilnat.R;
+import com.nakilnat.nakilnat.base.ApiClient;
+import com.nakilnat.nakilnat.models.request.DefaultRequest;
+import com.nakilnat.nakilnat.models.response.MyNotificationsResponse;
 import com.nakilnat.nakilnat.models.response.Notification;
 import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
 import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
@@ -23,6 +27,11 @@ import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class MyNotificationsFragment extends AppCompatActivity {
@@ -31,28 +40,47 @@ public class MyNotificationsFragment extends AppCompatActivity {
     CardView bottomFab;
     TextView topBarText;
     ImageView topBarBack;
-    private ArrayList<Notification> notificationList;
+    private List<MyNotificationsResponse> notificationList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_my_notifications);
         topBarInit();
-        pageInit();
         bottomBarSetup();
+        myNotificationsCallBack(createRequest());
     }
 
-    private void pageInit() {
-        notificationList = new ArrayList<>();
-        notificationList.add(new Notification("Üyelik Onay", "19:12", "Nakilnat üyeliğiniz onaylanmıştır."));
-        notificationList.add(new Notification("Teklif Kabul", "18:45", "Teklifin kabul edildi.Taşımaya başlaman için ödeme yapmalısın"));
-        notificationList.add(new Notification("Taşıman Başladı", "16:30", "Ankara-İzmir arası nakliyatın başladı."));
-        //setting adapter and listview
-        NotificationsAdapter adapter = new NotificationsAdapter(notificationList, this);
-        RecyclerView listview = findViewById(R.id.notification_list);
-        adapter.getItemCount();
-        listview.setAdapter(adapter);
-        listview.setLayoutManager(new LinearLayoutManager(this));
+    public DefaultRequest createRequest() {
+        DefaultRequest defaultRequest = new DefaultRequest();
+        defaultRequest.setToken("korayaman");
+        return defaultRequest;
+    }
+
+    public void myNotificationsCallBack(DefaultRequest defaultRequest) {
+        Call<List<MyNotificationsResponse>> call = ApiClient.getApiClient().myNotifications(defaultRequest);
+
+        call.enqueue(new Callback<List<MyNotificationsResponse>>() {
+            @Override
+            public void onResponse(Call<List<MyNotificationsResponse>> call, Response<List<MyNotificationsResponse>> response) {
+                notificationList = response.body();
+                if (response != null && !notificationList.isEmpty()) {
+                    Toast.makeText(MyNotificationsFragment.this, "Bilgilendirmelerim bilgisi sağlandı", Toast.LENGTH_LONG).show();
+                    NotificationsAdapter adapter = new NotificationsAdapter(notificationList, MyNotificationsFragment.this);
+                    RecyclerView listview = findViewById(R.id.notification_list);
+                    adapter.getItemCount();
+                    listview.setAdapter(adapter);
+                    listview.setLayoutManager(new LinearLayoutManager(MyNotificationsFragment.this));
+                } else {
+                    Toast.makeText(MyNotificationsFragment.this, "Değerlendirmelerim bilgisi sağlanamadı!", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<MyNotificationsResponse>> call, Throwable t) {
+                System.out.println(t);
+            }
+        });
     }
 
     private void topBarInit() {

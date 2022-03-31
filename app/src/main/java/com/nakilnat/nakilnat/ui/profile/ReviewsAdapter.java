@@ -4,27 +4,23 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.nakilnat.nakilnat.R;
-import com.nakilnat.nakilnat.models.response.Reviews;
-
+import com.nakilnat.nakilnat.models.response.MyReviewsResponse;
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ViewHolder> {
-    private ArrayList<Reviews> list;
+    private List<MyReviewsResponse> list;
     private Context context;
 
-    public ReviewsAdapter(ArrayList<Reviews> list, Context context) {
+    public ReviewsAdapter(List<MyReviewsResponse> list, Context context) {
         this.list = list;
         this.context = context;
         //this.onItemClickListener = onItemClickListener;
@@ -41,11 +37,11 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Reviews reviews = list.get(position);
+        MyReviewsResponse reviews = list.get(position);
 
-        holder.tvReviewDescription.setText(reviews.getDescription());
-        holder.tvReviewTime.setText(reviews.getDate());
-        holder.tvReviewNameSurname.setText(reviews.getNameSurname());
+        holder.tvReviewDescription.setText(reviews.getReviewDescription());
+        holder.tvReviewTime.setText(reviews.getReviewTime());
+        holder.tvReviewNameSurname.setText(reviews.getReviewUser());
     }
 
     @Override
@@ -67,11 +63,6 @@ public class ReviewsAdapter extends RecyclerView.Adapter<ReviewsAdapter.ViewHold
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-        }
-
-
-        public void bind(final Reviews appMerchant) {
-            tvReviewDescription.setText(appMerchant.getDescription());
         }
     }
 }

@@ -136,6 +136,7 @@
                                 android:textSize="14dp"></TextView>
 
                             <ImageView
+                                android:id="@+id/permission_email_toggle"
                                 android:layout_width="25dp"
                                 android:layout_height="25dp"
                                 android:layout_alignParentRight="true"
@@ -188,6 +189,7 @@
                                 app:tint="@color/gray_500"></ImageView>
 
                             <ImageView
+                                android:id="@+id/permission_notification_toggle"
                                 android:layout_width="25dp"
                                 android:layout_height="25dp"
                                 android:layout_alignParentRight="true"
@@ -231,6 +233,7 @@
 
 
                             <ImageView
+                                android:id="@+id/permission_sms_toggle"
                                 android:layout_width="25dp"
                                 android:layout_height="25dp"
                                 android:layout_alignParentRight="true"
@@ -283,6 +286,7 @@
                                 app:tint="@color/gray_500"></ImageView>
 
                             <ImageView
+                                android:id="@+id/permission_phone_toggle"
                                 android:layout_width="25dp"
                                 android:layout_height="25dp"
                                 android:layout_alignParentRight="true"

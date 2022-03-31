@@ -1,59 +1,64 @@
-package com.nakilnat.nakilnat.ui.profile;
-
-import android.os.Bundle;
+package com.nakilnat.nakilnat.ui.profile.offers;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.constraintlayout.widget.Group;
-import androidx.core.view.WindowCompat;
-import androidx.transition.AutoTransition;
-import androidx.transition.TransitionManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.nakilnat.nakilnat.R;
-import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
+import com.nakilnat.nakilnat.models.response.TransportList;
 import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
+import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
+import com.nakilnat.nakilnat.ui.profile.myads.MyAdsFragment;
+
+import java.util.ArrayList;
 
 
-public class MyAdsFragment extends AppCompatActivity {
+public class IncomingOffersFragment extends AppCompatActivity {
+
     BottomNavigationView bottomBar;
     CardView bottomFab;
-    CardView continuePage, successPage, cancelPage;
     TextView topBarText;
     ImageView topBarBack;
+    private ArrayList<TransportList> transportList;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_my_ads);
-        bottomBarSetup();
-        InitSubContents();
+        setContentView(R.layout.fragment_offers_incoming);
         topBarInit();
+        pageInit();
+        bottomBarSetup();
     }
 
-    private void InitSubContents() {
-        //region initialize sub menus
-        continuePage = (CardView) findViewById(R.id.my_ads_continue);
-        successPage = (CardView) findViewById(R.id.my_ads_success);
-        cancelPage = (CardView) findViewById(R.id.my_ads_cancel);
+    private void pageInit() {
+        transportList = new ArrayList<>();
+        transportList.add(new TransportList("Kayseri", "Manisa", "500 ₺", "Demir", "Taşıma devam ediyor"));
+        transportList.add(new TransportList("Adana", "Rize", "1500 ₺", "Pamuk", "Taşıma tamamlandı"));
+        transportList.add(new TransportList("Giresun", "İzmir", "6500 ₺", "Marul", "Taşıma başlamadı"));
+
+        //setting adapter and listview
+        OffersAdapter adapter = new OffersAdapter(transportList, this);
+        RecyclerView listview = findViewById(R.id.my_offers_incoming_list);
+        adapter.getItemCount();
+        listview.setAdapter(adapter);
+        listview.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void topBarInit() {
         topBarText = findViewById(R.id.top_bar_title);
-        topBarText.setText("İlanlarım");
+        topBarText.setText("Gelen teklifler");
 
         topBarBack = findViewById(R.id.top_bar_back);
         topBarBack.setVisibility(View.VISIBLE);
@@ -69,7 +74,7 @@ public class MyAdsFragment extends AppCompatActivity {
     private void bottomBarSetup() {
         bottomBar = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
         bottomBar.setItemIconTintList(null);
-        bottomBar.setSelectedItemId(R.id.bottomMyShipping);
+        bottomBar.setSelectedItemId(R.id.bottomProfile);
         bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -78,6 +83,7 @@ public class MyAdsFragment extends AppCompatActivity {
 
             }
         });
+
         bottomFab = findViewById(R.id.fab);
         bottomFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +92,7 @@ public class MyAdsFragment extends AppCompatActivity {
                 bottomBar.getMenu().setGroupCheckable(1, false, true);
                 bottomBar.getMenu().setGroupCheckable(2, false, true);
                 bottomBar.getMenu().setGroupCheckable(3, false, true);
-                Intent intent = new Intent(MyAdsFragment.this, ApplicationPageFragment.class);
+                Intent intent = new Intent(IncomingOffersFragment.this, ApplicationPageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
             }
@@ -97,21 +103,23 @@ public class MyAdsFragment extends AppCompatActivity {
         Intent intent;
         switch (itemId) {
             case R.id.bottomHome:
-                intent = new Intent(MyAdsFragment.this, HomePageFragment.class);
+                intent = new Intent(IncomingOffersFragment.this, HomePageFragment.class);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+                break;
+            case R.id.bottomMyShipping:
+                intent = new Intent(IncomingOffersFragment.this, MyShipsFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
             case R.id.bottomAddAds:
-                intent = new Intent(MyAdsFragment.this, AddAdFragment.class);
+                intent = new Intent(IncomingOffersFragment.this, MyAdsFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
             case R.id.bottomProfile:
-                intent = new Intent(MyAdsFragment.this, ProfilePageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
+                finish();
                 break;
-
         }
     }
 

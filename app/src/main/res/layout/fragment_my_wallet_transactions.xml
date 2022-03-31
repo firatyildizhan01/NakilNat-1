@@ -16,12 +16,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_marginTop="60dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="40dp"
         >
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginBottom="30dp"
             >
 
             <LinearLayout

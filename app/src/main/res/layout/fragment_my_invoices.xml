@@ -151,7 +151,7 @@
                     android:id="@+id/my_inv_tax_no_edt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="numberDecimal"
+                    android:inputType="number"
                     android:hint="Vergi Numarası"
                     android:text=""
                     android:textColorHint="@color/black"
@@ -166,20 +166,52 @@
 
         </androidx.cardview.widget.CardView>
 
-        <Button
-            android:id="@+id/register_button"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginEnd="16dp"
-            android:text="Güncelle"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="15sp"
-            android:textAlignment="center"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/button"
-            />
+            android:orientation="horizontal"
+            android:layout_marginTop="13dp">
+
+            <CheckBox
+                android:id="@+id/corporate_member_checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/purple_500"></CheckBox>
+
+            <TextView
+                android:id="@+id/corporate_member_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="-12dp"
+                android:layout_marginTop="12dp"
+                android:layout_toEndOf="@+id/corporate_member_checkBox"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Kurumsal üye olmak istiyorum"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/update_invoice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/button"
+                android:text="Güncelle"
+                android:textAllCaps="false"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </RelativeLayout>
 
 
     </LinearLayout>

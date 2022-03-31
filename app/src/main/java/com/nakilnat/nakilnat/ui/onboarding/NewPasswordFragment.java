@@ -14,6 +14,7 @@ import com.nakilnat.nakilnat.base.ApiClient;
 import com.nakilnat.nakilnat.models.request.NewPasswordRequest;
 import com.nakilnat.nakilnat.models.response.DefaultResponse;
 import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
+import com.nakilnat.nakilnat.ui.profile.MyAccountFragment;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -70,11 +71,12 @@ public class NewPasswordFragment extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
 */
-                    Intent intent = new Intent(NewPasswordFragment.this, ApplicationPageFragment.class);
+                    Toast.makeText(NewPasswordFragment.this, "Şifre belirleme başarılı", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(NewPasswordFragment.this, MyAccountFragment.class);
                     startActivity(intent);
 
                 } else {
-                    //Toast.makeText(LoginFragment.this, loginResponse.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(NewPasswordFragment.this, "Şifre belirleme başarısız!!", Toast.LENGTH_LONG).show();
                 }
             }
 

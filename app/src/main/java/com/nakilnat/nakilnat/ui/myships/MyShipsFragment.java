@@ -36,9 +36,6 @@ public class MyShipsFragment extends AppCompatActivity {
     BottomNavigationView bottomBar;
     CardView bottomFab;
     CardView continuePage, successPage, cancelPage;
-    RelativeLayout accountLayout, offersLayout, burdenLayout;
-    ImageView accountArrow, offersArrow, burdenArrow;
-    Group accountHiddenGroup, offersHiddenGroup, burdenHiddenGroup;
     TextView navigationBarTitle;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,63 +49,26 @@ public class MyShipsFragment extends AppCompatActivity {
         InitSubContents();
 
 
-       /* accountCardView = findViewById(R.id.profile_settings_group);
-        accountLayout = findViewById(R.id.profile_settings);
-        accountArrow = findViewById(R.id.iconSettingsArrow);
-        accountHiddenGroup = findViewById(R.id.settings_card_group);
-
-        offersCardView = findViewById(R.id.profile_offers_group);
-        offersLayout = findViewById(R.id.profile_offers);
-        offersArrow = findViewById(R.id.iconOffersArrow);
-        offersHiddenGroup = findViewById(R.id.offers_card_group);
-
-        burdenCardView = findViewById(R.id.profile_burdens_group);
-        burdenLayout = findViewById(R.id.profile_burdens);
-        burdenArrow = findViewById(R.id.iconburdensArrow);
-        burdenHiddenGroup = findViewById(R.id.burdens_card_group);
-
+        continuePage = findViewById(R.id.my_ships_continue);
+        successPage = findViewById(R.id.my_ships_success);
+        cancelPage = findViewById(R.id.my_ships_cancel);
         AutoTransition autoTransition = new AutoTransition();
         autoTransition.setDuration(0);
 
-        accountLayout.setOnClickListener(view -> {
-            if(accountHiddenGroup.getVisibility() == View.VISIBLE){
-                TransitionManager.beginDelayedTransition(accountCardView, autoTransition);
-                accountHiddenGroup.setVisibility(View.GONE);
-                accountArrow.setImageResource(R.drawable.ic_profile_arrow_down);
-            }
-            else {
-                TransitionManager.beginDelayedTransition(accountCardView, new AutoTransition());
-                accountHiddenGroup.setVisibility(View.VISIBLE);
-                accountArrow.setImageResource(R.drawable.ic_profile_arrow_up);
-            }
+        continuePage.setOnClickListener(view -> {
+            Intent intent = new Intent(MyShipsFragment.this, ContinueShipsFragment.class);
+            startActivity(intent);
         });
 
-        offersLayout.setOnClickListener(view -> {
-            if(offersHiddenGroup.getVisibility() == View.VISIBLE){
-                TransitionManager.beginDelayedTransition(offersCardView, autoTransition);
-                offersHiddenGroup.setVisibility(View.GONE);
-                offersArrow.setImageResource(R.drawable.ic_profile_arrow_down);
-            }
-            else {
-                TransitionManager.beginDelayedTransition(offersCardView, new AutoTransition());
-                offersHiddenGroup.setVisibility(View.VISIBLE);
-                offersArrow.setImageResource(R.drawable.ic_profile_arrow_up);
-            }
+        successPage.setOnClickListener(view -> {
+            Intent intent = new Intent(MyShipsFragment.this, ContinueShipsFragment.class);
+            startActivity(intent);
         });
 
-        burdenLayout.setOnClickListener(view -> {
-            if(burdenHiddenGroup.getVisibility() == View.VISIBLE){
-                TransitionManager.beginDelayedTransition(burdenCardView, autoTransition);
-                burdenHiddenGroup.setVisibility(View.GONE);
-                burdenArrow.setImageResource(R.drawable.ic_profile_arrow_down);
-            }
-            else {
-                TransitionManager.beginDelayedTransition(burdenCardView, new AutoTransition());
-                burdenHiddenGroup.setVisibility(View.VISIBLE);
-                burdenArrow.setImageResource(R.drawable.ic_profile_arrow_up);
-            }
+        cancelPage.setOnClickListener(view -> {
+            Intent intent = new Intent(MyShipsFragment.this, ContinueShipsFragment.class);
+            startActivity(intent);
         });
-*/
     }
 
     private void InitSubContents() {
@@ -116,15 +76,14 @@ public class MyShipsFragment extends AppCompatActivity {
         continuePage = (CardView) findViewById(R.id.my_ships_continue);
         successPage = (CardView) findViewById(R.id.my_ships_success);
         cancelPage = (CardView) findViewById(R.id.my_ships_cancel);
-        //endregion
 
-        //region set click actions
-
-
-        //endregion
-
-
-
+        continuePage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyShipsFragment.this, ApplicationPageFragment.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void bottomBarSetup() {

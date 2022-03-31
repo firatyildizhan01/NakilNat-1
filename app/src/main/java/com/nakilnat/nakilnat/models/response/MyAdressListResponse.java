@@ -1,33 +1,52 @@
 package com.nakilnat.nakilnat.models.response;
 
-public class MyAdressListResponse {
-    private String id;
-    private String uyeId;
-    private String baslik;
-    private String il;
-    private String ilce;
-    private String sokak;
-    private String mahalle;
-    private String bina;
-    private String kat;
-    private String daire;
-    private String adresTarif;
-    private String adres;
+import com.google.gson.annotations.SerializedName;
 
-    public MyAdressListResponse(String id, String uyeId, String baslik, String il, String ilce, String sokak, String mahalle, String bina, String kat, String daire, String adresTarif, String adres) {
-        this.id = id;
-        this.uyeId = uyeId;
-        this.baslik = baslik;
-        this.il = il;
-        this.ilce = ilce;
-        this.sokak = sokak;
-        this.mahalle = mahalle;
-        this.bina = bina;
-        this.kat = kat;
-        this.daire = daire;
-        this.adresTarif = adresTarif;
-        this.adres = adres;
-    }
+public class MyAdressListResponse {
+    @SerializedName("id")
+    private String id;
+
+    @SerializedName("uyeID")
+    private String userId;
+
+    @SerializedName("baslik")
+    private String adressHeader;
+
+    @SerializedName("il")
+    private String adressCity;
+
+    @SerializedName("ilce")
+    private String adressDistrict;
+
+    @SerializedName("sokak")
+    private String adressStreet;
+
+    @SerializedName("mahalle")
+    private String adressNeighborhood;
+
+    @SerializedName("bina")
+    private String adressBuildingNo;
+
+    @SerializedName("kat")
+    private String adressFloor;
+
+    @SerializedName("daire")
+    private String adressApertment;
+
+    @SerializedName("adresTarif")
+    private String adressDescription;
+
+    @SerializedName("adres")
+    private String adress;
+
+    @SerializedName("yetkili")
+    private String adressOfficial;
+
+    @SerializedName("tel")
+    private String adressPhoneNumber;
+
+    @SerializedName("google")
+    private String adressGoogle;
 
     public String getId() {
         return id;
@@ -37,91 +56,115 @@ public class MyAdressListResponse {
         this.id = id;
     }
 
-    public String getUyeId() {
-        return uyeId;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUyeId(String uyeId) {
-        this.uyeId = uyeId;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getBaslik() {
-        return baslik;
+    public String getAdressHeader() {
+        return adressHeader;
     }
 
-    public void setBaslik(String baslik) {
-        this.baslik = baslik;
+    public void setAdressHeader(String adressHeader) {
+        this.adressHeader = adressHeader;
     }
 
-    public String getIl() {
-        return il;
+    public String getAdressCity() {
+        return adressCity;
     }
 
-    public void setIl(String il) {
-        this.il = il;
+    public void setAdressCity(String adressCity) {
+        this.adressCity = adressCity;
     }
 
-    public String getIlce() {
-        return ilce;
+    public String getAdressDistrict() {
+        return adressDistrict;
     }
 
-    public void setIlce(String ilce) {
-        this.ilce = ilce;
+    public void setAdressDistrict(String adressDistrict) {
+        this.adressDistrict = adressDistrict;
     }
 
-    public String getSokak() {
-        return sokak;
+    public String getAdressStreet() {
+        return adressStreet;
     }
 
-    public void setSokak(String sokak) {
-        this.sokak = sokak;
+    public void setAdressStreet(String adressStreet) {
+        this.adressStreet = adressStreet;
     }
 
-    public String getMahalle() {
-        return mahalle;
+    public String getAdressNeighborhood() {
+        return adressNeighborhood;
     }
 
-    public void setMahalle(String mahalle) {
-        this.mahalle = mahalle;
+    public void setAdressNeighborhood(String adressNeighborhood) {
+        this.adressNeighborhood = adressNeighborhood;
     }
 
-    public String getBina() {
-        return bina;
+    public String getAdressBuildingNo() {
+        return adressBuildingNo;
     }
 
-    public void setBina(String bina) {
-        this.bina = bina;
+    public void setAdressBuildingNo(String adressBuildingNo) {
+        this.adressBuildingNo = adressBuildingNo;
     }
 
-    public String getKat() {
-        return kat;
+    public String getAdressFloor() {
+        return adressFloor;
     }
 
-    public void setKat(String kat) {
-        this.kat = kat;
+    public void setAdressFloor(String adressFloor) {
+        this.adressFloor = adressFloor;
     }
 
-    public String getDaire() {
-        return daire;
+    public String getAdressApertment() {
+        return adressApertment;
     }
 
-    public void setDaire(String daire) {
-        this.daire = daire;
+    public void setAdressApertment(String adressApertment) {
+        this.adressApertment = adressApertment;
     }
 
-    public String getAdresTarif() {
-        return adresTarif;
+    public String getAdressDescription() {
+        return adressDescription;
     }
 
-    public void setAdresTarif(String adresTarif) {
-        this.adresTarif = adresTarif;
+    public void setAdressDescription(String adressDescription) {
+        this.adressDescription = adressDescription;
     }
 
-    public String getAdres() {
-        return adres;
+    public String getAdress() {
+        return adress;
     }
 
-    public void setAdres(String adres) {
-        this.adres = adres;
+    public void setAdress(String adress) {
+        this.adress = adress;
+    }
+
+    public String getAdressOfficial() {
+        return adressOfficial;
+    }
+
+    public void setAdressOfficial(String adressOfficial) {
+        this.adressOfficial = adressOfficial;
+    }
+
+    public String getAdressPhoneNumber() {
+        return adressPhoneNumber;
+    }
+
+    public void setAdressPhoneNumber(String adressPhoneNumber) {
+        this.adressPhoneNumber = adressPhoneNumber;
+    }
+
+    public String getAdressGoogle() {
+        return adressGoogle;
+    }
+
+    public void setAdressGoogle(String adressGoogle) {
+        this.adressGoogle = adressGoogle;
     }
 }

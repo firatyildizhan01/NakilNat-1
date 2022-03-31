@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -44,6 +45,7 @@ public class MyInvoicesFragment extends AppCompatActivity {
     TextView topBarText;
     ImageView topBarBack;
     EditText nickName, address, tax, taxNo;
+    Button updateInvoice;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,9 +57,19 @@ public class MyInvoicesFragment extends AppCompatActivity {
         invoiceCallback(createRequest());
     }
 
+   /* private String isCorporateChecked() {
+        if (corporateMemberCheckBox.isChecked()) {
+            return "1";
+        } else {
+            return "2";
+        }
+    }
+
+    */
+
     public DefaultRequest createRequest() {
         DefaultRequest defaultRequest = new DefaultRequest();
-        defaultRequest.setToken("akorayaman");
+        defaultRequest.setToken("korayaman");
         return defaultRequest;
     }
 
@@ -69,22 +81,26 @@ public class MyInvoicesFragment extends AppCompatActivity {
             public void onResponse(Call<MyInvoiceResponse> call, Response<MyInvoiceResponse> response) {
                 MyInvoiceResponse myInvoiceResponse = response.body();
                 if (myInvoiceResponse.getId() != null) {
-                    Toast.makeText(MyInvoicesFragment.this, myInvoiceResponse.getId().toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(MyInvoicesFragment.this, "Fatura bilgileriniz alındı", Toast.LENGTH_LONG).show();
+                    nickName.setText(myInvoiceResponse.getUnvan());
+                    address.setText(myInvoiceResponse.getAdres());
+                    tax.setText(myInvoiceResponse.getVergiDaire());
+                    taxNo.setText(myInvoiceResponse.getVergiNo());
                 } else {
-                    Toast.makeText(MyInvoicesFragment.this, "response null", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MyInvoicesFragment.this, "Kayıtlı fatura bulunamamıştır!", Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<MyInvoiceResponse> call, Throwable t) {
-                System.out.println(t);
+                Toast.makeText(MyInvoicesFragment.this, "Servis hatası!", Toast.LENGTH_LONG).show();
             }
         });
     }
 
     public UpdateInvoiceRequest updateRequest(String unvan, String adres, String vergiDaire, String vergiNo) {
         UpdateInvoiceRequest updateRequest = new UpdateInvoiceRequest();
-        updateRequest.setToken("akorayaman");
+        updateRequest.setToken("korayaman");
         updateRequest.setUnvan(unvan);
         updateRequest.setAdres(adres);
         updateRequest.setVergidaire(vergiDaire);
@@ -119,31 +135,14 @@ public class MyInvoicesFragment extends AppCompatActivity {
         address = findViewById(R.id.my_inv_address_edt);
         tax = findViewById(R.id.my_inv_tax_edt);
         taxNo = findViewById(R.id.my_inv_tax_no_edt);
+        updateInvoice = findViewById(R.id.update_invoice);
 
-
-        String[] COUNTRIES = new String[]{
-                "Afghanistan", "Albania", "Algeria", "Andorra", "Angola"
-        };
-
-
-        AutoCompleteTextView editText = findViewById(R.id.my_inv_nickname_edt);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                R.layout.custom_list_item, R.id.text_view_list_item, COUNTRIES);
-        editText.setAdapter(adapter);
-        editText.setOnClickListener(new View.OnClickListener() {
-
+        updateInvoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                editText.showDropDown();
-
+                updateInvoiceCallback(updateRequest(nickName.getText().toString(), address.getText().toString(), tax.getText().toString(), taxNo.getText().toString()));
             }
-
         });
-
-
-
     }
 
     private void topBarInit() {

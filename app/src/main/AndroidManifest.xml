@@ -5,6 +5,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <application
         android:allowBackup="true"
@@ -17,10 +19,12 @@
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value= "@string/map_key"/>
         <activity android:name=".ui.profile.ProfilePageFragment"></activity>
-        <activity android:name=".ui.profile.MapFragment"></activity>
+        <activity android:name=".ui.profile.map.MapFragment"></activity>
         <activity android:name=".ui.profile.ReviewFragment"></activity>
-        <activity android:name=".ui.profile.MyAdsFragment"></activity>
-        <activity android:name=".ui.profile.MyOffersFragment"></activity>
+        <activity android:name=".ui.profile.myads.MyAdsFragment"></activity>
+        <activity android:name=".ui.profile.myads.ContinueAdsFragment"></activity>
+        <activity android:name=".ui.profile.offers.MyOffersFragment"></activity>
+        <activity android:name=".ui.profile.offers.IncomingOffersFragment"></activity>
         <activity android:name=".ui.profile.adress.AddAdressFragment"></activity>
         <activity android:name=".ui.profile.adress.MyAdressListFragment"></activity>
         <activity android:name=".ui.profile.MyNotificationsFragment"></activity>
@@ -34,11 +38,16 @@
         <activity android:name=".ui.application.ApplicationPageFragment"></activity>
         <activity android:name=".ui.addad.AddAdFragment"
                   android:windowSoftInputMode="stateVisible|adjustPan"></activity>
+    <activity android:name=".ui.addad.AddAdStepCargoDetail"
+        android:windowSoftInputMode="stateVisible|adjustPan"></activity>
         <activity android:name=".ui.myships.MyShipsFragment"></activity>
+        <activity android:name=".ui.myships.ShipsStepsFragment"></activity>
+        <activity android:name=".ui.myships.ContinueShipsFragment"></activity>
         <activity android:name=".ui.home.HomePageFragment"></activity>
         <activity android:name=".ui.onboarding.LoginFragment"></activity>
         <activity android:name=".ui.onboarding.PhoneNumberFragment"></activity>
         <activity android:name=".ui.onboarding.SmsVerificationFragment"></activity>
+        <activity android:name=".ui.onboarding.RememberPasswordSmsVerification"></activity>
         <activity android:name=".ui.onboarding.NewPasswordFragment"></activity>
         <activity android:name=".ui.onboarding.RegisterFragment"></activity>
         <activity android:name=".ui.onboarding.OnboardingFragment"

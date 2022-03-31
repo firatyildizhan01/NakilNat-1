@@ -2,8 +2,14 @@ package com.nakilnat.nakilnat.ui.onboarding;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.TextPaint;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
@@ -29,11 +35,13 @@ public class RegisterFragment extends AppCompatActivity {
 
     Button login;
     EditText nameSurname, phoneNumber, email, password, repassword;
-    RadioButton radioWorker, radioEmployer;
     TextView loginSignup;
     WebView agreementPopupText;
     CheckBox agreementCheckBox;
     private Dialog dialog;
+    private static final String agreement_Kvkk = "https://nakilnat.com/sayfa?link=Ki%C5%9Fisel%20Verilerin%20Korunmas%C4%B1";
+    private static final String agreement_Cookie = "https://nakilnat.com/sayfa?link=cerezpolitikasi";
+    private static final String agreement_Terms_Of_Use = "https://nakilnat.com/sayfa?link=kullanimKosullari";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,42 +53,98 @@ public class RegisterFragment extends AppCompatActivity {
         email = (EditText)findViewById(R.id.register_email);
         password = (EditText)findViewById(R.id.register_password);
         repassword = (EditText)findViewById(R.id.register_repassword);
-
-        radioWorker = (RadioButton)findViewById(R.id.radioWorker);
-        radioEmployer = (RadioButton)findViewById(R.id.radioEmployer);
         agreementCheckBox = (CheckBox)findViewById(R.id.agreement_checkBox);
         login = (Button)findViewById(R.id.register_button);
-
         TextView textView = findViewById(R.id.agreement_textView);
 
-        textView.setOnClickListener(new View.OnClickListener() {
-                                        @Override
-                                        public void onClick(View v) {
-                                        agreementDialog();
-                                        }
-                                    });
+        SpannableString ss = new SpannableString("Kullanım Koşulları'nı, Çerez Politikası'nı ve Aydınlatma Metni'ni okudum,onaylıyorum");
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View textView) {
+                agreementDialog(agreement_Terms_Of_Use);
+            }
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setUnderlineText(false);
+            }
+        };
+
+        ClickableSpan clickableSpan2 = new ClickableSpan() {
+            @Override
+            public void onClick(View textView) {
+                agreementDialog(agreement_Cookie);
+            }
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setUnderlineText(false);
+            }
+        };
+
+        ClickableSpan clickableSpan3 = new ClickableSpan() {
+            @Override
+            public void onClick(View textView) {
+                agreementDialog(agreement_Kvkk);
+            }
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setUnderlineText(false);
+            }
+        };
+
+        ClickableSpan clickableSpan4 = new ClickableSpan() {
+            @Override
+            public void onClick(View textView) {
+
+            }
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setUnderlineText(false);
+                ds.setColor(Color.BLACK);
+            }
+        };
+
+        ClickableSpan clickableSpan5 = new ClickableSpan() {
+            @Override
+            public void onClick(View textView) {
+
+            }
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                super.updateDrawState(ds);
+                ds.setUnderlineText(false);
+                ds.setColor(Color.BLACK);
+            }
+        };
+
+        ss.setSpan(clickableSpan, 0, 20, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ss.setSpan(clickableSpan2, 23, 40, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ss.setSpan(clickableSpan3, 46, 60, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ss.setSpan(clickableSpan4, 65, 84, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ss.setSpan(clickableSpan5, 42, 45, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textView.setText(ss);
+        textView.setMovementMethod(LinkMovementMethod.getInstance());
+
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (nameSurname.length() != 0 && phoneNumber.length() != 0 && email.length() != 0 && password.length() != 0 && repassword.length() != 0) {
-                    if (radioWorker.isChecked() || radioEmployer.isChecked()) {
-                        if (password.getText().toString().equals(repassword.getText().toString())) {
-                            if (phoneNumber.length() == 10) {
-                                if (agreementCheckBox.isChecked()) {
-                                    registerCallBack(createRequest(nameSurname.getText().toString(), phoneNumber.getText().toString(), email.getText().toString(), password.getText().toString()));
-                                } else {
-                                    Toast.makeText(getApplicationContext(), "Sözleşmeyi kabul ediniz!!", Toast.LENGTH_LONG).show();
-                                }
+                    if (password.getText().toString().equals(repassword.getText().toString())) {
+                        if (phoneNumber.length() == 10) {
+                            if (agreementCheckBox.isChecked()) {
+                                registerCallBack(createRequest(nameSurname.getText().toString(), phoneNumber.getText().toString(), email.getText().toString(), password.getText().toString()));
                             } else {
-                                Toast.makeText(getApplicationContext(), "Telefon numaranız 10 karakter olmalıdır!!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Sözleşmeyi kabul ediniz!!", Toast.LENGTH_LONG).show();
                             }
                         } else {
-                            Toast.makeText(getApplicationContext(), "Şifreler aynı olmalıdır!!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Telefon numaranız 10 karakter olmalıdır!!", Toast.LENGTH_LONG).show();
                         }
                     } else {
-                        Toast.makeText(getApplicationContext(), "Yük taşıyan/Yük alan seçimi yapınız!!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Şifreler aynı olmalıdır!!", Toast.LENGTH_LONG).show();
                     }
-
                 } else {
                     Toast.makeText(getApplicationContext(), "Lütfen alanları doldurunuz!!", Toast.LENGTH_LONG).show();
                 }
@@ -122,12 +186,12 @@ public class RegisterFragment extends AppCompatActivity {
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
 */
-                    Toast.makeText(RegisterFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterFragment.this, "Kayıt başarılı", Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(RegisterFragment.this, SmsVerificationFragment.class);
                     startActivity(intent);
 
                 } else {
-                    Toast.makeText(RegisterFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterFragment.this, "Kayıt başarısız!!!", Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -164,8 +228,7 @@ public class RegisterFragment extends AppCompatActivity {
 
  */
 
-    public void agreementDialog() {
-        String currentUrl = "https://nakilnat.com/sayfa?link=Ki%C5%9Fisel%20Verilerin%20Korunmas%C4%B1";
+    public void agreementDialog(String url) {
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.agreement_popup);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -182,7 +245,7 @@ public class RegisterFragment extends AppCompatActivity {
                 return true;
             }
         });
-       agreementPopupText.loadUrl(currentUrl);
+       agreementPopupText.loadUrl(url);
 
         dialog.setCancelable(true);
 

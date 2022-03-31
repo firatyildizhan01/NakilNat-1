@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:paddingVertical="4dp"
         android:paddingHorizontal="8dp"
-        android:layout_height="72dp">
+        android:layout_height="98dp">
 
         <TextView
             android:id="@+id/review_time"
@@ -34,15 +34,26 @@
             app:layout_constraintVertical_chainStyle="packed"
             android:text="29 Haziran 2021" />
 
+        <ImageView
+            android:id="@+id/start_image"
+            app:layout_constraintTop_toTopOf="@id/start_image"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="1dp"
+            android:src="@drawable/star3">
+
+        </ImageView>
+
         <TextView
             android:id="@+id/review_name_surname"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:textColor="@color/gray_700"
             android:textSize="12sp"
-            android:paddingBottom="4dp"
+            android:paddingBottom="10dp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/start_image"
             app:layout_constraintHeight_default="wrap"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_chainStyle="packed"

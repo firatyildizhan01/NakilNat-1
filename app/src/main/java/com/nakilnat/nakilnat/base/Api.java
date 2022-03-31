@@ -3,6 +3,7 @@ package com.nakilnat.nakilnat.base;
 import com.nakilnat.nakilnat.models.request.AddAdressRequest;
 import com.nakilnat.nakilnat.models.request.DefaultRequest;
 import com.nakilnat.nakilnat.models.request.DeleteAccountRequest;
+import com.nakilnat.nakilnat.models.request.GetDistrictRequest;
 import com.nakilnat.nakilnat.models.request.LoginRequest;
 import com.nakilnat.nakilnat.models.request.NewPasswordRequest;
 import com.nakilnat.nakilnat.models.request.PhoneNumberRequest;
@@ -15,9 +16,18 @@ import com.nakilnat.nakilnat.models.request.UpdateInvoiceRequest;
 import com.nakilnat.nakilnat.models.request.UpdatePasswordRequest;
 import com.nakilnat.nakilnat.models.request.UpdatePermissionRequest;
 import com.nakilnat.nakilnat.models.response.DefaultResponse;
+import com.nakilnat.nakilnat.models.response.GetDistrictResponse;
+import com.nakilnat.nakilnat.models.response.GetProvinceResponse;
 import com.nakilnat.nakilnat.models.response.MyAccountResponse;
+import com.nakilnat.nakilnat.models.response.MyAdressListResponse;
 import com.nakilnat.nakilnat.models.response.MyInvoiceResponse;
+import com.nakilnat.nakilnat.models.response.MyNotificationsResponse;
+import com.nakilnat.nakilnat.models.response.MyReviewsResponse;
+import com.nakilnat.nakilnat.models.response.MyWalletTransactionsResponse;
 import com.nakilnat.nakilnat.models.response.SmsResponse;
+import com.nakilnat.nakilnat.models.response.TotalAmountResponse;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -30,6 +40,9 @@ public interface Api {
 
     @POST("mobile.php?sayfa=unuttum")
     Call<DefaultResponse>sendPhoneNumber(@Body PhoneNumberRequest phoneNumberRequest);
+
+    @POST("mobile.php?sayfa=smsDogrula")
+    Call<DefaultResponse>smsVerificationRememberPassword(@Body SmsRequest smsRequest);
 
     @POST("mobile.php?sayfa=yeniSifre")
     Call<DefaultResponse>selectPassword(@Body NewPasswordRequest newPasswordRequest);
@@ -44,7 +57,7 @@ public interface Api {
     Call<DefaultResponse>updateAccount(@Body UpdateAccountRequest updateAccountRequest);
 
     @POST("mobile.php?sayfa=adreslerim")
-    Call<DefaultResponse>myAdressList(@Body DefaultRequest defaultRequest);
+    Call<List<MyAdressListResponse>>myAdressList(@Body DefaultRequest defaultRequest);
 
     @POST("mobile.php?sayfa=yeniAdres")
     Call<DefaultResponse>addAdress(@Body AddAdressRequest addAdressRequest);
@@ -72,4 +85,22 @@ public interface Api {
 
     @POST("mobile.php?sayfa=hesapsil")
     Call<DefaultResponse>deleteAccount(@Body DeleteAccountRequest deleteAccountRequest);
+
+    @POST("mobile.php?sayfa=bakiyem")
+    Call<TotalAmountResponse>totalAmount(@Body DefaultRequest defaultRequest);
+
+    @POST("mobile.php?sayfa=yorumlar")
+    Call<List<MyReviewsResponse>>myReviews(@Body DefaultRequest defaultRequest);
+
+    @POST("mobile.php?sayfa=cuzdan")
+    Call<List<MyWalletTransactionsResponse>>myWalletTransactions(@Body DefaultRequest defaultRequest);
+
+    @POST("mobile.php?sayfa=bildirimler")
+    Call<List<MyNotificationsResponse>>myNotifications(@Body DefaultRequest defaultRequest);
+
+    @POST("mobile.php?sayfa=il")
+    Call<List<GetProvinceResponse>>getProvince();
+
+    @POST("mobile.php?sayfa=ilce")
+    Call<List<GetDistrictResponse>>getDistrict(@Body GetDistrictRequest getDistrictRequest);
 }
