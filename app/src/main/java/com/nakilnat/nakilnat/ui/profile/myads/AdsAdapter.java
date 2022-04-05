@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,11 +20,12 @@ import butterknife.ButterKnife;
 public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.ViewHolder> {
     private ArrayList<TransportList> list;
     private Context context;
+    private OnAdsListener mOnAdsListener;
 
-    public AdsAdapter(ArrayList<TransportList> list, Context context) {
+    public AdsAdapter(ArrayList<TransportList> list, Context context, OnAdsListener onAdsListener) {
         this.list = list;
         this.context = context;
-        //this.onItemClickListener = onItemClickListener;
+        this.mOnAdsListener = onAdsListener;
     }
 
     @Override
@@ -44,6 +46,18 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.ViewHolder> {
         holder.tvSourceCity.setText(transportList.getSourceCity());
         holder.tvDestinationCity.setText(transportList.getDestinyCity());
         holder.tvThingText.setText(transportList.getThing());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (holder.listLayout.getVisibility() == View.VISIBLE) {
+                    holder.listLayout.setVisibility(View.GONE);
+                    holder.detailLayout.setVisibility(View.VISIBLE);
+                } else {
+                    holder.listLayout.setVisibility(View.VISIBLE);
+                    holder.detailLayout.setVisibility(View.GONE);
+                }
+            }
+        });
     }
 
     @Override
@@ -51,7 +65,7 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.ViewHolder> {
         return list.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.item_ships_money)
         TextView tvTransportMoney;
@@ -65,9 +79,28 @@ public class AdsAdapter extends RecyclerView.Adapter<AdsAdapter.ViewHolder> {
         @BindView(R.id.item_ships_thing)
         TextView tvThingText;
 
+        @BindView(R.id.item_ships_detail_layout)
+        LinearLayout detailLayout;
+
+        @BindView(R.id.item_ships_list_layout)
+        LinearLayout listLayout;
+
+        OnAdsListener onAdsListener;
+
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            this.onAdsListener = onAdsListener;
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+        onAdsListener.onAdClick(getAdapterPosition());
+        }
+    }
+
+    public interface  OnAdsListener {
+        void onAdClick(int position);
     }
 }

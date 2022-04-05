@@ -40,8 +40,14 @@
                   android:windowSoftInputMode="stateVisible|adjustPan"></activity>
     <activity android:name=".ui.addad.AddAdStepCargoDetail"
         android:windowSoftInputMode="stateVisible|adjustPan"></activity>
+
+        <activity android:name=".ui.addad.AddAdLastStepFragment"></activity>
         <activity android:name=".ui.myships.MyShipsFragment"></activity>
-        <activity android:name=".ui.myships.ShipsStepsFragment"></activity>
+        <activity android:name=".ui.myships.steps.ShipStepTwoFragment"></activity>
+        <activity android:name=".ui.myships.steps.ShipStepOneFragment"></activity>
+        <activity android:name=".ui.myships.steps.ShipStepThreeFragment"></activity>
+        <activity android:name=".ui.myships.steps.ShipStepFourFragment"></activity>
+        <activity android:name=".ui.myships.CompletedShipsFragment"></activity>
         <activity android:name=".ui.myships.ContinueShipsFragment"></activity>
         <activity android:name=".ui.home.HomePageFragment"></activity>
         <activity android:name=".ui.onboarding.LoginFragment"></activity>

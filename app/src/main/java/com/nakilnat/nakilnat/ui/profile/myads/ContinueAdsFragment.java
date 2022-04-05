@@ -25,7 +25,7 @@ import com.nakilnat.nakilnat.ui.profile.myads.MyAdsFragment;
 import java.util.ArrayList;
 
 
-public class ContinueAdsFragment extends AppCompatActivity {
+public class ContinueAdsFragment extends AppCompatActivity implements AdsAdapter.OnAdsListener {
 
     BottomNavigationView bottomBar;
     CardView bottomFab;
@@ -49,7 +49,7 @@ public class ContinueAdsFragment extends AppCompatActivity {
         transportList.add(new TransportList("Giresun", "İzmir", "6500 ₺", "Ceviz", "Taşıma başlamadı"));
 
         //setting adapter and listview
-        AdsAdapter adapter = new AdsAdapter(transportList, this);
+        AdsAdapter adapter = new AdsAdapter(transportList, this, this);
         RecyclerView listview = findViewById(R.id.my_continue_ads_list);
         adapter.getItemCount();
         listview.setAdapter(adapter);
@@ -58,7 +58,7 @@ public class ContinueAdsFragment extends AppCompatActivity {
 
     private void topBarInit() {
         topBarText = findViewById(R.id.top_bar_title);
-        topBarText.setText("Onaylanan ilanlarım");
+        topBarText.setText("Onay bekleyen ilanlarım");
 
         topBarBack = findViewById(R.id.top_bar_back);
         topBarBack.setVisibility(View.VISIBLE);
@@ -123,4 +123,14 @@ public class ContinueAdsFragment extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onAdClick(int position) {
+        /*
+        transportList.get(position);
+        Intent intent = new Intent(ContinueAdsFragment.this, MyAdsFragment.class);
+        startActivity(intent);
+
+         */
+        System.out.println(transportList.get(position));
+    }
 }

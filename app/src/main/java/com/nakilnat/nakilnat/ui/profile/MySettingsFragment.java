@@ -27,8 +27,6 @@ import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
 import com.nakilnat.nakilnat.ui.onboarding.OnboardingFragment;
-
-import butterknife.BindView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -210,7 +208,7 @@ public class MySettingsFragment extends AppCompatActivity {
             @Override
             public void onResponse(Call<MyAccountResponse> call, Response<MyAccountResponse> response) {
                 MyAccountResponse myAccountResponse = response.body();
-                if (myAccountResponse != null && !myAccountResponse.getCepTel().isEmpty()) {
+                if (myAccountResponse != null && myAccountResponse.getCepTel() != null) {
                     Toast.makeText(MySettingsFragment.this, "Hesap bilgileri sağlandı", Toast.LENGTH_LONG).show();
                     switch(myAccountResponse.getPermissionEmail()) {
                         case "0":

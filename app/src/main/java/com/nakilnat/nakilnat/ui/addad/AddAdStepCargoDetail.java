@@ -146,6 +146,8 @@ public class AddAdStepCargoDetail extends AppCompatActivity {
                 }
                 else{
                     Toast.makeText(getApplicationContext(), "Sonuç sayfasına geçiliyor.", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(AddAdStepCargoDetail.this, AddAdLastStepFragment.class);
+                    startActivity(intent);
                 }
             }
         });
