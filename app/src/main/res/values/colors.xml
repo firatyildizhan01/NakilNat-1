@@ -14,5 +14,9 @@
     <color name="green_200">#4BD15B</color>
     <color name="red_200">#B9113E</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="very_light_grey_two">#F3F3F3</color>
+    <color name="colorTransparent">#00ff6d00</color>
+    <color name="colorone">#0E66B9</color>
+
 
 </resources>

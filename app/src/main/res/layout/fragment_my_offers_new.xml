@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_200"
+    android:fitsSystemWindows="false"
+    tools:context=".ui.profile.ProfilePageFragment">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+
+        android:background="@color/gray_200">
+      <!--  <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:ignore="MissingConstraints"
+                >
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:id="@+id/layout_banner"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp">
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_60sdp"
+
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
+
+
+
+                        android:layout_marginTop="@dimen/_5sdp"
+                        >
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            android:backgroundTint="@color/gray_500"
+
+
+
+
+
+
+                            >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                >
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+
+
+                                    android:id="@+id/layout_from"
+
+                                    android:backgroundTint="@color/white"
+
+
+                                    android:background="@drawable/rounded_corners_whitle_small"
+                                    >
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Ankara"
+                                        android:paddingStart="@dimen/_11sdp"
+                                        android:paddingEnd="@dimen/_11sdp"
+                                        android:paddingTop="@dimen/_7sdp"
+                                        android:paddingBottom="@dimen/_7sdp"
+                                        android:fontFamily="@font/roboto_bold"
+                                        android:textColor="@color/black"
+                                        android:textStyle="bold"
+                                        android:textSize="@dimen/_11sdp"/>
+
+                                </LinearLayout>
+
+                                <ImageView
+                                    android:layout_width="@dimen/_20sdp"
+                                    android:layout_height="@dimen/_20sdp"
+
+                                    android:adjustViewBounds="true"
+
+                                    android:background="@drawable/arrow_right_alt"
+                                    android:layout_marginStart="@dimen/_5sdp"
+
+                                    />
+
+
+                                <TextView
+                                    android:layout_width="@dimen/_80sdp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Beyaz Esya              500 ₺"
+
+                                    android:gravity="center"
+
+
+                                    android:textColor="@color/black"
+                                   android:textStyle="bold"
+                                    android:textSize="@dimen/_11sdp"/>
+
+                                <ImageView
+                                    android:layout_width="@dimen/_20sdp"
+                                    android:layout_height="@dimen/_20sdp"
+
+                                    android:adjustViewBounds="true"
+
+                                    android:background="@drawable/arrow_right_alt"
+
+
+                                    />
+
+
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+
+                                    android:layout_marginStart="@dimen/_5sdp"
+
+                                    android:id="@+id/layout_to"
+
+                                    android:backgroundTint="@color/white"
+
+                                    android:background="@drawable/rounded_corners_whitle_small"
+                                    >
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/roboto_bold"
+                                        android:paddingStart="@dimen/_11sdp"
+                                        android:paddingTop="@dimen/_7sdp"
+                                        android:paddingEnd="@dimen/_11sdp"
+                                        android:paddingBottom="@dimen/_7sdp"
+
+                                        android:text="Antalya"
+                                        android:textColor="@color/black"
+                                        android:textSize="@dimen/_11sdp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+
+
+
+                        </androidx.cardview.widget.CardView>
+                    </FrameLayout>
+
+
+
+
+
+
+
+
+
+                </RelativeLayout>
+
+
+
+
+
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_below="@+id/layout_banner"
+                    android:layout_marginBottom="@dimen/_50sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/id_newtasklayout"
+                        android:orientation="vertical">
+
+
+
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/new_offers_rv"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+
+
+                                android:orientation="vertical"
+                                android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginEnd="@dimen/_10sdp"
+
+                                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+
+
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+     <!--   </ScrollView>-->
+    </LinearLayout>
+
+
+
+
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -3,16 +3,21 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdkVersion 31
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.nakilnat.nakilnat"
-        minSdk 21
-        targetSdk 32
+        minSdkVersion 19
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 
     buildTypes {
@@ -62,4 +67,14 @@ dependencies {
 
     implementation 'com.karumi:dexter:6.2.2'
     implementation 'com.google.android.gms:play-services-location:17.0.0'
+
+    implementation 'com.android.support:multidex:1.0.3'
+
+    implementation 'com.intuit.sdp:sdp-android:1.0.5'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    implementation 'com.github.ivbaranov:materiallettericon:0.2.3'
+
+    implementation 'com.loopeer.lib:shadow:0.0.4-beta3'
 }

@@ -5,11 +5,15 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.transition.AutoTransition;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -23,30 +27,46 @@ import com.nakilnat.nakilnat.ui.profile.adress.MyAdressListFragment;
 import com.nakilnat.nakilnat.ui.profile.myads.MyAdsFragment;
 import com.nakilnat.nakilnat.ui.profile.mywallet.MyWalletFragment;
 import com.nakilnat.nakilnat.ui.profile.offers.MyOffersFragment;
+import com.nakilnat.nakilnat.ui.profile.offers.new_offers_fragment;
+
+import butterknife.BindView;
 
 
 public class ProfilePageFragment extends AppCompatActivity {
+
+    private Fragment fragment;
+    private FragmentManager fragmentManager;
+    FragmentTransaction transaction;
+
+    @BindView(R.id.main_container)
+    FrameLayout mainContainer;
+
     BottomNavigationView bottomBar;
     CardView bottomFab;
     TextView topBarText;
     CardView accountPage, addressPage, invoicesPage, notificationPage, shippingAdsPage, offersPage,
             shippingPage, walletPage,messagesPage, settingsPage, profilePicture;
+
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_profile_page);
+        setContentView(R.layout.activity_offers_layout);
 
         bottomBarSetup();
         InitSubContents();
-        navigationController();
+       //navigationController();
 
     }
 
     private void InitSubContents() {
         topBarText = findViewById(R.id.top_bar_title);
-        topBarText.setText("Profil");
+       // topBarText.setText("Profil");
+        topBarText.setText("Tekliflerim");
         //region initialize sub menus
-        accountPage = (CardView) findViewById(R.id.profile_my_account);
+  /*      accountPage = (CardView) findViewById(R.id.profile_my_account);
         addressPage = (CardView) findViewById(R.id.profile_my_address);
         invoicesPage = (CardView) findViewById(R.id.profile_my_invoices);
         notificationPage = (CardView) findViewById(R.id.profile_notifications);
@@ -56,18 +76,27 @@ public class ProfilePageFragment extends AppCompatActivity {
         walletPage = (CardView) findViewById(R.id.profile_my_wallet);
         messagesPage = (CardView) findViewById(R.id.profile_messsages);
         settingsPage = (CardView) findViewById(R.id.profile_my_settings);
-        profilePicture = (CardView) findViewById(R.id.profile_picture);
+        profilePicture = (CardView) findViewById(R.id.profile_picture);*/
+        mainContainer= (FrameLayout) findViewById(R.id.main_container);
+
+
+
+        fragmentManager = getSupportFragmentManager();
+        transaction = fragmentManager.beginTransaction();
+        fragment = new new_offers_fragment();
+        transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.main_container, fragment).commit();
         //endregion
 
         //region set click actions
-        invoicesPage.setOnClickListener(new View.OnClickListener() {
+       /* invoicesPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ProfilePageFragment.this, MyInvoicesFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
             }
-        });
+        });*/
 
         //endregion
     }
@@ -99,8 +128,8 @@ public class ProfilePageFragment extends AppCompatActivity {
         });
     }
 
-    private void navigationController() {
-        accountPage = findViewById(R.id.profile_my_account);
+   /* private void navigationController() {
+      *//*  accountPage = findViewById(R.id.profile_my_account);
         addressPage = findViewById(R.id.profile_my_address);
         invoicesPage = findViewById(R.id.profile_my_invoices);
         notificationPage = findViewById(R.id.profile_notifications);
@@ -109,7 +138,7 @@ public class ProfilePageFragment extends AppCompatActivity {
         shippingPage = findViewById(R.id.profile_my_shippings);
         walletPage = findViewById(R.id.profile_my_wallet);
         messagesPage = findViewById(R.id.profile_messsages);
-        settingsPage = findViewById(R.id.profile_my_settings);
+        settingsPage = findViewById(R.id.profile_my_settings);*//*
 
         AutoTransition autoTransition = new AutoTransition();
         autoTransition.setDuration(0);
@@ -168,7 +197,7 @@ public class ProfilePageFragment extends AppCompatActivity {
             Intent intent = new Intent(ProfilePageFragment.this, MySettingsFragment.class);
             startActivity(intent);
         });
-    }
+    }*/
 
     private void GoBottomMenuIntent(int itemId) {
         Intent intent;
