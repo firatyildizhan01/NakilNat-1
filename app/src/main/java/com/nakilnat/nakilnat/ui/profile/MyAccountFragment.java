@@ -223,7 +223,7 @@ public class MyAccountFragment extends AppCompatActivity {
             @Override
             public void onResponse(Call<MyAccountResponse> call, Response<MyAccountResponse> response) {
                 MyAccountResponse myAccountResponse = response.body();
-                if (myAccountResponse != null && !myAccountResponse.getCepTel().isEmpty()) {
+                if (myAccountResponse != null && myAccountResponse.getCepTel() != null) {
                     Toast.makeText(MyAccountFragment.this, "Hesap bilgileri sağlandı", Toast.LENGTH_LONG).show();
                     nameSurname.setText(myAccountResponse.getFirmaAdi());
                     phoneNumber.setText(myAccountResponse.getCepTel());

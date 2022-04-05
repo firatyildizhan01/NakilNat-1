@@ -46,7 +46,6 @@ import com.nakilnat.nakilnat.ui.profile.map.directionhelpers.TaskLoadedCallBack;
 
 
 public class MapFragment extends AppCompatActivity implements OnMapReadyCallback, TaskLoadedCallBack, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
-    CardView sendOffers, incomingOffers;
     TextView topBarText;
     ImageView topBarBack;
     GoogleMap map;
@@ -60,7 +59,6 @@ public class MapFragment extends AppCompatActivity implements OnMapReadyCallback
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_location);
-        InitSubContents();
         topBarInit();
         findLocation = (Button) findViewById(R.id.find_location_button);
         findLocation.setOnClickListener(new View.OnClickListener() {
@@ -152,12 +150,6 @@ public class MapFragment extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
-    }
-
-    private void InitSubContents() {
-        //region initialize sub menus
-        sendOffers = (CardView) findViewById(R.id.my_offers_send);
-        incomingOffers = (CardView) findViewById(R.id.my_offers_incoming);
     }
 
     private void topBarInit() {

@@ -10,12 +10,553 @@
     android:layout_marginTop="10dp"
     android:layout_marginBottom="8dp"
     app:cardCornerRadius="10dp"
-    app:cardBackgroundColor="@color/gray_500"
+    app:cardBackgroundColor="@color/gray_200"
     tools:parentTag="androidx.cardview.widget.CardView">
 
     <LinearLayout
-        android:id="@+id/rootConstraint"
+        android:id="@+id/item_ships_detail_layout"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:orientation="vertical"
+        android:background="@color/gray_200"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/gray_200"
+            android:weightSum="2"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="14dp"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    android:textColorHint="@color/purple_500"
+                    app:placeholderTextColor="@color/black"
+                    app:hintTextColor="@color/purple_500">
+
+                    <EditText
+
+                        android:id="@+id/ships_detail_start_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edit"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="Alım tarihi"
+                        android:inputType="text"
+                        android:text="20.02.2022"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp"
+
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="14dp"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    android:textColorHint="@color/purple_500"
+                    app:placeholderTextColor="@color/black"
+                    app:hintTextColor="@color/purple_500">
+
+                    <EditText
+                        android:id="@+id/ships_detail_end_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edit"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="Teslim tarihi"
+                        android:inputType="text"
+                        android:text="22.02.2022"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp"
+
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/gray_200"
+            android:weightSum="2"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="14dp"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    android:textColorHint="@color/purple_500"
+                    app:placeholderTextColor="@color/black"
+                    app:hintTextColor="@color/purple_500">
+
+                    <EditText
+
+                        android:id="@+id/ships_detail_start_place"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edit"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="Kalkış yeri"
+                        android:inputType="text"
+                        android:text="Ankara/Çamlıdere"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp"
+
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="14dp"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    android:textColorHint="@color/purple_500"
+                    app:placeholderTextColor="@color/black"
+                    app:hintTextColor="@color/purple_500">
+
+                    <EditText
+                        android:id="@+id/ships_detail_end_place"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edit"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="Varış yeri"
+                        android:inputType="text"
+                        android:text="Antalya/Elmalı"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp"
+
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/gray_200"
+            android:weightSum="2"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="14dp"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    android:textColorHint="@color/purple_500"
+                    app:placeholderTextColor="@color/black"
+                    app:hintTextColor="@color/purple_500">
+
+                    <EditText
+
+                        android:id="@+id/ships_detail_load_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edit"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="Yük cinsi"
+                        android:inputType="text"
+                        android:text="Beyaz eşya"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp"
+
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="14dp"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    android:textColorHint="@color/purple_500"
+                    app:placeholderTextColor="@color/black"
+                    app:hintTextColor="@color/purple_500">
+
+                    <EditText
+                        android:id="@+id/ships_detail_load_size"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edit"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="Yük miktarı"
+                        android:inputType="text"
+                        android:text="50"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp"
+
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:background="@color/gray_200"
+            android:weightSum="2"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="14dp"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    android:textColorHint="@color/purple_500"
+                    app:placeholderTextColor="@color/black"
+                    app:hintTextColor="@color/purple_500">
+
+                    <EditText
+
+                        android:id="@+id/ships_detail_car_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edit"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="Araç tipi"
+                        android:inputType="text"
+                        android:text="Askılı"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp"
+
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginHorizontal="10dp"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="2dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="14dp"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    android:textColorHint="@color/purple_500"
+                    app:placeholderTextColor="@color/black"
+                    app:hintTextColor="@color/purple_500">
+
+                    <EditText
+                        android:id="@+id/ships_detail_money"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edit"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="Fiyat"
+                        android:inputType="text"
+                        android:text="500 ₺"
+                        android:textColorHint="@color/black"
+                        android:textSize="14dp"
+
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="2dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="14dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                android:textColorHint="@color/purple_500"
+                app:hintTextColor="@color/purple_500">
+
+                <EditText
+                    android:id="@+id/ships_detail_transfer_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/edit"
+                    android:fontFamily="@font/roboto_medium"
+                    android:hint="Taşıma türü"
+                    android:inputType="text"
+                    android:text="Parsiyel yük"
+                    android:textColorHint="@color/black"
+                    android:textSize="14dp"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="2dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="14dp"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                android:textColorHint="@color/purple_500"
+                app:hintTextColor="@color/purple_500">
+
+                <EditText
+                    android:id="@+id/ships_detail_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/edit"
+                    android:fontFamily="@font/roboto_medium"
+                    android:hint="İlan açıklaması"
+                    android:inputType="text"
+                    android:text="Baharat taşımacılığı"
+                    android:textColorHint="@color/black"
+                    android:textSize="14dp"
+
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/white"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textColor="@color/purple_500"
+                    android:text="Sigorta"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"></TextView>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="15dp"
+                    android:src="@drawable/ic_insurance_allianz"
+                    ></ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="15dp"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginStart="15dp"
+                    android:text="200 ₺"></TextView>
+
+            </RelativeLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/item_ships_edit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_toStartOf="@+id/item_ships_delete_button"
+                android:background="@drawable/button"
+                android:text="Düzenle"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/item_ships_delete_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="0dp"
+                android:background="@drawable/button"
+                android:text="Sil"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/item_ships_list_layout"
+        android:layout_width="match_parent"
+        android:visibility="visible"
         android:orientation="vertical"
         android:layout_height="68dp">
 

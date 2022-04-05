@@ -51,13 +51,6 @@
                         </ImageView>
                     </androidx.cardview.widget.CardView>
 
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/star3"
-                        android:id="@+id/profile_star">
-                    </ImageView>
                     <TextView
                         android:paddingTop="5dp"
                         android:layout_width="wrap_content"
@@ -68,6 +61,28 @@
                         android:textColor="@color/black"
                         android:id="@+id/profile_user_name">
                     </TextView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="5dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star3"
+                            android:id="@+id/profile_star">
+                        </ImageView>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star2"
+                            >
+                        </ImageView>
+                    </LinearLayout>
+
+
                 </LinearLayout>
 
                 <androidx.cardview.widget.CardView
@@ -559,6 +574,62 @@
                             android:paddingLeft="15dp"
                             android:fontFamily="@font/roboto_medium"
                             android:text="Mesajlar"
+                            android:textSize="14dp"
+                            android:textColor="@color/black">
+                        </TextView>
+
+
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            app:tint="@color/gray_500"
+                            android:src="@drawable/ic_next"></ImageView>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/profile_my_campaigns"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:elevation="2dp"
+                    app:cardCornerRadius="5dp"
+                    app:cardUseCompatPadding="true"
+                    android:layout_marginTop="10dp"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="10dp"
+                        android:paddingHorizontal="15dp"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/iconCampaigns"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:gravity="center"
+                            android:background="@drawable/icon_bg_shape">
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_campaign"
+                                app:tint="@color/purple_500"></ImageView>
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_toRightOf="@+id/iconCampaigns"
+                            android:paddingLeft="15dp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="Kampanyalar"
                             android:textSize="14dp"
                             android:textColor="@color/black">
                         </TextView>

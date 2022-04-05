@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.nakilnat.nakilnat.R;
+import com.nakilnat.nakilnat.ui.addad.AddAdLastStepFragment;
+import com.nakilnat.nakilnat.ui.myships.steps.ShipStepOneFragment;
 import com.nakilnat.nakilnat.ui.profile.MyInvoicesFragment;
 import com.nakilnat.nakilnat.ui.profile.adress.MyAdressListFragment;
 import com.nakilnat.nakilnat.ui.profile.map.MapFragment;
@@ -31,7 +33,7 @@ public class OnboardingFragment extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent dsp = new Intent(OnboardingFragment.this, LoginFragment.class);
+                Intent dsp = new Intent(OnboardingFragment.this, AddAdLastStepFragment.class);
                 startActivity(dsp);
                 finish();
             }

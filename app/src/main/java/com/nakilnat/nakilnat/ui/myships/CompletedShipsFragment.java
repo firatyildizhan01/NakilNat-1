@@ -26,30 +26,21 @@ import com.nakilnat.nakilnat.ui.profile.myads.MyAdsFragment;
 import java.util.ArrayList;
 
 
-public class ContinueShipsFragment extends AppCompatActivity {
+public class CompletedShipsFragment extends AppCompatActivity {
 
     BottomNavigationView bottomBar;
     CardView bottomFab;
-    TextView topBarText, continueShips;
+    TextView topBarText;
     ImageView topBarBack;
     private ArrayList<TransportList> transportList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_my_continue_ships);
+        setContentView(R.layout.fragment_my_completed_ships);
         topBarInit();
         pageInit();
         bottomBarSetup();
-
-        continueShips = (TextView) findViewById(R.id.my_continue_ships_text);
-        continueShips.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ContinueShipsFragment.this, ShipStepOneFragment.class);
-                startActivity(intent);
-            }
-        });
     }
 
     private void pageInit() {
@@ -59,8 +50,8 @@ public class ContinueShipsFragment extends AppCompatActivity {
         transportList.add(new TransportList("Giresun", "İzmir", "6500 ₺", "Marul", "Taşıma başlamadı"));
 
         //setting adapter and listview
-        ShipsAdapter adapter = new ShipsAdapter(transportList, this);
-        RecyclerView listview = findViewById(R.id.my_ships_continue_list);
+        CompletedShipsAdapter adapter = new CompletedShipsAdapter(transportList, this);
+        RecyclerView listview = findViewById(R.id.my_ships_completed_list);
         adapter.getItemCount();
         listview.setAdapter(adapter);
         listview.setLayoutManager(new LinearLayoutManager(this));
@@ -102,7 +93,7 @@ public class ContinueShipsFragment extends AppCompatActivity {
                 bottomBar.getMenu().setGroupCheckable(1, false, true);
                 bottomBar.getMenu().setGroupCheckable(2, false, true);
                 bottomBar.getMenu().setGroupCheckable(3, false, true);
-                Intent intent = new Intent(ContinueShipsFragment.this, ApplicationPageFragment.class);
+                Intent intent = new Intent(CompletedShipsFragment.this, ApplicationPageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
             }
@@ -113,17 +104,17 @@ public class ContinueShipsFragment extends AppCompatActivity {
         Intent intent;
         switch (itemId) {
             case R.id.bottomHome:
-                intent = new Intent(ContinueShipsFragment.this, HomePageFragment.class);
+                intent = new Intent(CompletedShipsFragment.this, HomePageFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
             case R.id.bottomMyShipping:
-                intent = new Intent(ContinueShipsFragment.this, MyShipsFragment.class);
+                intent = new Intent(CompletedShipsFragment.this, MyShipsFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
             case R.id.bottomAddAds:
-                intent = new Intent(ContinueShipsFragment.this, MyAdsFragment.class);
+                intent = new Intent(CompletedShipsFragment.this, MyAdsFragment.class);
                 startActivity(intent);
                 overridePendingTransition(0, 0);
                 break;
