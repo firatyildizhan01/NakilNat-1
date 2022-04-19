@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_200"
+    android:fitsSystemWindows="false"
+    tools:context=".ui.myships.MyShipsFragment">
+
+    <include layout="@layout/top_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/gray_200">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="35dp"
+                android:paddingBottom="75dp">
+
+                <TextView
+                    android:layout_marginTop="23dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Hakkımızda"
+                    android:textColor="@color/black"
+                    android:textSize="16sp">
+                </TextView>
+
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Güvenilir, hızlı ve teknoloji ile uyumlu bir taşımacılık deneyimi yaşamak isteyen bireyler için Nakilnat.com, başta üretici firmalar olmak üzere, tüm işletmelerin karayolu taşımacılık süreçlerini dijitalleştirerek, teknolojiyi lojistiğe taşımak için kolları sıvadı. Son olarak bu alanda verdiği hizmetlerini tek bir platformda toplayarak hizmet kalitesini arttırmak için çalışmalarda bulundu.
+
+Kurulduğu günden bu güne, güvenilir ve üstün hizmet kalitesiyle ön plana çıkan Nakilnat.com, uçtan uca hizmet yaklaşımıyla müşterilerini memnun etmeyi sürdürürken, tecrübesini kanıtlamaya da devam ediyor! Nakliyat sektörünün en son yeniliklerini takip eden ve her geçen gün kendini geliştirmeye devam eden Nakilnat.com, yalnızca taşımacılık hizmeti sağladığı müşterileri için değil, kamyoncular için de birçok kolaylık sunuyor. Onların kazançlarını arttırmaya destek olacak atılımlarıyla sektörün her köşesinde varlığını hissettiriyor.
+
+Nakilnat.com’un kurucusu Mehmet Meydan, sektörü dijitalleştirme konusunda ciddi adımlar atma konusunda kararlılıklarını vurgularken, iş yapma şekillerinde paylaşım ekonomisini odak belirlediklerinin altını çiziyor. Nakilnat.com, deneyimli ve güvenilir duruşuyla taşımacılık hizmetine ihtiyaç duyan kişilere, iyi bir hizmet verebilmek için her geçen gün kendini geliştirmeye devam ediyor. Bu amaçla teknolojiyi en iyi şekilde kullanmanın farklı yollarını keşfediyor ve bunu da hizmet sağladıkları bireylere etkin bir şekilde ulaştırmayı amaçlıyor.
+
+Nakilnat.com, lojistikte sahip olduğu teknolojik altyapısına bir yenilik daha ekliyor. Sağladıkları avantajlar arasında artık lojistik şirketlerinin şoförleri için geliştirdikleri bir uygulama da yer alıyor.
+
+Nakilnat.com’a göre sektördeki araç tedarik sorununu klasik yöntemlerle çözmek mümkün değilken, bunun için geliştirdikleri yeni mobil uygulaması sayesinde artık lojistik ihtiyacı olan işletmelerin hayatı daha da kolaylaşacak! Taşıma ihtiyacı bulunan işletmeler, taşıyıcı bulma sorunlarını Nakilnat.com’un mobil uygulaması sayesinde bir daha yaşamayacak."
+                    android:textColor="@color/black"
+                    android:textSize="14sp">
+
+                </TextView>
+
+                <TextView
+                    android:layout_marginTop="23dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="İletişim"
+                    android:textColor="@color/black"
+                    android:textSize="16sp">
+                </TextView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                <ImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_phone"></ImageView>
+
+                    <TextView
+                        android:id="@+id/about_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black"
+                        android:text="0850 220 9912"
+                        ></TextView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_mail"></ImageView>
+
+                    <TextView
+                        android:id="@+id/about_mail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black"
+                        android:text="destek@nakilnat.com"
+                        ></TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_nakilnat_address"></ImageView>
+
+                    <TextView
+                        android:id="@+id/about_map"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="7dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black"
+                        android:text="Eğitim, Poyraz Sokak, No:10 Büro:5 Öğün iş merkezi 2 Kat:1, Kadıköy/İstanbul 34722"
+                        ></TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_nakilnat_web"></ImageView>
+
+                    <TextView
+                        android:id="@+id/about_web"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:textColor="@color/black"
+                        android:text="https://nakilnat.com/"
+                        ></TextView>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:fabCradleMargin="20dp"
+        app:fabCradleVerticalOffset="10dp"
+        app:fabCradleRoundedCornerRadius="20dp"
+        android:layout_gravity="bottom">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="16dp"
+            app:labelVisibilityMode="labeled"
+            app:itemTextColor="@color/purple_500"
+            app:itemIconTint="@color/purple_500"
+            android:background="@drawable/background_transparent"
+            app:menu="@menu/bottom_nav_menu" />
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/fab"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:cardCornerRadius="180dp"
+        android:background="@color/white"
+        android:elevation="2dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="10dp">
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:src="@drawable/ic_applications_group"
+            android:layout_gravity="center">
+        </ImageView>
+    </androidx.cardview.widget.CardView>
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

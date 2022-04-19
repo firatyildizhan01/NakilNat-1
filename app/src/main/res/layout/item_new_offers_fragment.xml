@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="5dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="5dp"
+    android:layout_marginBottom="6dp"
+    android:clickable="true"
+    android:foreground="@drawable/highlighted_shape"
+    app:cardBackgroundColor="@color/gray_500"
+    app:cardCornerRadius="10dp"
+
+    tools:parentTag="androidx.cardview.widget.CardView">
+
+
+    <LinearLayout
+        android:id="@+id/rootConstraint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/item_offers_city_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_66sdp"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:weightSum="3">
+            <!--<de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_avatar"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/circle"
+android:layout_margin="@dimen/_10sdp"
+                app:civ_border_color="@color/purple_200"
+                app:civ_border_width="@dimen/_4sdp" />-->
+            <!-- <TextView
+                 android:id="@+id/title"
+                 android:layout_width="@dimen/_50sdp"
+                 android:layout_height="@dimen/_50sdp"
+                 android:background="@drawable/circle"
+                 android:gravity="center_vertical"
+                 android:layout_gravity="center_horizontal"
+                 android:textColor="@color/white"
+                 android:text="A"/>-->
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <com.github.ivbaranov.mli.MaterialLetterIcon
+                        android:id="@+id/materialLetterIcon"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:mli_letter="D"
+                        app:mli_shape_color="@color/purple_200" />
+
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="2dp"
+                        android:text="MN"
+                        android:textColor="@color/purple_200"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/materialLetterIcon"
+                        app:layout_constraintTop_toTopOf="@+id/materialLetterIcon"
+
+
+                        />
+
+                    <androidx.appcompat.widget.AppCompatRatingBar
+                        android:id="@+id/rating_bar"
+                        style="?attr/ratingBarStyleIndicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginStart="@dimen/_22sdp"
+                        android:isIndicator="false"
+                        android:numStars="5"
+                        android:rating="3.5"
+                        android:scaleX=".4"
+                        android:scaleY=".4"
+                        android:theme="@style/RatingBar"
+                        app:layout_constraintBottom_toBottomOf="@+id/materialLetterIcon"
+                        app:layout_constraintStart_toEndOf="@+id/materialLetterIcon"
+
+                        app:layout_constraintStart_toStartOf="parent"
+
+
+                        />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:gravity="right|bottom"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
+
+                        <TextView
+                            android:id="@+id/textName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="Lowbad"
+                            android:textColor="@color/gray_700"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+
+
+                            />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/text_val"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginTop="2dp"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text="200TL"
+                                android:textColor="@color/purple_200"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+
+
+                                />
+
+                            <TextView
+                                android:id="@+id/text_unit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:layout_marginTop="2dp"
+                                android:fontFamily="@font/roboto_bold"
+                                android:text=" +Kdv"
+                                android:textColor="@color/gray_700"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+
+
+                                />
+
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="@dimen/_16sdp"
+                            android:layout_height="@dimen/_16sdp"
+                            android:background="@drawable/ic_mail" />
+
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_66sdp"
+
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_ships_city_layout">
+
+            <LinearLayout
+                android:id="@+id/item_offers_city"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/gray_200"
+                android:gravity="center"
+
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/item_offers_source_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Reddet"
+                    android:textColor="@color/purple_200"
+                    android:textSize="@dimen/_12sdp" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="35dp"
+
+
+                    android:layout_marginStart="10dp"
+                    app:cardCornerRadius="7dp">
+
+                    <TextView
+                        android:id="@+id/item_offers_yeni"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="Yeni Teklif iste"
+                        android:textColor="@color/purple_200"
+                        android:textSize="@dimen/_12sdp" />
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="35dp"
+
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="@color/purple_200"
+                    app:cardCornerRadius="7dp">
+
+                    <TextView
+                        android:id="@+id/item_offers_kabul"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="Kabul Et"
+
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/_12sdp" />
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

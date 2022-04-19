@@ -2,55 +2,50 @@ package com.nakilnat.nakilnat.ui.profile.adress;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.base.ApiClient;
 import com.nakilnat.nakilnat.models.request.DefaultRequest;
 import com.nakilnat.nakilnat.models.request.RemoveAdressRequest;
 import com.nakilnat.nakilnat.models.response.DefaultResponse;
 import com.nakilnat.nakilnat.models.response.MyAdressListResponse;
-import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
-import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
-import com.nakilnat.nakilnat.ui.home.HomePageFragment;
-import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
-import com.nakilnat.nakilnat.ui.profile.ProfilePageFragment;
+import com.nakilnat.nakilnat.ui.BaseFragment;
+import com.nakilnat.nakilnat.ui.myships.ShipsAdapter;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MyAdressListFragment extends AppCompatActivity {
+public class MyAdressListFragment extends BaseFragment implements AdressAdapter.OnAdressListener {
 
-    BottomNavigationView bottomBar;
-    CardView bottomFab;
-    TextView topBarText, topBarRightText;
-    ImageView topBarBack, topBarNotification;
     private List<MyAdressListResponse> adressList;
+    AdressAdapter adapter = null;
+    private int deleteAdressId = 0;
+    TextView topBarRightText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_my_adress);
-        topBarInit();
-        bottomBarSetup();
-        myAdressListCallBack(createRequest() );
+        bottomBarSetup(R.id.bottomProfile);
+        initTopBarContents("Adreslerim");
+        initRightTitle("Adres Ekle");
+        topBarRightText = findViewById(R.id.top_bar_right_title);
+        topBarRightText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyAdressListFragment.this, AddAdressFragment.class);
+                startActivity(intent);
+            }
+        });
+        myAdressListCallBack(createRequest());
     }
 
     public DefaultRequest createRequest() {
@@ -66,14 +61,10 @@ public class MyAdressListFragment extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<MyAdressListResponse>> call, Response<List<MyAdressListResponse>> response) {
                 adressList = response.body();
-                if (response != null && !adressList.isEmpty()) {
+                if (response != null) {
                     Toast.makeText(MyAdressListFragment.this, "Adres bilgilerim sağlandı", Toast.LENGTH_LONG).show();
-                    //setting adapter and listview
-                    AdressAdapter adapter = new AdressAdapter(adressList, MyAdressListFragment.this);
-                    RecyclerView listview = findViewById(R.id.adress_list);
-                    adapter.getItemCount();
-                    listview.setAdapter(adapter);
-                    listview.setLayoutManager(new LinearLayoutManager(MyAdressListFragment.this));
+                    adapter = new AdressAdapter(adressList, MyAdressListFragment.this, MyAdressListFragment.this);
+                    setAdapter();
                 } else {
                     Toast.makeText(MyAdressListFragment.this, "Adres bilgilerim sağlanamadı!", Toast.LENGTH_LONG).show();
                 }
@@ -85,6 +76,15 @@ public class MyAdressListFragment extends AppCompatActivity {
             }
         });
     }
+
+    public void setAdapter() {
+        RecyclerView listview = findViewById(R.id.adress_list);
+        listview.setHasFixedSize(true);
+        adapter.getItemCount();
+        listview.setAdapter(adapter);
+        listview.setLayoutManager(new LinearLayoutManager(MyAdressListFragment.this));
+    }
+
 
     public RemoveAdressRequest deleteRequest(String id) {
         RemoveAdressRequest removeAdressRequest = new RemoveAdressRequest();
@@ -102,7 +102,9 @@ public class MyAdressListFragment extends AppCompatActivity {
                 DefaultResponse defaultResponse = response.body();
                 if (defaultResponse.getResult().toString().equals("OK")) {
                     Toast.makeText(MyAdressListFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
-
+                    System.out.println(deleteAdressId);
+                    adressList.remove(deleteAdressId);
+                    adapter.notifyItemRemoved(deleteAdressId);
                 } else {
                     Toast.makeText(MyAdressListFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
                 }
@@ -115,79 +117,26 @@ public class MyAdressListFragment extends AppCompatActivity {
         });
     }
 
-    private void topBarInit() {
-        topBarText = findViewById(R.id.top_bar_title);
-        topBarRightText = findViewById(R.id.top_bar_right_title);
-        topBarRightText.setVisibility(View.VISIBLE);
-        topBarRightText.setText("Adres ekle");
-        topBarRightText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MyAdressListFragment.this, AddAdressFragment.class);
-                startActivity(intent);
-            }
-        });
-        topBarText.setText("Adreslerim");
-        topBarBack = findViewById(R.id.top_bar_back);
-        topBarNotification = findViewById(R.id.top_bar_notifications);
-        topBarNotification.setVisibility(View.GONE);
-        topBarBack.setVisibility(View.VISIBLE);
-        topBarBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+    @Override
+    public void onRemoveClick(int position) {
+        deleteAdressId = position;
+        removeAdressCallBack(deleteRequest(adressList.get(deleteAdressId).getId()));
     }
 
-    private void bottomBarSetup() {
-        bottomBar = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        bottomBar.setItemIconTintList(null);
-        bottomBar.setSelectedItemId(R.id.bottomProfile);
-        bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                GoBottomMenuIntent(item.getItemId());
-                return true;
-            }
-        });
-
-        bottomFab = findViewById(R.id.fab);
-        bottomFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomBar.getMenu().setGroupCheckable(0, false, true);
-                bottomBar.getMenu().setGroupCheckable(1, false, true);
-                bottomBar.getMenu().setGroupCheckable(2, false, true);
-                bottomBar.getMenu().setGroupCheckable(3, false, true);
-                Intent intent = new Intent(MyAdressListFragment.this, ApplicationPageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-            }
-        });
-    }
-
-    private void GoBottomMenuIntent(int itemId) {
-        Intent intent;
-        switch (itemId) {
-            case R.id.bottomHome:
-                intent = new Intent(MyAdressListFragment.this, HomePageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomMyShipping:
-                intent = new Intent(MyAdressListFragment.this, MyShipsFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomAddAds:
-                intent = new Intent(MyAdressListFragment.this, AddAdFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomProfile:
-                finish();
-                break;
-        }
+    @Override
+    public void onEditClick(int position) {
+        Intent intent = new Intent(MyAdressListFragment.this, AddAdressFragment.class);
+        intent.putExtra("id", adressList.get(position).getId());
+        intent.putExtra("adressHeader", adressList.get(position).getAdressHeader());
+        intent.putExtra("adressCity", adressList.get(position).getAdressCity());
+        intent.putExtra("adressDistrict", adressList.get(position).getAdressDistrict());
+        intent.putExtra("adressStreet", adressList.get(position).getAdressStreet());
+        intent.putExtra("adressNeighborhood", adressList.get(position).getAdressNeighborhood());
+        intent.putExtra("adressBuildingNo", adressList.get(position).getAdressBuildingNo());
+        intent.putExtra("adressFloor", adressList.get(position).getAdressFloor());
+        intent.putExtra("adressApertment", adressList.get(position).getAdressApertment());
+        intent.putExtra("adressOfficial", adressList.get(position).getAdressOfficial());
+        intent.putExtra("adressPhoneNumber", adressList.get(position).getAdress());
+        startActivity(intent);
     }
 }

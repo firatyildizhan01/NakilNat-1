@@ -1,49 +1,23 @@
 package com.nakilnat.nakilnat.ui.profile;
 
-import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.textfield.TextInputLayout;
 import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.base.ApiClient;
 import com.nakilnat.nakilnat.models.request.DefaultRequest;
 import com.nakilnat.nakilnat.models.request.UpdateInvoiceRequest;
 import com.nakilnat.nakilnat.models.response.DefaultResponse;
 import com.nakilnat.nakilnat.models.response.MyInvoiceResponse;
-import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
-import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
-import com.nakilnat.nakilnat.ui.home.HomePageFragment;
-import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
-
-import java.util.List;
-
+import com.nakilnat.nakilnat.ui.BaseFragment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+public class MyInvoicesFragment extends BaseFragment {
 
-public class MyInvoicesFragment extends AppCompatActivity {
-
-    BottomNavigationView bottomBar;
-    CardView bottomFab;
-    TextView topBarText;
-    ImageView topBarBack;
     EditText nickName, address, tax, taxNo;
     Button updateInvoice;
 
@@ -51,21 +25,11 @@ public class MyInvoicesFragment extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_my_invoices);
-        topBarInit();
+        bottomBarSetup(R.id.bottomProfile);
+        initTopBarContents("Fatura Bilgilerim");
         pageInit();
-        bottomBarSetup();
-        invoiceCallback(createRequest());
+        //invoiceCallback(createRequest());
     }
-
-   /* private String isCorporateChecked() {
-        if (corporateMemberCheckBox.isChecked()) {
-            return "1";
-        } else {
-            return "2";
-        }
-    }
-
-    */
 
     public DefaultRequest createRequest() {
         DefaultRequest defaultRequest = new DefaultRequest();
@@ -73,7 +37,7 @@ public class MyInvoicesFragment extends AppCompatActivity {
         return defaultRequest;
     }
 
-    public void invoiceCallback(DefaultRequest defaultRequest) {
+    /*public void invoiceCallback(DefaultRequest defaultRequest) {
         Call<MyInvoiceResponse> call = ApiClient.getApiClient().myInvoice(defaultRequest);
 
         call.enqueue(new Callback<MyInvoiceResponse>() {
@@ -130,6 +94,8 @@ public class MyInvoicesFragment extends AppCompatActivity {
         });
     }
 
+     */
+
     private void pageInit() {
         nickName = findViewById(R.id.my_inv_nickname_edt);
         address = findViewById(R.id.my_inv_address_edt);
@@ -140,78 +106,8 @@ public class MyInvoicesFragment extends AppCompatActivity {
         updateInvoice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateInvoiceCallback(updateRequest(nickName.getText().toString(), address.getText().toString(), tax.getText().toString(), taxNo.getText().toString()));
+                //updateInvoiceCallback(updateRequest(nickName.getText().toString(), address.getText().toString(), tax.getText().toString(), taxNo.getText().toString()));
             }
         });
     }
-
-    private void topBarInit() {
-        topBarText = findViewById(R.id.top_bar_title);
-        topBarText.setText("Fatura Bilgilerim");
-
-        topBarBack = findViewById(R.id.top_bar_back);
-        topBarBack.setVisibility(View.VISIBLE);
-        topBarBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-
-
-    }
-
-    private void bottomBarSetup() {
-        bottomBar = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        bottomBar.setItemIconTintList(null);
-        bottomBar.setSelectedItemId(R.id.bottomProfile);
-        bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                GoBottomMenuIntent(item.getItemId());
-                return true;
-
-            }
-        });
-
-        bottomFab = findViewById(R.id.fab);
-        bottomFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomBar.getMenu().setGroupCheckable(0, false, true);
-                bottomBar.getMenu().setGroupCheckable(1, false, true);
-                bottomBar.getMenu().setGroupCheckable(2, false, true);
-                bottomBar.getMenu().setGroupCheckable(3, false, true);
-                Intent intent = new Intent(MyInvoicesFragment.this, ApplicationPageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-            }
-        });
-    }
-
-    private void GoBottomMenuIntent(int itemId) {
-        Intent intent;
-        switch (itemId) {
-            case R.id.bottomHome:
-                intent = new Intent(MyInvoicesFragment.this, HomePageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomMyShipping:
-                intent = new Intent(MyInvoicesFragment.this, MyShipsFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomAddAds:
-                intent = new Intent(MyInvoicesFragment.this, AddAdFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomProfile:
-                finish();
-                break;
-        }
-    }
-
 }

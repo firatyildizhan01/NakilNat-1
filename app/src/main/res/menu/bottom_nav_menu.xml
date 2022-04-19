@@ -3,7 +3,7 @@
     <item android:id="@+id/bottomHome"
         android:title="Anasayfa"
         android:enabled="true"
-        android:icon="@drawable/selector_home_ic_status" />
+        android:icon="@drawable/ic_bottom_home" />
 
     <item android:id="@+id/bottomMyShipping"
         android:title="Taşımalarım"

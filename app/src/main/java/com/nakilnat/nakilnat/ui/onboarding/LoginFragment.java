@@ -79,6 +79,7 @@ public class LoginFragment extends AppCompatActivity {
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.setUn(email);
         loginRequest.setPw(password);
+        loginRequest.setBeniHatirla("1");
         loginRequest.setToken("korayaman");
         return loginRequest;
     }

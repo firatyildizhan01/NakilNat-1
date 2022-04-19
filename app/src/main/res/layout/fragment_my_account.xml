@@ -301,7 +301,7 @@
             android:background="@drawable/background_transparent"
             app:itemIconTint="@color/purple_500"
             app:itemTextColor="@color/purple_500"
-            app:labelVisibilityMode="unlabeled"
+            app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_nav_menu" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>

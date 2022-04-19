@@ -3,9 +3,7 @@ package com.nakilnat.nakilnat.ui.addad;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
-
 import android.content.Intent;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,34 +13,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.base.ApiClient;
 import com.nakilnat.nakilnat.models.request.GetDistrictRequest;
 import com.nakilnat.nakilnat.models.response.GetDistrictResponse;
 import com.nakilnat.nakilnat.models.response.GetProvinceResponse;
-import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
-import com.nakilnat.nakilnat.ui.home.HomePageFragment;
-import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
-import com.nakilnat.nakilnat.ui.profile.ProfilePageFragment;
-
+import com.nakilnat.nakilnat.ui.BaseFragment;
 import java.util.Calendar;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class AddAdFragment extends AppCompatActivity {
+public class AddAdFragment extends BaseFragment {
     private String[] provincesStartFirst = {"Teslim Yeri"};
     private String[] provincesStartSecond = {"Teslim Yeri"};
     private String[] provincesEndFirst = {"Teslim Yeri"};
@@ -65,27 +50,19 @@ public class AddAdFragment extends AppCompatActivity {
     private LinearLayout showSecondAddress, showSecondDeliveryAddress;
     private LinearLayout secondAddress, secondDeliveryAddress;
     private ImageView secondAddressImg, secondDeliveryAddressImg;
-    private BottomNavigationView bottomBar;
     private DatePickerDialog datePickerDialog;
-    private CardView bottomFab;
-    private TextView navigationBarTitle;
-    private EditText step1FirstGetDate, step1SecondGetDate,step1FirstDeliveryDate, step1SecondDeliveryDate;
-
-
+    private EditText step1FirstGetDate, step1FirstDeliveryDate;
 
     private Button next;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_add_ad);
-
-        navigationBarTitle = (TextView)findViewById(R.id.top_bar_title);
-        navigationBarTitle.setText("Yük İlanı Oluştur");
-
+        bottomBarSetup(R.id.bottomAddAds);
+        initTopBarContents("Yük İlanı Oluştur");
         initScreen();
         initProvincesAndDistricts();
         loadMethods();
-        bottomBarSetup();
     }
 
     private void initProvincesAndDistricts() {
@@ -93,8 +70,6 @@ public class AddAdFragment extends AppCompatActivity {
         secondGetDistrict = findViewById(R.id.add_ad_second_start_district_spinner_step1);
         firstEndDistrict = findViewById(R.id.add_ad_start_district_spinner_delivery_step1);
         secondEndDistrict = findViewById(R.id.add_ad_second_delivery_district_spinner_step1);
-
-
 
         firstGetProvince = findViewById(R.id.add_ad_start_province_spinner_step1);
         firstGetProvince.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -254,7 +229,6 @@ public class AddAdFragment extends AppCompatActivity {
 
     }
 
-
     private void initScreen() {
         step1FirstGetDate = findViewById(R.id.add_ad_date_edt_step1);
         step1FirstDeliveryDate = findViewById(R.id.add_ad_date_edt_delivery_step1);
@@ -336,9 +310,6 @@ public class AddAdFragment extends AppCompatActivity {
                 overridePendingTransition(0, 0);
             }
         });
-
-
-
     }
 
     private void initDistrictsComboboxFirst(Boolean setDefault) {
@@ -495,53 +466,4 @@ public class AddAdFragment extends AppCompatActivity {
             }
         });
     }
-
-    private void bottomBarSetup() {
-        bottomBar = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        bottomBar.setItemIconTintList(null);
-        bottomBar.setSelectedItemId(R.id.bottomAddAds);
-        bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                GoBottomMenuIntent(item.getItemId());
-                return true;
-
-            }
-        });
-        bottomFab = findViewById(R.id.fab);
-        bottomFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomBar.getMenu().setGroupCheckable(0, false, true);
-                bottomBar.getMenu().setGroupCheckable(1, false, true);
-                bottomBar.getMenu().setGroupCheckable(2, false, true);
-                bottomBar.getMenu().setGroupCheckable(3, false, true);
-                Intent intent = new Intent(AddAdFragment.this, ApplicationPageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-            }
-        });
-    }
-
-    private void GoBottomMenuIntent(int itemId) {
-        Intent intent;
-        switch (itemId) {
-            case R.id.bottomHome:
-                intent = new Intent(AddAdFragment.this, HomePageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomMyShipping:
-                intent = new Intent(AddAdFragment.this, MyShipsFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomProfile:
-                intent = new Intent(AddAdFragment.this, ProfilePageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-        }
-    }
-
 }

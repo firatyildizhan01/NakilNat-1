@@ -7,6 +7,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -19,12 +20,22 @@ import com.nakilnat.nakilnat.ui.profile.ProfilePageFragment;
 
 public class ApplicationPageFragment extends AppCompatActivity {
     BottomNavigationView bottomBar;
+    CardView logistics;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_application_page);
-
         bottomBarSetup();
+        selectModule();
+    }
+
+    private void selectModule() {
+        logistics = findViewById(R.id.application_logistics);
+
+        logistics.setOnClickListener(view -> {
+            Intent intent = new Intent(ApplicationPageFragment.this, HomePageFragment.class);
+            startActivity(intent);
+        });
     }
 
     private void bottomBarSetup() {
@@ -42,7 +53,7 @@ public class ApplicationPageFragment extends AppCompatActivity {
 
     private void GoBottomMenuIntent(int itemId) {
         Intent intent;
-        switch (itemId) {
+        /*switch (itemId) {
             case R.id.bottomHome:
                 intent = new Intent(ApplicationPageFragment.this, HomePageFragment.class);
                 startActivity(intent);
@@ -64,6 +75,8 @@ public class ApplicationPageFragment extends AppCompatActivity {
                 overridePendingTransition(0, 0);
                 break;
         }
+
+         */
     }
 
 

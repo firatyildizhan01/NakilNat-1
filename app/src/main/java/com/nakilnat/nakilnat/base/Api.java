@@ -75,7 +75,7 @@ public interface Api {
     Call<SmsResponse>smsVerification(@Body SmsRequest smsRequest);
 
     @POST("mobile.php?sayfa=faturaAdres")
-    Call<MyInvoiceResponse>myInvoice(@Body DefaultRequest defaultRequest);
+    Call<List<MyInvoiceResponse>>myInvoice(@Body DefaultRequest defaultRequest);
 
     @POST("mobile.php?sayfa=faturaguncelle")
     Call<DefaultResponse>updateInvoice(@Body UpdateInvoiceRequest updateInvoiceRequest);

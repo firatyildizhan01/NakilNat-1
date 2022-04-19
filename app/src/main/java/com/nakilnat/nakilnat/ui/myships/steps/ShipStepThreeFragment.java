@@ -4,22 +4,14 @@ import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.location.Location;
 import android.os.Bundle;
-
 import android.content.Intent;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -33,21 +25,14 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.nakilnat.nakilnat.R;
-import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
-import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
-import com.nakilnat.nakilnat.ui.home.HomePageFragment;
-import com.nakilnat.nakilnat.ui.profile.ProfilePageFragment;
+import com.nakilnat.nakilnat.ui.BaseFragment;
 import com.nakilnat.nakilnat.ui.profile.map.directionhelpers.FetchURL;
 import com.nakilnat.nakilnat.ui.profile.map.directionhelpers.TaskLoadedCallBack;
 
 
-public class ShipStepThreeFragment extends AppCompatActivity implements OnMapReadyCallback, TaskLoadedCallBack, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
-    BottomNavigationView bottomBar;
-    CardView bottomFab;
-    TextView navigationBarTitle;
+public class ShipStepThreeFragment extends BaseFragment implements OnMapReadyCallback, TaskLoadedCallBack, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+
     EditText purchaseAdress, deliveryAdress, drive, contact;
     Button next, findLocation;
     RelativeLayout mapLayout;
@@ -60,8 +45,9 @@ public class ShipStepThreeFragment extends AppCompatActivity implements OnMapRea
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_my_ships_steps_three);
+        bottomBarSetup(R.id.bottomMyShipping);
+        initTopBarContents("Taşımalarım");
         initScreen();
-        bottomBarSetup();
     }
 
     private void initScreen() {
@@ -75,8 +61,6 @@ public class ShipStepThreeFragment extends AppCompatActivity implements OnMapRea
         deliveryAdress.setText("Antalya/Elmalı");
         drive.setText("Hasan Solmaz");
         contact.setText("05121233456");
-        navigationBarTitle = (TextView)findViewById(R.id.top_bar_title);
-        navigationBarTitle.setText("Taşımalarım");
 
         next = (Button) findViewById(R.id.ships_approve_button);
 
@@ -142,7 +126,7 @@ public class ShipStepThreeFragment extends AppCompatActivity implements OnMapRea
         map.addMarker(new MarkerOptions().position(Example).title("Tır konumu").icon(BitmapDescriptorFactory.fromResource(R.drawable.location_current)));
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(KMaras, 6);
         map.moveCamera(cameraUpdate);
-        map.setMyLocationEnabled(true);
+        //map.setMyLocationEnabled(true);
 
     }
 
@@ -189,54 +173,4 @@ public class ShipStepThreeFragment extends AppCompatActivity implements OnMapRea
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
-
-    private void bottomBarSetup() {
-        bottomBar = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        bottomBar.setItemIconTintList(null);
-        bottomBar.setSelectedItemId(R.id.bottomMyShipping);
-        bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                GoBottomMenuIntent(item.getItemId());
-                return true;
-
-            }
-        });
-        bottomFab = findViewById(R.id.fab);
-        bottomFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomBar.getMenu().setGroupCheckable(0, false, true);
-                bottomBar.getMenu().setGroupCheckable(1, false, true);
-                bottomBar.getMenu().setGroupCheckable(2, false, true);
-                bottomBar.getMenu().setGroupCheckable(3, false, true);
-                Intent intent = new Intent(ShipStepThreeFragment.this, ApplicationPageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-            }
-        });
-    }
-
-    private void GoBottomMenuIntent(int itemId) {
-        Intent intent;
-        switch (itemId) {
-            case R.id.bottomHome:
-                intent = new Intent(ShipStepThreeFragment.this, HomePageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomAddAds:
-                intent = new Intent(ShipStepThreeFragment.this, AddAdFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomProfile:
-                intent = new Intent(ShipStepThreeFragment.this, ProfilePageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-
-        }
-    }
-
 }

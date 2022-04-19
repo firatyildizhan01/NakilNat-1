@@ -23,7 +23,7 @@ import java.util.Map;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
-public class MyFirebaseMessagingService extends FirebaseMessagingService {
+public class MyFirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
 
     @Override
     public void onNewToken(String s) {

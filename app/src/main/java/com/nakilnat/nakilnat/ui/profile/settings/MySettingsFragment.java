@@ -1,21 +1,15 @@
-package com.nakilnat.nakilnat.ui.profile;
+package com.nakilnat.nakilnat.ui.profile.settings;
 
 import android.os.Bundle;
 
 import android.content.Intent;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.transition.AutoTransition;
 import androidx.transition.TransitionManager;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.base.ApiClient;
 import com.nakilnat.nakilnat.models.request.DefaultRequest;
@@ -23,27 +17,26 @@ import com.nakilnat.nakilnat.models.request.DeleteAccountRequest;
 import com.nakilnat.nakilnat.models.request.UpdatePermissionRequest;
 import com.nakilnat.nakilnat.models.response.DefaultResponse;
 import com.nakilnat.nakilnat.models.response.MyAccountResponse;
-import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
-import com.nakilnat.nakilnat.ui.home.HomePageFragment;
-import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
+import com.nakilnat.nakilnat.ui.BaseFragment;
 import com.nakilnat.nakilnat.ui.onboarding.OnboardingFragment;
+import com.nakilnat.nakilnat.ui.profile.settings.askedquestions.AskedQuestionsFragment;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class MySettingsFragment extends AppCompatActivity {
+public class MySettingsFragment extends BaseFragment {
 
-    BottomNavigationView bottomBar;
-    TextView topBarText;
-    ImageView topBarBack;
     CardView permissionsCardView, permissionSubCardView, passwordTransactionsCardView, helpCardView, helpSubCardView, deleteAccountCardView, signOutCardView;
     ImageView permissionsArrow, helpArrow, permissionEmailToggle, permissionNotificationToggle, permissionPhoneToggle, permissionSmsToggle;
+    RelativeLayout agreementsLayout, helpNakilnatLayout, askedQuestionLayout;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_my_settings);
-        bottomBarSetup();
+        bottomBarSetup(R.id.bottomProfile);
+        initTopBarContents("Ayarlar");
         InitSubContents();
         getPermissions();
         navigationController();
@@ -51,16 +44,6 @@ public class MySettingsFragment extends AppCompatActivity {
     }
 
     private void InitSubContents() {
-        topBarText = findViewById(R.id.top_bar_title);
-        topBarText.setText("Ayarlar");
-        topBarBack = findViewById(R.id.top_bar_back);
-        topBarBack.setVisibility(View.VISIBLE);
-        topBarBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
         permissionsCardView = (CardView) findViewById(R.id.settings_permission);
         permissionSubCardView = (CardView) findViewById(R.id.settings_permission_subview);
         passwordTransactionsCardView = (CardView) findViewById(R.id.settings_password);
@@ -74,6 +57,9 @@ public class MySettingsFragment extends AppCompatActivity {
         permissionNotificationToggle = (ImageView) findViewById(R.id.permission_notification_toggle);
         permissionPhoneToggle = (ImageView) findViewById(R.id.permission_phone_toggle);
         permissionSmsToggle = (ImageView) findViewById(R.id.permission_sms_toggle);
+        agreementsLayout = (RelativeLayout) findViewById(R.id.aggrement_layout);
+        helpNakilnatLayout = (RelativeLayout) findViewById(R.id.help_nakilnat_layout);
+        askedQuestionLayout = (RelativeLayout) findViewById(R.id.asked_question_layout);
     }
 
     private void getPermissions() {
@@ -108,6 +94,21 @@ public class MySettingsFragment extends AppCompatActivity {
             startActivity(intent);
         });
 
+        agreementsLayout.setOnClickListener(view -> {
+            Intent intent = new Intent(MySettingsFragment.this, AggreementsFragment.class);
+            startActivity(intent);
+        });
+
+        helpNakilnatLayout.setOnClickListener(view -> {
+            Intent intent = new Intent(MySettingsFragment.this, AggreementsFragment.class);
+            startActivity(intent);
+        });
+
+        askedQuestionLayout.setOnClickListener(view -> {
+            Intent intent = new Intent(MySettingsFragment.this, AskedQuestionsFragment.class);
+            startActivity(intent);
+        });
+
         helpCardView.setOnClickListener(view -> {
             if (helpSubCardView.getVisibility() == View.VISIBLE) {
                 TransitionManager.beginDelayedTransition(helpCardView, autoTransition);
@@ -118,6 +119,11 @@ public class MySettingsFragment extends AppCompatActivity {
                 helpSubCardView.setVisibility(View.VISIBLE);
                 helpArrow.setImageResource(R.drawable.ic_profile_arrow_down);
             }
+        });
+
+        helpNakilnatLayout.setOnClickListener(view -> {
+            Intent intent = new Intent(MySettingsFragment.this, HelpNakilnatFragment.class);
+            startActivity(intent);
         });
 
         deleteAccountCardView.setOnClickListener(view -> {
@@ -357,45 +363,4 @@ public class MySettingsFragment extends AppCompatActivity {
             }
         });
     }
-
-    private void bottomBarSetup() {
-        bottomBar = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        bottomBar.setItemIconTintList(null);
-        bottomBar.setSelectedItemId(R.id.bottomProfile);
-        bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                GoBottomMenuIntent(item.getItemId());
-                return true;
-
-            }
-        });
-    }
-
-    private void GoBottomMenuIntent(int itemId) {
-        Intent intent;
-        switch (itemId) {
-            case R.id.bottomMyShipping:
-                intent = new Intent(MySettingsFragment.this, MyShipsFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomAddAds:
-                intent = new Intent(MySettingsFragment.this, AddAdFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomProfile:
-                intent = new Intent(MySettingsFragment.this, ProfilePageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomHome:
-                intent = new Intent(MySettingsFragment.this, HomePageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-        }
-    }
-
 }

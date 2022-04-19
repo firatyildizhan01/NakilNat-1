@@ -48,6 +48,24 @@ public class MyAdressListResponse {
     @SerializedName("google")
     private String adressGoogle;
 
+    public MyAdressListResponse(String id, String userId, String adressHeader, String adressCity, String adressDistrict, String adressStreet, String adressNeighborhood, String adressBuildingNo, String adressFloor, String adressApertment, String adressDescription, String adress, String adressOfficial, String adressPhoneNumber, String adressGoogle) {
+        this.id = id;
+        this.userId = userId;
+        this.adressHeader = adressHeader;
+        this.adressCity = adressCity;
+        this.adressDistrict = adressDistrict;
+        this.adressStreet = adressStreet;
+        this.adressNeighborhood = adressNeighborhood;
+        this.adressBuildingNo = adressBuildingNo;
+        this.adressFloor = adressFloor;
+        this.adressApertment = adressApertment;
+        this.adressDescription = adressDescription;
+        this.adress = adress;
+        this.adressOfficial = adressOfficial;
+        this.adressPhoneNumber = adressPhoneNumber;
+        this.adressGoogle = adressGoogle;
+    }
+
     public String getId() {
         return id;
     }

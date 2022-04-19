@@ -1,29 +1,14 @@
 package com.nakilnat.nakilnat.ui.profile.map;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.SyncStatusObserver;
-import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
-
-import android.content.Intent;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.textclassifier.TextSelection;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import androidx.core.app.ActivityCompat;
-
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.maps.CameraUpdate;
@@ -35,19 +20,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.nakilnat.nakilnat.R;
-import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
-import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
-import com.nakilnat.nakilnat.ui.profile.ProfilePageFragment;
+import com.nakilnat.nakilnat.ui.BaseFragment;
 import com.nakilnat.nakilnat.ui.profile.map.directionhelpers.FetchURL;
 import com.nakilnat.nakilnat.ui.profile.map.directionhelpers.TaskLoadedCallBack;
 
 
-public class MapFragment extends AppCompatActivity implements OnMapReadyCallback, TaskLoadedCallBack, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
-    TextView topBarText;
-    ImageView topBarBack;
+public class MapFragment extends BaseFragment implements OnMapReadyCallback, TaskLoadedCallBack, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     GoogleMap map;
     Button findLocation;
     private Polyline currentPolyline;
@@ -59,7 +38,8 @@ public class MapFragment extends AppCompatActivity implements OnMapReadyCallback
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_location);
-        topBarInit();
+        bottomBarSetup(R.id.bottomProfile);
+        initTopBarContents("Adres Seç");
         findLocation = (Button) findViewById(R.id.find_location_button);
         findLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,13 +48,11 @@ public class MapFragment extends AppCompatActivity implements OnMapReadyCallback
                     if (task.isSuccessful()) {
                         Location location = task.getResult();
                         System.out.println(task.getResult());
-                        if(task.getResult() == null) {
+                        if (task.getResult() == null) {
                             Toast.makeText(MapFragment.this, "GPS açık değildir!", Toast.LENGTH_LONG).show();
-                        }
-                        else {
+                        } else {
                             gotoLocation(location.getLatitude(), location.getLongitude());
                         }
-
                     }
                 });
             }
@@ -149,21 +127,6 @@ public class MapFragment extends AppCompatActivity implements OnMapReadyCallback
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
-    }
-
-    private void topBarInit() {
-        topBarText = findViewById(R.id.top_bar_title);
-        topBarText.setText("Adres Seç");
-
-        topBarBack = findViewById(R.id.top_bar_back);
-        topBarBack.setVisibility(View.VISIBLE);
-        topBarBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
 
     }
 }

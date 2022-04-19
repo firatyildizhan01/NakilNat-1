@@ -1,50 +1,35 @@
 package com.nakilnat.nakilnat.ui.profile;
 
 import android.os.Bundle;
-
 import android.content.Intent;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.transition.AutoTransition;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.nakilnat.nakilnat.R;
-import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
-import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
-import com.nakilnat.nakilnat.ui.home.HomePageFragment;
+import com.nakilnat.nakilnat.ui.BaseFragment;
 import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
 import com.nakilnat.nakilnat.ui.profile.adress.MyAdressListFragment;
+import com.nakilnat.nakilnat.ui.profile.messages.MessagesListFragment;
 import com.nakilnat.nakilnat.ui.profile.myads.MyAdsFragment;
+import com.nakilnat.nakilnat.ui.profile.myinvoice.MyInvoiceListFragment;
 import com.nakilnat.nakilnat.ui.profile.mywallet.MyWalletFragment;
-import com.nakilnat.nakilnat.ui.profile.offers.MyOffersFragment;
+import com.nakilnat.nakilnat.ui.profile.offers.IncomingOffersFragment;
+import com.nakilnat.nakilnat.ui.profile.settings.MySettingsFragment;
 
 
-public class ProfilePageFragment extends AppCompatActivity {
-    BottomNavigationView bottomBar;
-    CardView bottomFab;
-    TextView topBarText;
+public class ProfilePageFragment extends BaseFragment {
     CardView accountPage, addressPage, invoicesPage, notificationPage, shippingAdsPage, offersPage,
             shippingPage, walletPage,messagesPage, settingsPage, profilePicture;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_profile_page);
-
-        bottomBarSetup();
+        bottomBarSetup(R.id.bottomProfile);
+        initTopBarContents("Profil");
         InitSubContents();
         navigationController();
-
     }
 
     private void InitSubContents() {
-        topBarText = findViewById(R.id.top_bar_title);
-        topBarText.setText("Profil");
         //region initialize sub menus
         accountPage = (CardView) findViewById(R.id.profile_my_account);
         addressPage = (CardView) findViewById(R.id.profile_my_address);
@@ -57,60 +42,9 @@ public class ProfilePageFragment extends AppCompatActivity {
         messagesPage = (CardView) findViewById(R.id.profile_messsages);
         settingsPage = (CardView) findViewById(R.id.profile_my_settings);
         profilePicture = (CardView) findViewById(R.id.profile_picture);
-        //endregion
-
-        //region set click actions
-        invoicesPage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProfilePageFragment.this, MyInvoicesFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-            }
-        });
-
-        //endregion
-    }
-
-    private void bottomBarSetup() {
-        bottomBar = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        bottomBar.setItemIconTintList(null);
-        bottomBar.setSelectedItemId(R.id.bottomProfile);
-        bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                GoBottomMenuIntent(item.getItemId());
-                return true;
-            }
-        });
-
-        bottomFab = findViewById(R.id.fab);
-        bottomFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomBar.getMenu().setGroupCheckable(0, false, true);
-                bottomBar.getMenu().setGroupCheckable(1, false, true);
-                bottomBar.getMenu().setGroupCheckable(2, false, true);
-                bottomBar.getMenu().setGroupCheckable(3, false, true);
-                Intent intent = new Intent(ProfilePageFragment.this, ApplicationPageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-            }
-        });
     }
 
     private void navigationController() {
-        accountPage = findViewById(R.id.profile_my_account);
-        addressPage = findViewById(R.id.profile_my_address);
-        invoicesPage = findViewById(R.id.profile_my_invoices);
-        notificationPage = findViewById(R.id.profile_notifications);
-        shippingAdsPage = findViewById(R.id.profile_my_shipping_ads);
-        offersPage = findViewById(R.id.profile_Offers);
-        shippingPage = findViewById(R.id.profile_my_shippings);
-        walletPage = findViewById(R.id.profile_my_wallet);
-        messagesPage = findViewById(R.id.profile_messsages);
-        settingsPage = findViewById(R.id.profile_my_settings);
-
         AutoTransition autoTransition = new AutoTransition();
         autoTransition.setDuration(0);
 
@@ -130,7 +64,7 @@ public class ProfilePageFragment extends AppCompatActivity {
         });
 
         invoicesPage.setOnClickListener(view -> {
-            Intent intent = new Intent(ProfilePageFragment.this, MyInvoicesFragment.class);
+            Intent intent = new Intent(ProfilePageFragment.this, MyInvoiceListFragment.class);
             startActivity(intent);
         });
 
@@ -145,7 +79,7 @@ public class ProfilePageFragment extends AppCompatActivity {
         });
 
         offersPage.setOnClickListener(view -> {
-            Intent intent = new Intent(ProfilePageFragment.this, MyOffersFragment.class);
+            Intent intent = new Intent(ProfilePageFragment.this, IncomingOffersFragment.class);
             startActivity(intent);
         });
 
@@ -160,7 +94,7 @@ public class ProfilePageFragment extends AppCompatActivity {
         });
 
         messagesPage.setOnClickListener(view -> {
-            Intent intent = new Intent(ProfilePageFragment.this, MyInvoicesFragment.class);
+            Intent intent = new Intent(ProfilePageFragment.this, MessagesListFragment.class);
             startActivity(intent);
         });
 
@@ -169,26 +103,4 @@ public class ProfilePageFragment extends AppCompatActivity {
             startActivity(intent);
         });
     }
-
-    private void GoBottomMenuIntent(int itemId) {
-        Intent intent;
-        switch (itemId) {
-            case R.id.bottomHome:
-                intent = new Intent(ProfilePageFragment.this, HomePageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomMyShipping:
-                intent = new Intent(ProfilePageFragment.this, MyShipsFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomAddAds:
-                intent = new Intent(ProfilePageFragment.this, AddAdFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-        }
-    }
-
 }

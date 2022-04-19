@@ -1,6 +1,7 @@
 package com.nakilnat.nakilnat.ui.profile.offers;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +20,12 @@ import butterknife.ButterKnife;
 public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.ViewHolder> {
     private ArrayList<TransportList> list;
     private Context context;
+    private OnOffersListener mOnOffersListener;
 
-    public OffersAdapter(ArrayList<TransportList> list, Context context) {
+    public OffersAdapter(ArrayList<TransportList> list, Context context, OnOffersListener onOffersListener) {
         this.list = list;
         this.context = context;
-        //this.onItemClickListener = onItemClickListener;
+        this.mOnOffersListener = onOffersListener;
     }
 
     @Override
@@ -44,6 +46,13 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.ViewHolder
         holder.tvSourceCity.setText(transportList.getSourceCity());
         holder.tvDestinationCity.setText(transportList.getDestinyCity());
         holder.tvThingText.setText(transportList.getThing());
+
+        holder.tvOfferShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mOnOffersListener.onOfferClick(position);
+            }
+        });
     }
 
     @Override
@@ -51,7 +60,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.ViewHolder
         return list.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.item_offers_money)
         TextView tvTransportMoney;
@@ -68,9 +77,23 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.ViewHolder
         @BindView(R.id.item_offers_thing)
         TextView tvThingText;
 
+        @BindView(R.id.item_offers_show)
+        TextView tvOfferShow;
+
+        OnOffersListener onOffersListener;
+
         public ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            this.onOffersListener = onOffersListener;
         }
+        @Override
+        public void onClick(View view) {
+            onOffersListener.onOfferClick(getAdapterPosition());
+        }
+    }
+
+    public interface OnOffersListener {
+        void onOfferClick(int position);
     }
 }

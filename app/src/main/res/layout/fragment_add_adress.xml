@@ -45,7 +45,6 @@
                         app:cardElevation="2dp">
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/my_inv_address"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
@@ -57,7 +56,7 @@
 
                             <EditText
 
-                                android:id="@+id/my_inv_address_edt"
+                                android:id="@+id/add_address_name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -86,7 +85,6 @@
                         app:cardElevation="2dp">
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/my_inv_tax"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
@@ -97,7 +95,7 @@
                             app:hintTextColor="@color/purple_500">
 
                             <EditText
-                                android:id="@+id/my_inv_tax_edt"
+                                android:id="@+id/add_address_surname"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -124,7 +122,6 @@
                     app:cardElevation="2dp">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/adress_phone_number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
@@ -135,7 +132,7 @@
                         app:hintTextColor="@color/purple_500">
 
                         <EditText
-                            android:id="@+id/adress_phone_number_edt"
+                            android:id="@+id/add_adress_phone_number"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -161,7 +158,6 @@
                     app:cardElevation="2dp">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/adress_adress_header"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
@@ -172,7 +168,7 @@
                         app:hintTextColor="@color/purple_500">
 
                         <EditText
-                            android:id="@+id/adress_adress_header_edt"
+                            android:id="@+id/add_adress_header"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -280,7 +276,6 @@
                         app:cardElevation="2dp">
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/adress_neighborhood"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
@@ -292,7 +287,7 @@
 
                             <EditText
 
-                                android:id="@+id/adress_neighborhood_edt"
+                                android:id="@+id/add_adress_neighborhood"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -320,7 +315,6 @@
                         app:cardElevation="2dp">
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/adress_street"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
@@ -331,7 +325,7 @@
                             app:hintTextColor="@color/purple_500">
 
                             <EditText
-                                android:id="@+id/adress_street_edt"
+                                android:id="@+id/add_adress_street"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -367,7 +361,6 @@
                         app:cardElevation="2dp">
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/adress_apartment"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
@@ -379,7 +372,7 @@
 
                             <EditText
 
-                                android:id="@+id/adress_apartment_edt"
+                                android:id="@+id/add_adress_building_number"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -407,7 +400,6 @@
                         app:cardElevation="2dp">
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/adress_home"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/roboto_medium"
@@ -418,7 +410,7 @@
                             app:hintTextColor="@color/purple_500">
 
                             <EditText
-                                android:id="@+id/adress_home_edt"
+                                android:id="@+id/add_adress_apertment_number"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -445,7 +437,6 @@
                     app:cardElevation="2dp">
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/adress_open_adress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_medium"
@@ -456,7 +447,7 @@
                         app:hintTextColor="@color/purple_500">
 
                         <EditText
-                            android:id="@+id/adress_open_adress_edt"
+                            android:id="@+id/add_adress_description"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -515,7 +506,7 @@
             android:background="@drawable/background_transparent"
             app:itemIconTint="@color/purple_500"
             app:itemTextColor="@color/purple_500"
-            app:labelVisibilityMode="unlabeled"
+            app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_nav_menu" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>

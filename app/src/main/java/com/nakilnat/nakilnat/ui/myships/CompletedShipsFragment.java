@@ -1,46 +1,24 @@
 package com.nakilnat.nakilnat.ui.myships;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.models.response.TransportList;
-import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
-import com.nakilnat.nakilnat.ui.home.HomePageFragment;
-import com.nakilnat.nakilnat.ui.myships.steps.ShipStepOneFragment;
-import com.nakilnat.nakilnat.ui.myships.steps.ShipStepTwoFragment;
-import com.nakilnat.nakilnat.ui.profile.myads.MyAdsFragment;
-
+import com.nakilnat.nakilnat.ui.BaseFragment;
 import java.util.ArrayList;
 
+public class CompletedShipsFragment extends BaseFragment {
 
-public class CompletedShipsFragment extends AppCompatActivity {
-
-    BottomNavigationView bottomBar;
-    CardView bottomFab;
-    TextView topBarText;
-    ImageView topBarBack;
     private ArrayList<TransportList> transportList;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_my_completed_ships);
-        topBarInit();
+        bottomBarSetup(R.id.bottomMyShipping);
+        initTopBarContents("Taşımalarım");
         pageInit();
-        bottomBarSetup();
     }
 
     private void pageInit() {
@@ -56,72 +34,4 @@ public class CompletedShipsFragment extends AppCompatActivity {
         listview.setAdapter(adapter);
         listview.setLayoutManager(new LinearLayoutManager(this));
     }
-
-    private void topBarInit() {
-        topBarText = findViewById(R.id.top_bar_title);
-        topBarText.setText("Taşımalarım");
-
-        topBarBack = findViewById(R.id.top_bar_back);
-        topBarBack.setVisibility(View.VISIBLE);
-        topBarBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-
-    }
-
-    private void bottomBarSetup() {
-        bottomBar = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        bottomBar.setItemIconTintList(null);
-        bottomBar.setSelectedItemId(R.id.bottomProfile);
-        bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                GoBottomMenuIntent(item.getItemId());
-                return true;
-
-            }
-        });
-
-        bottomFab = findViewById(R.id.fab);
-        bottomFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomBar.getMenu().setGroupCheckable(0, false, true);
-                bottomBar.getMenu().setGroupCheckable(1, false, true);
-                bottomBar.getMenu().setGroupCheckable(2, false, true);
-                bottomBar.getMenu().setGroupCheckable(3, false, true);
-                Intent intent = new Intent(CompletedShipsFragment.this, ApplicationPageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-            }
-        });
-    }
-
-    private void GoBottomMenuIntent(int itemId) {
-        Intent intent;
-        switch (itemId) {
-            case R.id.bottomHome:
-                intent = new Intent(CompletedShipsFragment.this, HomePageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomMyShipping:
-                intent = new Intent(CompletedShipsFragment.this, MyShipsFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomAddAds:
-                intent = new Intent(CompletedShipsFragment.this, MyAdsFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomProfile:
-                finish();
-                break;
-        }
-    }
-
 }

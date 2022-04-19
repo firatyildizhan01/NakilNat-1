@@ -256,8 +256,6 @@ public class RegisterFragment extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-
-
     }
 }
 

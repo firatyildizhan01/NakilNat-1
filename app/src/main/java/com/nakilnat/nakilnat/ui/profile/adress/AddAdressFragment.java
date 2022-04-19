@@ -2,24 +2,16 @@ package com.nakilnat.nakilnat.ui.profile.adress;
 
 import android.Manifest;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
@@ -35,26 +27,23 @@ import com.nakilnat.nakilnat.models.request.UpdateAdressRequest;
 import com.nakilnat.nakilnat.models.response.DefaultResponse;
 import com.nakilnat.nakilnat.models.response.GetDistrictResponse;
 import com.nakilnat.nakilnat.models.response.GetProvinceResponse;
-import com.nakilnat.nakilnat.ui.addad.AddAdFragment;
-import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
-import com.nakilnat.nakilnat.ui.home.HomePageFragment;
-import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
-import com.nakilnat.nakilnat.ui.profile.ProfilePageFragment;
+import com.nakilnat.nakilnat.ui.BaseFragment;
 import com.nakilnat.nakilnat.ui.profile.map.MapFragment;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddAdressFragment extends AppCompatActivity {
+public class AddAdressFragment extends BaseFragment {
 
-    BottomNavigationView bottomBar;
-    CardView bottomFab;
-    TextView topBarText, addAdressText;
-    ImageView topBarBack, addAdressIcon;
+    TextView addAdressText;
+    ImageView addAdressIcon;
     Button addAddressButton;
+    EditText name, surname, phoneNumber, addressHeader, neighborhood,
+            street, buildingNumber, apartmentNumber, adressDescription;
+
     boolean isPermissionGranter;
 
     private String[] provincesStartFirst = {"İl"};
@@ -66,15 +55,56 @@ public class AddAdressFragment extends AppCompatActivity {
 
     private Spinner firstGetProvince, firstGetDistrict;
 
+    private String id, adressCity, adressDistrict = "";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_add_adress);
-        topBarInit();
-        bottomBarSetup();
+        bottomBarSetup(R.id.bottomProfile);
+        initTopBarContents("Adres Ekle");
+        initScreen();
 
-        addAdressIcon = (ImageView) findViewById(R.id.add_adress_with_map);
-        addAdressText = (TextView) findViewById(R.id.add_adress_with_map_text);
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras != null) {
+                id = extras.getString("id");
+                name.setText(extras.getString("adressOfficial"));
+                surname.setText(extras.getString("adressOfficial"));
+                addressHeader.setText(extras.getString("adressHeader"));
+                adressCity = extras.getString("adressCity");
+                adressDistrict = extras.getString("adressDistrict");
+                street.setText(extras.getString("adressStreet"));
+                neighborhood.setText(extras.getString("adressNeighborhood"));
+                buildingNumber.setText(extras.getString("adressBuildingNo"));
+                apartmentNumber.setText(extras.getString("adressApertment"));
+                adressDescription.setText(extras.getString("adress"));
+                phoneNumber.setText(extras.getString("adressPhoneNumber"));
+            }
+        }
+
+        initProvince();
+        initProvincesAndDistricts();
+        initDistrictsComboboxFirst(true);
+        initDistrictsComboboxEndFirst(true);
+
+    }
+
+    private void initScreen() {
+        addAdressIcon = findViewById(R.id.add_adress_with_map);
+        addAdressText = findViewById(R.id.add_adress_with_map_text);
+        name = findViewById(R.id.add_address_name);
+        surname = findViewById(R.id.add_address_surname);
+        addressHeader = findViewById(R.id.add_adress_header);
+        street = findViewById(R.id.add_adress_street);
+        neighborhood = findViewById(R.id.add_adress_neighborhood);
+        buildingNumber = findViewById(R.id.add_adress_building_number);
+        apartmentNumber = findViewById(R.id.add_adress_apertment_number);
+        adressDescription = findViewById(R.id.add_adress_description);
+        phoneNumber = (EditText) findViewById(R.id.add_adress_phone_number);
+        firstGetDistrict = findViewById(R.id.add_address_district);
+        firstGetProvince = findViewById(R.id.add_address_city);
+
 
         addAdressIcon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,15 +125,17 @@ public class AddAdressFragment extends AppCompatActivity {
         addAddressButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (adressCity != null && adressCity.equals("")) {
+                    updateAdressCallBack(updateAdressRequest(id, addressHeader.getText().toString(), adressCity, adressDistrict, street.getText().toString(),
+                            neighborhood.getText().toString(), buildingNumber.getText().toString(), "", apartmentNumber.getText().toString(), "", adressDescription.getText().toString()));
+                }
+                else {
+                    addAdressCallBack(createRequest(addressHeader.getText().toString(), adressCity, adressDistrict, street.getText().toString(),
+                            neighborhood.getText().toString(), buildingNumber.getText().toString(), "", apartmentNumber.getText().toString(), "", adressDescription.getText().toString()));
+                }
 
             }
         });
-
-        initProvince();
-        initProvincesAndDistricts();
-        initDistrictsComboboxFirst(true);
-        initDistrictsComboboxEndFirst(true);
-
     }
 
     public void initProvince() {
@@ -141,8 +173,6 @@ public class AddAdressFragment extends AppCompatActivity {
     }
 
     private void initProvincesAndDistricts() {
-        firstGetDistrict = findViewById(R.id.add_address_district);
-        firstGetProvince = findViewById(R.id.add_address_city);
         firstGetProvince.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -180,8 +210,6 @@ public class AddAdressFragment extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     private void initDistrictsComboboxFirst(Boolean setDefault) {
@@ -244,20 +272,17 @@ public class AddAdressFragment extends AppCompatActivity {
         return addAdressRequest;
     }
 
-   /* public void addAdressCallBack(DefaultRequest defaultRequest) {
-        Call<DefaultResponse> call = ApiClient.getApiClient().myAdressList(defaultRequest);
+    public void addAdressCallBack(AddAdressRequest addAdressRequest) {
+        Call<DefaultResponse> call = ApiClient.getApiClient().addAdress(addAdressRequest);
 
         call.enqueue(new Callback<DefaultResponse>() {
             @Override
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
                 DefaultResponse defaultResponse = response.body();
                 if (defaultResponse.getResult().toString().equals("OK")) {
-
-                    Intent intent = new Intent(AddAdressFragment.this, ProfilePageFragment.class);
-                    startActivity(intent);
-
+                    Toast.makeText(AddAdressFragment.this, "Adres eklendi", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(AddAdressFragment.this, defaultResponse.getResult(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddAdressFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -267,8 +292,6 @@ public class AddAdressFragment extends AppCompatActivity {
             }
         });
     }
-
-    */
 
     public UpdateAdressRequest updateAdressRequest(String id, String baslik, String il, String ilce, String sokak, String mahalle, String bina, String kat, String daire, String adresTarif, String adres) {
         UpdateAdressRequest updateAdressRequest = new UpdateAdressRequest();
@@ -295,9 +318,7 @@ public class AddAdressFragment extends AppCompatActivity {
             public void onResponse(Call<DefaultResponse> call, Response<DefaultResponse> response) {
                 DefaultResponse defaultResponse = response.body();
                 if (defaultResponse.getResult().toString().equals("OK")) {
-
                     Toast.makeText(AddAdressFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
-
                 } else {
                     Toast.makeText(AddAdressFragment.this, defaultResponse.getResult().toString(), Toast.LENGTH_LONG).show();
                 }
@@ -308,69 +329,5 @@ public class AddAdressFragment extends AppCompatActivity {
                 System.out.println(t);
             }
         });
-    }
-
-    private void topBarInit() {
-        topBarText = findViewById(R.id.top_bar_title);
-        topBarText.setText("Adres ekle");
-        topBarBack = findViewById(R.id.top_bar_back);
-        topBarBack.setVisibility(View.VISIBLE);
-        topBarBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-    }
-
-    private void bottomBarSetup() {
-        bottomBar = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        bottomBar.setItemIconTintList(null);
-        bottomBar.setSelectedItemId(R.id.bottomProfile);
-        bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                GoBottomMenuIntent(item.getItemId());
-                return true;
-            }
-        });
-
-        bottomFab = findViewById(R.id.fab);
-        bottomFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomBar.getMenu().setGroupCheckable(0, false, true);
-                bottomBar.getMenu().setGroupCheckable(1, false, true);
-                bottomBar.getMenu().setGroupCheckable(2, false, true);
-                bottomBar.getMenu().setGroupCheckable(3, false, true);
-                Intent intent = new Intent(AddAdressFragment.this, ApplicationPageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-            }
-        });
-    }
-
-    private void GoBottomMenuIntent(int itemId) {
-        Intent intent;
-        switch (itemId) {
-            case R.id.bottomHome:
-                intent = new Intent(AddAdressFragment.this, HomePageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomMyShipping:
-                intent = new Intent(AddAdressFragment.this, MyShipsFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomAddAds:
-                intent = new Intent(AddAdressFragment.this, AddAdFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomProfile:
-                finish();
-                break;
-        }
     }
 }

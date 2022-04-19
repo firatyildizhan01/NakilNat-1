@@ -70,5 +70,10 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
             tvNotificationTime.setText(notification.getNotificationTime());
         }
     }
+
+    public void removeNotificationItem(int position) {
+        list.remove(position);
+        this.notifyItemRemoved(position);
+    }
 }
 

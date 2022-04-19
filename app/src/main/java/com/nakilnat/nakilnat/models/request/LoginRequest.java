@@ -4,6 +4,7 @@ public class LoginRequest {
     private String un;
     private String pw;
     private String token;
+    private String beniHatirla;
 
     public String getUn() {
         return un;
@@ -27,5 +28,13 @@ public class LoginRequest {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getBeniHatirla() {
+        return beniHatirla;
+    }
+
+    public void setBeniHatirla(String beniHatirla) {
+        this.beniHatirla = beniHatirla;
     }
 }

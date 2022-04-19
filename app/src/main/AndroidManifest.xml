@@ -7,6 +7,10 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
 
     <application
         android:allowBackup="true"
@@ -25,16 +29,23 @@
         <activity android:name=".ui.profile.myads.ContinueAdsFragment"></activity>
         <activity android:name=".ui.profile.offers.MyOffersFragment"></activity>
         <activity android:name=".ui.profile.offers.IncomingOffersFragment"></activity>
+        <activity android:name=".ui.profile.offers.OffersLayoutFragment"></activity>
         <activity android:name=".ui.profile.adress.AddAdressFragment"></activity>
         <activity android:name=".ui.profile.adress.MyAdressListFragment"></activity>
         <activity android:name=".ui.profile.MyNotificationsFragment"></activity>
+        <activity android:name=".ui.profile.messages.MessagesListFragment"></activity>
         <activity android:name=".ui.profile.mywallet.MyWalletTransactionsFragment"></activity>
-        <activity android:name=".ui.profile.MySettingsFragment"></activity>
+        <activity android:name=".ui.profile.settings.MySettingsFragment"></activity>
+        <activity android:name=".ui.profile.settings.HelpNakilnatFragment"></activity>
         <activity android:name=".ui.profile.MyAccountFragment"></activity>
         <activity android:name=".ui.profile.mywallet.MyWalletFragment"></activity>
         <activity android:name=".ui.profile.mywallet.AddMoneyFragment"></activity>
-        <activity android:name=".ui.profile.UpdatePasswordFragment"></activity>
+        <activity android:name=".ui.profile.settings.UpdatePasswordFragment"></activity>
+        <activity android:name=".ui.profile.settings.AggreementsFragment"></activity>
+        <activity android:name=".ui.profile.settings.askedquestions.AskedQuestionsFragment"></activity>
+        <activity android:name=".ui.WebViewFragment"></activity>
         <activity android:name=".ui.profile.MyInvoicesFragment"></activity>
+        <activity android:name=".ui.profile.myinvoice.MyInvoiceListFragment"></activity>
         <activity android:name=".ui.application.ApplicationPageFragment"></activity>
         <activity android:name=".ui.addad.AddAdFragment"
                   android:windowSoftInputMode="stateVisible|adjustPan"></activity>
@@ -64,6 +75,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".ui.onboarding.OTPReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEİVED"></action>
+            </intent-filter>
+        </receiver>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

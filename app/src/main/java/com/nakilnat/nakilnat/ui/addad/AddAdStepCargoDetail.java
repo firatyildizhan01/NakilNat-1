@@ -30,6 +30,7 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.nakilnat.nakilnat.R;
 import com.nakilnat.nakilnat.models.response.InsurancesResponse;
 import com.nakilnat.nakilnat.models.response.VehiclesResponse;
+import com.nakilnat.nakilnat.ui.BaseFragment;
 import com.nakilnat.nakilnat.ui.application.ApplicationPageFragment;
 import com.nakilnat.nakilnat.ui.home.HomePageFragment;
 import com.nakilnat.nakilnat.ui.myships.MyShipsFragment;
@@ -38,10 +39,8 @@ import com.nakilnat.nakilnat.ui.profile.ProfilePageFragment;
 import java.util.ArrayList;
 
 
-public class AddAdStepCargoDetail extends AppCompatActivity {
-    private BottomNavigationView bottomBar;
-    private CardView bottomFab;
-    private TextView navigationBarTitle;
+public class AddAdStepCargoDetail extends BaseFragment {
+
     private AppCompatButton btnParsiyel, btnAll;
     private AppCompatButton btninsuranceNo, btninsuranceYes;
     private EditText selectVehicleType;
@@ -58,11 +57,8 @@ public class AddAdStepCargoDetail extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_add_ad_step_cargo_detail);
-
-        navigationBarTitle = (TextView)findViewById(R.id.top_bar_title);
-        navigationBarTitle.setText("Yük İlanı Oluştur");
-
-        bottomBarSetup();
+        bottomBarSetup(R.id.bottomAddAds);
+        initTopBarContents("Yük İlanı Oluştur");
         initScreen();
         loadMethods();
     }
@@ -168,26 +164,19 @@ public class AddAdStepCargoDetail extends AppCompatActivity {
         insuranceList.add(new InsurancesResponse("axa","300₺"));
         insuranceList.add(new InsurancesResponse("neova","189₺"));
 
-
-
         //setting adapter and listview
         InsuranceAdapter adapter = new InsuranceAdapter(insuranceList, AddAdStepCargoDetail.this);
         adapter.getItemCount();
         insuranceRecycle.setAdapter(adapter);
         insuranceRecycle.setLayoutManager(new LinearLayoutManager(this));
 
-
         Button apply = dialog.findViewById(R.id.applyInsurance);
         ImageView dismissIcon = dialog.findViewById(R.id.ic_cancel);
-
 
         dismissIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 dialog.dismiss();
-
-
             }
         });
 
@@ -199,8 +188,6 @@ public class AddAdStepCargoDetail extends AppCompatActivity {
                 nextable = true;
             }
         });
-
-
 
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -230,18 +217,13 @@ public class AddAdStepCargoDetail extends AppCompatActivity {
         vehicleRecycle.setAdapter(adapter);
         vehicleRecycle.setLayoutManager(new LinearLayoutManager(this));
 
-
         Button apply = dialog.findViewById(R.id.applyVehicle);
         ImageView dismissIcon = dialog.findViewById(R.id.ic_cancel);
-
 
         dismissIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 dialog.dismiss();
-
-
             }
         });
 
@@ -253,61 +235,10 @@ public class AddAdStepCargoDetail extends AppCompatActivity {
             }
         });
 
-
-
         dialog.show();
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
-    }
-
-
-    private void bottomBarSetup() {
-        bottomBar = (BottomNavigationView) findViewById(R.id.bottomNavigationView);
-        bottomBar.setItemIconTintList(null);
-        bottomBar.setSelectedItemId(R.id.bottomAddAds);
-        bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                GoBottomMenuIntent(item.getItemId());
-                return true;
-
-            }
-        });
-        bottomFab = findViewById(R.id.fab);
-        bottomFab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                bottomBar.getMenu().setGroupCheckable(0, false, true);
-                bottomBar.getMenu().setGroupCheckable(1, false, true);
-                bottomBar.getMenu().setGroupCheckable(2, false, true);
-                bottomBar.getMenu().setGroupCheckable(3, false, true);
-                Intent intent = new Intent(AddAdStepCargoDetail.this, ApplicationPageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-            }
-        });
-    }
-
-    private void GoBottomMenuIntent(int itemId) {
-        Intent intent;
-        switch (itemId) {
-            case R.id.bottomHome:
-                intent = new Intent(AddAdStepCargoDetail.this, HomePageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomMyShipping:
-                intent = new Intent(AddAdStepCargoDetail.this, MyShipsFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-            case R.id.bottomProfile:
-                intent = new Intent(AddAdStepCargoDetail.this, ProfilePageFragment.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                break;
-        }
     }
 }
